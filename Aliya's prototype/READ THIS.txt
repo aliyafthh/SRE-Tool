@@ -1,0 +1,3 @@
+The buttons dont work, the pages tak link with each other 
+but basically just UI je lah for now.
+Just that dah tukar from xd to an actual lines of HTML.
