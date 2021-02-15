@@ -1,0 +1,99 @@
+#nextbtn{
+    color:white;
+    background-color:green;
+    border-radius:12px;
+    padding:10px 30px ;
+    margin:10px;
+  }
+#previousbtn{
+    padding:10px 30px ;
+    border-radius:12px;
+    margin:10px;
+    background-color:#808080;
+    color:white;
+}
+#viewbtn{
+    font-size:30px;
+    margin:0px;
+    padding:0px;
+    color:blue;
+}
+#viewbtn:hover{
+    font-size:30px;
+    margin:0px;
+    padding:0px;
+    color:red;
+    cursor:pointer;
+}
+#resolvebtn{
+    font-weight:bold;
+    color:green;
+    padding:10px;
+}
+#pendingbtn{
+    font-weight:bold;
+    color:#FF5733;
+    padding:10px;
+}
+.box{
+    background-color: white;
+    border-radius: 30px ;
+}
+.table-box{
+    width:1000px;
+    height:300px;
+    overflow-y:scroll;
+    margin-right:auto;
+    margin-left:auto;
+}
+th{
+    background-color: #009879;
+    color:white;
+    /* position:sticky;
+    top:-1px; */
+}
+.table.table-bordered {
+    width:100%;
+}
+.breadcrumbs{
+    padding:0px;
+    font-family:sans-serif;
+    }
+.breadcrumbs__item{
+    display:inline-block;
+}
+.breadcrumbs__item:not(:last-of-type)::after{
+    content:"\203a";
+    margin:0 5px;
+    color:black;
+}
+.breadcrumbs__link{
+    text-decoration:none;
+    color:Grey;
+}
+.breadcrumbs__link--active{
+    font-weight:500px;
+}
+#incompletebtn{
+    font-size:24px;
+    color:red;
+}
+#completebtn{
+    color:green;
+}
+#resultbtn{
+    padding:10px 30px ;
+    border-radius:12px;
+    margin:10px;
+    color:white;
+    font-weight:bold;
+}
+#question{
+    margin-top: 50px;
+    font-size:30px;
+    color:red;
+    cursor:pointer;
+}
+.alert-success{
+    font-size: 12px;
+}
