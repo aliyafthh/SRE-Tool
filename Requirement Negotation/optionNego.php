@@ -113,7 +113,7 @@
             <h6 class="collapse-header">REQUIREMENT:</h6>
             <a class="collapse-item" href="">Elicitation</a>
             <a class="collapse-item" href="">Documentation</a>
-            <a class="collapse-item active" href="">Negotiation</a>      
+            <a class="collapse-item active" href="homeNego.php">Negotiation</a>      
             <a class="collapse-item" href="">Validation</a> 
             <a class="collapse-item" href="">Management</a>
           </div>

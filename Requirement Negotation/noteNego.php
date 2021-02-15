@@ -1,7 +1,4 @@
-<?php
-    include_once ("config.php");
-    $req_id=$_GET['req_id'];
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,7 +26,7 @@
 </head>
 
 <body id="page-top">
-  <?php require_once 'process.php'?>
+
   <!-- Page Wrapper -->
   <div id="wrapper">
 
@@ -103,17 +100,17 @@
       </div>
 
       <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item active">
+      <li class="nav-item">
         <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
           <i class="fas fa-fw fa-folder"></i>
           <span>Modules</span>
         </a>
-        <div id="collapsePages" class="collapse show" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
             <h6 class="collapse-header">REQUIREMENT:</h6>
             <a class="collapse-item" href="">Elicitation</a>
             <a class="collapse-item" href="">Documentation</a>
-            <a class="collapse-item active" href="homeNego.php">Negotiation</a>      
+            <a class="collapse-item" href="homeNego.php">Negotiation</a>      
             <a class="collapse-item" href="">Validation</a> 
             <a class="collapse-item" href="">Management</a>
           </div>
@@ -121,7 +118,7 @@
       </li>
 
       <!-- Nav Item - Extra Notes -->
-      <li class="nav-item">
+      <li class="nav-item active">
         <a class="nav-link" href="noteNego.php">
           <i class="fas fa-pencil-alt"></i>
           <span>Extra Notes</span></a>
@@ -327,231 +324,81 @@
         </nav>
         <!-- End of Topbar -->
 
-        <?php
-            if(isset($_SESSION['message'])):?>
-            <div class="alert alert-<?=$_SESSION['msg_type']?>">
-            <?php
-                echo $_SESSION['message'];
-                unset($_SESSION['message']);
-            ?>
-            </div>
-        <?php endif;?>
-
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800">Requirement Negotiation</h1>
-          <div class="container">
-  <div class="jumbotron">
-            <ul class="breadcrumbs">
-              <li class="breadcrumbs__item">
-                  <a href="homeNego.php" style="text-decoration:none" class="breadcrumbs__link">Requirement Negotiation</a>
-              </li>
-              <li class="breadcrumbs__item">
-                  <a href="" style="text-decoration:none" class="breadcrumbs__link--active">Identify Issue</a>
-              </li>
-              <?php $nextbtn=$mysqli->query("SELECT req_id FROM rn_issue WHERE req_id=$req_id"); 
-                if(mysqli_num_rows($nextbtn)>0){
-                echo "<li class=\"breadcrumbs__item\">";
-                    echo "<a href=\"optionNego.php?req_id=$req_id\" style=\"text-decoration:none\" class=\"breadcrumbs__link\">Suggest Option</a>";
-                echo "</li>";
-                }
-              ?>
-            </ul>
-    <!-- Display current requirement and issue  -->
-    <div class="card">
-      <div class="card-body">
-        <?php
-          $sql="SELECT req_detail FROM rq_main WHERE req_id = $req_id";
-          $result=$mysqli->query($sql) or die($mysqli->error);
-          while($row=$result->fetch_assoc()):
-            echo "<a>Requirement: ".$row['req_detail']."</a>";
-          endwhile;
-        ?>
-      </div>
-    </div>
+          <h1 class="h3 mb-4 text-gray-800 ">Extra Notes : Requirement Negotiation</h1>
+          <div class="card">
+            <div class="card-body">
+                <div class="container-lg">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                                <div class="card-header" id="headingOne">
+                                    <h2 class="clearfix mb-0">
+                                        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> Definition of Requirement Negotiation</a>									
+                                    </h2>
+                                </div>
+                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                    <div class="card-body"><b>Requirement Negotiation</b> is a process used to reach agreement among stakeholders regarding requirements of software to be developed.</div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingThree">
+                                    <h2 class="mb-0">
+                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-chevron-circle-down"></i> Conflicts occurs in Requirement Negotiation</a>                     
+                                    </h2>
+                                </div>
+                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                    <div class="card-body"><ul><li><b>Between stakeholders</b></li>    When stakeholders have different point of views and when a customer asks you to make the system do two things you can't possibly do at the same time needs and expection<li><b>Between requirements</b></li>When a stakeholder asks you to make the system do two things you can't possibly do at the same time
+<li><b>Between software project vision and the agreed requirements</b></li></ul></div>
+                                </div>
+                            </div>
+                            <div class="card">
+                                <div class="card-header" id="headingFour">
+                                    <h2 class="mb-0">
+                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><i class="fa fa-chevron-circle-down"></i>Four task in Conflict Management</a>                               
+                                    </h2>
+                                </div>
+                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                <div class="card-body"><ul><li><b>Task 1 : </b>Conflict identification</li><a style="color:teal;">Identify conflicts during all requirements engineering activities</a><li><b>Task 2 : </b>Conflict analysis of each conflict</li><a style="color:teal;">Determine the reason of an identified conflict</a><li><b>Task 3 : </b>Conflict resolution (By means of all appropriate strategies)</li><a style="color:teal;">Develop the strategy for conflict resolution to ensure stakeholders continue to have willingness to work together</a><li><b>Task 4 : </b>Documentation of conflict resolution (Including the rationale for future reference)</li><a style="color:teal;">Produce traceable conflict resolution document to avoid the same conflict to be arised again.</a></ul></div>
+                                </div>
+                                </div>
+                            
+                                <div class="card">
+                                    <div class="card-header" id="headingFive">
+                                        <h2 class="mb-0">
+                                            <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><i class="fa fa-chevron-circle-down"></i> Five conflict types</a>                     
+                                        </h2>
+                                    </div>
+                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                        <div class="card-body"><ul><li>Data Conflict</li><li>Interest Conflict</li><li>Value Conflict</li><li>Relationship Conflict</li><li>Structural Conflict</li></ul></div>
+                                    </div>
+                                    </div>
 
-    <div class="card">
-      <div class="card-body">
-        <!-- Adding an issue  -->
-      <button style="margin:0px 10px 5px 0px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_issue"> Add Issue</button>
-        <!-- Display current issue in table form -->
-        <?php
-          $result = $mysqli->query("SELECT * FROM rn_issue WHERE req_id=$req_id") or die($mysqli->error);
-          // pre_r($result->fetch_assoc());
-        ?>
-          <div class="row">
-            <div class="table-box">
-            <table class="table table-bordered" >
-              <thead>
-                <tr>
-                  <th>Issue Details</th>
-                  <th>Category</th>
-                  <th>Person</th>
-                  <th colspan="2" >Action</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php
-                  while ($row=$result->fetch_assoc()):?>
-                    <tr>
-                      <td style = "display:none"><?php echo $row['issue_id'];?></td>
-                      <td><?php echo $row['issue_detail'];?></td>
-                      <td><?php echo $row['Category'];?></td>
-                      <td><?php echo $row['person_id'];?></td>
-                      <td>
-                        <button type="button" class="btn btn-info editbtn" >Edit</button>
-                        <button type="button" class="btn btn-danger deletebtn" >Delete</button>
-                      </td>
-                    </tr>
-                <?php endwhile; ?>
-              </tbody>
-            </table>
-            </div>      
-          </div>
-          <button type="button" class="btn btn-light" id="previousbtn" onclick="location.href='homeNego.php';" >Previous</button>
-      <?php if(mysqli_num_rows($nextbtn)>0){
-          echo "<button type=\"button\" class=\"btn btn-success float-right\" id=\"nextbtn\" onclick=\"location.href='optionNego.php?req_id=$req_id';\">Next</button>";
-          } ?>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- End of container class -->
-</div>
-    <?php  
-        // Looping the data as object
-        function pre_r($array){
-        echo '<pre>';
-        print_r($array);
-        echo '</pre>';
-        }
-    ?>
-<!-- ##############################################################################################         -->
-    <!-- Add Issue Form -->
-    <div class="modal" id="modal_issue" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3>Add Issue</h3>
-            <button type="button" class="close" data-dismiss="modal">
-            <span>&times;</span></button>
-          </div>
-          
-            <!-- Pop Up Form  -->
-              <form action="process.php" method="POST">
-                <div class="modal-body">
-                  <input type="hidden" name="issue_id" value="<?php echo $id;?>">
-                  <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
-                  <div class="form-group">
-                    <label>Add Issue</label>
-                    <input type="text" id="input" name="issue" class="form-control" placeholder= "Enter an issue" required>
-                    <!-- <span id="msg" class="badge badge-primary badge-pill"></span> -->
-                  </div>
-                  <div>
-                    <select class="selectpicker form-control" id="option_id" name="option_id" required>
-                      <option disabled selected value> -- select a category -- </option>
-                      <option id="Scope" value="Scope">Project Scope Management</option>
-                      <option id="Schedule" value="Schedule">Project Schedule Management</option>
-                      <option id="Cost" value="Cost">Project Cost Management</option>
-                      <option id="Quality" value="Quality">Project Quality Management</option>
-                      <option id="Resource" value="Resource">Project Resource Management</option>
-                      <option id="Communications" value="Communications">Project Communications Management</option>
-                      <option id="Risk" value="Risk">Project Risk Management</option>
-                      <option id="Procurement" value="Procurement">Project Procurement Management</option>
-                      <option id="Stakeholder" value="Stakeholder">Project Stakeholder Management</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="modal-footer" style="padding:5px 10px;">
-                  <button type="submit" class="btn btn-primary" name ="save_issue">Save</button>
-                </div>
-              </form>
-        </div>
-      </div>
-    </div>
-<!-- ##############################################################################################         -->
-    <!-- Edit Issue Form -->
-    <div class= "modal" id="editmodal" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h3> Edit Issue</h3>
-            <button type="button" class="close" data-dismiss="modal">
-            <span>&times;</span></button>
-          </div>
-            <!-- Pop Up Form  -->
-              <form action="process.php" method="POST">
-                <div class="modal-body">
-                    <input type="hidden" id="issue_id" name="issue_id" value="<?php echo $id;?>">
-                    <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
-                    <div class="form-group">
-                      <label>Issue</label>
-                      <input type="text" id="input2" name="issue2" class="form-control" placeholder= "Enter an issue" required>
-                    </div>
-                    <!-- <h5 id="msg"></h5> -->
-                    <div>
-                      <select class="selectpicker form-control" id="option_id" name="selected_id" required>
-                        <option disabled selected value> -- select a category -- </option>
-                        <option id="Scope1" value="Scope">Project Scope Management</option>
-                        <option id="Schedule1" value="Schedule">Project Schedule Management</option>
-                        <option id="Cost1" value="Cost">Project Cost Management</option>
-                        <option id="Quality1" value="Quality">Project Quality Management</option>
-                        <option id="Resource1" value="Resource">Project Resource Management</option>
-                        <option id="Communications1" value="Communications">Project Communications Management</option>
-                        <option id="Risk1" value="Risk">Project Risk Management</option>
-                        <option id="Procurement1" value="Procurement">Project Procurement Management</option>
-                        <option id="Stakeholder1" value="Stakeholder">Project Stakeholder Management</option>
-                      </select>
+                                    <div class="card">
+                                    <div class="card-header" id="headingSix">
+                                        <h2 class="mb-0">
+                                            <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"><i class="fa fa-chevron-circle-down"></i>Three basic strategies for resolving </a>                     
+                                        </h2>
+                                    </div>
+                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                                        <div class="card-body"><ul><li><b>Negotiation</b></li><a style="color:teal;">the conflicting parties agree on a solution by means of negotiation</a><li><b>Creative</b></li><a style="color:teal;">the original viewpoint of conflicting parties are discarded and a new creative solution is developed that harmonized the viewpoint of conflict parties.</a><li><b>Decision</b></li><a style="color:teal;">a higher authority makes a decision in favour of one conflicting parties.</a></ul></div>
+                                    </div>
+                                    </div>
+                                </div>
+                                </div>
+                        </div>
                     </div>
                 </div>
-                <div class="modal-footer" style="padding:5px 10px;">
-                  <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
-                  <button type="submit" class="btn btn-danger" name="update">Yes</button>
-                </div>
-              </form>
-        </div>
-      </div>
-    </div>
-<!-- ##############################################################################################         -->
-    <!-- Delete Issue Form -->
-    <div class="modal" id="deletemodal" >
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4> Delete Issue</h4>
-            <button type="button" class="close" data-dismiss="modal">
-            <span>&times;</span></button>
-          </div>
-          
-            <!-- Pop Up Form  -->
-            
-              <form action="process.php" method="POST">
-                  <div class="modal-body">
-                    <input type="hidden" id="delete_id" name="issue_id" value="<?php echo $id;?>">
-                    <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
-                    <h5>Are you sure you want to delete this issue?</h5>
-                    <br>
-                    <h6><b style="color: tomato;">Warning</b> : If you already complete the step in [Suggest Option/Vote Option]. This action may delete all the progress you have done .<h6>
-                    <h6>Please proceed with caution.</h6>
-                  </div>
-                  <div class="modal-footer" style="padding:5px 10px;">
-                    <button type="button" class="btn btn-info" data-dismiss="modal">No</button>
-                    <button type="submit" class="btn btn-danger" name="delete_issue">Yes</button>
-                  </div>
-              </form>
-              
-        </div>
-      </div>
-    </div>
-<!-- ##############################################################################################         -->
-
+            </div>
+            </div>
         </div>
         <!-- /.container-fluid -->
 
-      </div>
+
       <!-- End of Main Content -->
 
       <!-- Footer -->
@@ -594,63 +441,24 @@
     </div>
   </div>
 
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/css/bootstrap-select.min.css">
-
-    <!-- Latest compiled and minified JavaScript -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap-select@1.13.14/dist/js/bootstrap-select.min.js"></script>
-    <script src="js/complexity.js"></script>
-
-    
-
-    <script>
-      // $("#modal_issue").modal("show");
-      $('#modal_issue').on('hidden.bs.modal', function () {
-      $('#modal_issue form')[0].reset();
-
-      });
-    </script>
-    <script>
-      $(document).ready(function(){
-        $('.deletebtn').on('click',function(){
-          $('#deletemodal').modal('show');
-          $tr=$(this).closest('tr');
-
-          var data = $tr.children("td").map(function(){
-            return $(this).text();
-          });
-
-          console.log(data);
-          $('#delete_id').val(data[0]);
-        });
-      });
-    </script>
-
-    <script>
-      $(document).ready(function(){
-        $('.editbtn').on('click',function(){
-          $('#editmodal').modal('show');
-          $tr=$(this).closest('tr');
-
-          var data = $tr.children("td").map(function(){
-            return $(this).text();
-          });
-
-          console.log(data);
-          $('#issue_id').val(data[0]);
-          $('[name="issue2"]').val(data[1]);
-          var i=data[2];
-          $('select[name=selected_id]').val(i);
-          $('.selectpicker').selectpicker('refresh');
-          
-        });
-      });
-    </script>
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>                                    
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
   <script src="js/sb-admin-2.min.js"></script>
-  
+  <script>
+    $(document).ready(function(){
+        // Add minus icon for collapse element which is open by default
+        $(".collapse.show").each(function(){
+            $(this).prev(".card-header").addClass("highlight");
+        });
+        
+        // Highlight open collapsed element 
+        $(".card-header .btn").click(function(){
+            $(".card-header").not($(this).parents()).removeClass("highlight");
+            $(this).parents(".card-header").toggleClass("highlight");
+        });
+    });
+    </script>
 </body>
 
 </html>
