@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2021 at 12:54 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
+-- Generation Time: Feb 16, 2021 at 02:56 PM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -45,8 +45,7 @@ CREATE TABLE `createproject` (
 --
 
 INSERT INTO `createproject` (`id`, `groupleader`, `lecture`, `projectname`, `projectdesc`, `groupmember1`, `groupmember2`, `groupmember3`, `groupmember4`, `groupmember5`) VALUES
-(0, 'Ana', 'Lecture 1', 'Banking Application', 'Ease others', 0, 0, 0, 0, 0),
-(0, 'Ahsan', 'Lecture 1', 'Banking system', 'Banking.........', 170878748, 178748663, 178056636, 182052545, 178562036);
+(2, 'Ahsan Iman', 'Lecture 1', 'Banking System', 'Banking system is a group or network of institutions that provide financial services for us. These institutions are responsible for operating a payment system, providing loans, taking deposits, and helping with investments.', 170878748, 178748663, 178056636, 182052545, 178562036);
 
 -- --------------------------------------------------------
 
@@ -70,6 +69,82 @@ INSERT INTO `dependant` (`id`, `title_d`, `title`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `inspection1`
+--
+
+CREATE TABLE `inspection1` (
+  `id` int(255) NOT NULL,
+  `goal` varchar(255) NOT NULL,
+  `work` varchar(255) NOT NULL,
+  `insdate` date NOT NULL,
+  `insstart` varchar(12) NOT NULL,
+  `insend` varchar(12) NOT NULL,
+  `name1` varchar(50) NOT NULL,
+  `role1` varchar(30) NOT NULL,
+  `name2` varchar(50) NOT NULL,
+  `role2` varchar(30) NOT NULL,
+  `name3` varchar(50) NOT NULL,
+  `role3` varchar(30) NOT NULL,
+  `name4` varchar(50) NOT NULL,
+  `role4` varchar(30) NOT NULL,
+  `name5` varchar(50) NOT NULL,
+  `role5` varchar(30) NOT NULL,
+  `name6` varchar(50) NOT NULL,
+  `role6` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `inspection1`
+--
+
+INSERT INTO `inspection1` (`id`, `goal`, `work`, `insdate`, `insstart`, `insend`, `name1`, `role1`, `name2`, `role2`, `name3`, `role3`, `name4`, `role4`, `name5`, `role5`, `name6`, `role6`) VALUES
+(6, 'Functional and non function requirement', 'To Do List\r\n-Shall & should', '2021-02-12', '19:26', '19:25', 'Ahsan Iman', 'Requirement Engineering', 'Nur Maisara', 'Domain Expert', 'Aiman Aqma', 'Moderator', 'Huda Izaty', 'Author', 'Mia Farina', 'Scribe', 'Jonathan Ong', 'Reader');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inspection2`
+--
+
+CREATE TABLE `inspection2` (
+  `id` int(50) NOT NULL,
+  `requirement` varchar(255) NOT NULL,
+  `error` varchar(255) NOT NULL,
+  `comment` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `inspection2`
+--
+
+INSERT INTO `inspection2` (`id`, `requirement`, `error`, `comment`) VALUES
+(1, 'F01', 'The use of  \"should\"', 'Need to use shall');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `inspection3`
+--
+
+CREATE TABLE `inspection3` (
+  `id` int(50) NOT NULL,
+  `requirement` varchar(255) NOT NULL,
+  `class` varchar(50) NOT NULL,
+  `solution` varchar(100) NOT NULL,
+  `decision` varchar(100) NOT NULL,
+  `comment` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `inspection3`
+--
+
+INSERT INTO `inspection3` (`id`, `requirement`, `class`, `solution`, `decision`, `comment`) VALUES
+(1, 'F01', 'Good', 'Just nice', 'Critical Error', 'Done !');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `login`
 --
 
@@ -84,7 +159,10 @@ CREATE TABLE `login` (
 --
 
 INSERT INTO `login` (`id`, `email`, `pw`) VALUES
-(0, 'maisara@yahoo.com', 'akhir');
+(0, 'maisara@yahoo.com', 'akhir'),
+(1, 'maisara@yahoo.com', 'akhir'),
+(2, '', ''),
+(3, '', '');
 
 -- --------------------------------------------------------
 
@@ -106,7 +184,13 @@ CREATE TABLE `register` (
 --
 
 INSERT INTO `register` (`id`, `regname`, `studentid`, `email`, `pw`, `repeatpw`) VALUES
-(0, 'Nur Maisara', 17412554, 'maisara@yahoo.com', 'akhir', 'akhir');
+(0, 'Nur Maisara', 17412554, 'maisara@yahoo.com', 'akhir', 'akhir'),
+(1, 'Nur Maisara', 170878748, 'maisara@yahoo.com', 'akhir', 'akhir'),
+(2, 'Ahsan Iman', 170878769, 'ahsan@yahoo.com', 'awal', 'awal'),
+(3, 'Aiman Aqma', 178748663, 'aqma@yahoo.com', 'first', 'first'),
+(4, 'Huda Izaty', 178056636, 'izaty@yahoo.com', 'last', 'last'),
+(5, 'Mia Farina', 182052545, 'farina@yahoo.com', 'middle', 'middle'),
+(6, 'Jonathan Ong', 178562036, 'jonathan@yahoo.com', 'tengah', 'tengah');
 
 -- --------------------------------------------------------
 
@@ -340,9 +424,45 @@ INSERT INTO `views` (`v_id`, `viewer`, `attribute`) VALUES
 --
 
 --
+-- Indexes for table `createproject`
+--
+ALTER TABLE `createproject`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `dependant`
 --
 ALTER TABLE `dependant`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inspection1`
+--
+ALTER TABLE `inspection1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inspection2`
+--
+ALTER TABLE `inspection2`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `inspection3`
+--
+ALTER TABLE `inspection3`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `login`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `register`
+--
+ALTER TABLE `register`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -404,6 +524,42 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `createproject`
+--
+ALTER TABLE `createproject`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `inspection1`
+--
+ALTER TABLE `inspection1`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `inspection2`
+--
+ALTER TABLE `inspection2`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `inspection3`
+--
+ALTER TABLE `inspection3`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `login`
+--
+ALTER TABLE `login`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `register`
+--
+ALTER TABLE `register`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
@@ -444,12 +600,6 @@ ALTER TABLE `rvp2`
 --
 ALTER TABLE `rvp3`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
-
---
--- AUTO_INCREMENT for table `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
