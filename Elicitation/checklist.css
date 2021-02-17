@@ -1,0 +1,312 @@
+/*
+*
+* ==========================================
+* CUSTOM UTIL CLASSES
+* ==========================================
+*
+*/
+
+/* Caret Breadcrumb */
+.breadcrumb-caret .breadcrumb-item+.breadcrumb-item::before {
+  content: '\f0da';
+  font-family: 'FontAwesome';
+}
+
+/* Bullet */
+.breadcrumb-bullet .breadcrumb-item+.breadcrumb-item::before {
+  content: '•';
+}
+
+/* Arrow Breadcrumb */
+.breadcrumb-arrow .breadcrumb-item+.breadcrumb-item::before {
+  content: '';
+}
+
+.breadcrumb-arrow {
+  height: 40px;
+  line-height: 40px;
+}
+
+.breadcrumb-arrow .breadcrumb-item:first-child a {
+  border-radius: 4px 0 0 4px;
+}
+
+.breadcrumb-arrow .breadcrumb-item,
+.breadcrumb-arrow .breadcrumb-item a,
+.breadcrumb-arrow .breadcrumb-item span {
+  display: inline-block;
+  vertical-align: top;
+}
+
+.breadcrumb-arrow .breadcrumb-item:not(:first-child) {
+  margin-left: -8px;
+}
+
+.breadcrumb-arrow .breadcrumb-item+.breadcrumb-item:before {
+  padding: 0;
+  content: "";
+}
+
+.breadcrumb-arrow .breadcrumb-item a,
+.breadcrumb-arrow .breadcrumb-item.active {
+  height: 40px;
+  padding: 0 10px 0 25px;
+  line-height: 40px;
+}
+
+.breadcrumb-arrow .breadcrumb-item a {
+  position: relative;
+  color: #fff;
+  text-decoration: none;
+  background-color: #3bafda;
+  border: 1px solid #3bafda;
+}
+
+.breadcrumb-arrow .breadcrumb-item a:after,
+.breadcrumb-arrow .breadcrumb-item a:before {
+  position: absolute;
+  top: -1px;
+  width: 0;
+  height: 0;
+  content: '';
+  border-top: 20px solid transparent;
+  border-bottom: 20px solid transparent;
+}
+
+.breadcrumb-arrow .breadcrumb-item a:before {
+  right: -10px;
+  z-index: 3;
+  border-left-color: #3bafda;
+  border-left-style: solid;
+  border-left-width: 11px;
+}
+
+.breadcrumb-arrow .breadcrumb-item a:after {
+  right: -11px;
+  z-index: 2;
+  border-left: 11px solid #2494be;
+}
+
+.breadcrumb-arrow .breadcrumb-item a:focus,
+.breadcrumb-arrow li a:hover {
+  background-color: #4fc1e9;
+  border: 1px solid #4fc1e9;
+}
+
+.breadcrumb-arrow .breadcrumb-item a:focus:before,
+.breadcrumb-arrow li a:hover:before {
+  border-left-color: #4fc1e9;
+}
+
+.breadcrumb-arrow li.active:after,
+.breadcrumb-arrow li.active:before {
+  border-left-color: #2494be;
+}
+  
+  /* ////ACCORDIAN//// */
+
+  [data-toggle="collapse"] i:before {
+    content: "\f068";
+ }
+  [data-toggle="collapse"].collapsed i:before {
+    content: "\f067";
+ }
+  #accordion .card-header {
+    margin-bottom: 8px;
+ }
+  #accordion .accordion-title {
+    position: relative;
+    display: block;
+    padding: 8px 0 8px 50px;
+    background: #213744;
+    border-radius: 8px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 700;
+    width: 100%;
+    text-align: left;
+    transition: all 0.4s ease-in-out;
+ }
+  #accordion .accordion-title i {
+    position: absolute;
+    width: 40px;
+    height: 100%;
+    left: 0;
+    top: 0;
+    color: #fff;
+    background: radial-gradient(rgba(33, 55, 68, .8), #213744);
+    text-align: center;
+    border-right: 1px solid transparent;
+ }
+  #accordion .accordion-title:hover {
+    padding-left: 60px;
+    background: #4fc1e9;
+    color: #fff;
+ }
+  #accordion .accordion-title:hover i {
+    border-right: 1px solid #fff;
+ }
+  #accordion .accordion-body {
+    padding: 40px 55px;
+ }
+  #accordion .accordion-body ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+ }
+  #accordion .accordion-body li {
+    padding-left: 1.2rem;
+    text-indent: -1.2rem;
+ }
+  #accordion .accordion-body li:before {
+    content: "\f10a";
+    padding-right: 5px;
+    font-family: "Flaticon";
+    font-size: 16px;
+    font-style: normal;
+    color: #213744;
+ }
+ 
+ /* ////CHECKBOX/// */
+.inputGroup {
+	 background-color: #fff;
+	 display: block;
+	 margin: 10px 0;
+	 position: relative;
+}
+ .inputGroup label {
+	 padding: 12px 30px;
+	 width: 100%;
+	 display: block;
+	 text-align: left;
+	 color: #3c454c;
+	 cursor: pointer;
+	 position: relative;
+	 z-index: 2;
+	 transition: color 200ms ease-in;
+	 overflow: hidden;
+}
+ .inputGroup label:before {
+	 width: 10px;
+	 height: 10px;
+	 border-radius: 50%;
+	 content: '';
+	 background-color: #5562eb;
+	 position: absolute;
+	 left: 50%;
+	 top: 50%;
+	 transform: translate(-50%, -50%) scale3d(1, 1, 1);
+	 transition: all 300ms cubic-bezier(0.4, 0, 0.2, 1);
+	 opacity: 0;
+	 z-index: -1;
+}
+ .inputGroup label:after {
+	 width: 32px;
+	 height: 32px;
+	 content: '';
+	 border: 2px solid #d1d7dc;
+	 background-color: #fff;
+	 background-image: url("data:image/svg+xml,%3Csvg width='32' height='32' viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M5.414 11L4 12.414l5.414 5.414L20.828 6.414 19.414 5l-10 10z' fill='%23fff' fill-rule='nonzero'/%3E%3C/svg%3E ");
+	 background-repeat: no-repeat;
+	 background-position: 2px 3px;
+	 border-radius: 50%;
+	 z-index: 2;
+	 position: absolute;
+	 right: 30px;
+	 top: 50%;
+	 transform: translateY(-50%);
+	 cursor: pointer;
+	 transition: all 200ms ease-in;
+}
+ .inputGroup input:checked ~ label {
+	 color: #fff;
+}
+ .inputGroup input:checked ~ label:before {
+	 transform: translate(-50%, -50%) scale3d(56, 56, 1);
+	 opacity: 1;
+}
+ .inputGroup input:checked ~ label:after {
+	 background-color: #54e0c7;
+	 border-color: #54e0c7;
+}
+ .inputGroup input {
+	 width: 32px;
+	 height: 32px;
+	 order: 1;
+	 z-index: 2;
+	 position: absolute;
+	 right: 30px;
+	 top: 50%;
+	 transform: translateY(-50%);
+	 cursor: pointer;
+	 visibility: hidden;
+}
+ .form {
+	 padding: 0 16px;
+	 max-width: 550px;
+	 margin: 25px auto;
+	 font-size: 15px;
+	 font-weight: 600;
+	 line-height: 20px;
+}
+ body {
+	 background-color: #d1d7dc;
+	 font-family: 'Fira Sans', sans-serif;
+}
+ *, *::before, *::after {
+	 box-sizing: inherit;
+}
+ html {
+	 box-sizing: border-box;
+}
+ code {
+	 background-color: #9aa3ac;
+	 padding: 0 8px;
+}
+ 
+/*/////////////////////// preview ////////*/
+h1 {
+  font-size: 26px;
+  text-align: center;
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.panel-default>.panel-heading {
+ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2340ff+1,7c21f5+100 */
+  background: #ffffff;
+ /* Old browsers */
+  background:#54e0c68c;
+ 
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2340ff', endColorstr='#7c21f5',GradientType=1 );
+ /* IE6-9 fallback on horizontal gradient */
+  color: #ffffff;
+  padding: 18px;
+}
+.panel {
+  box-shadow: 0px 0px 60px 0px rgba(107, 104, 104, 0.4);
+}
+.panel-group .panel {
+  margin-bottom: 20px;
+  border: 1px solid #ffffff;
+ /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#2340ff+1,7c21f5+100 */
+  border-color: #ffffff;
+
+  border-color: linear-gradient(to bottom right, #4e73df 8%, #ff99cc 100%);
+ /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2340ff', endColorstr='#7c21f5',GradientType=1 );
+ /* IE6-9 fallback on horizontal gradient */
+}
+.panel-title {
+  font-size: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+.panel-title a, .panel-title a:hover, .panel-title a:focus {
+  text-decoration: none;
+  
+}
+.panel-body p {
+  font-size: 16px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

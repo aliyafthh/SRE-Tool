@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 16, 2021 at 02:56 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Feb 17, 2021 at 03:40 PM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -65,6 +65,33 @@ CREATE TABLE `dependant` (
 
 INSERT INTO `dependant` (`id`, `title_d`, `title`) VALUES
 ('102', 'Hold students records', 'Register');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `elicitation`
+--
+
+CREATE TABLE `elicitation` (
+  `id` int(11) NOT NULL,
+  `gID` int(11) NOT NULL,
+  `requirement` varchar(255) NOT NULL,
+  `m1` tinyint(1) DEFAULT NULL,
+  `m2` tinyint(1) DEFAULT NULL,
+  `m3` tinyint(1) DEFAULT NULL,
+  `m4` tinyint(1) DEFAULT NULL,
+  `m5` tinyint(1) DEFAULT NULL,
+  `approved` tinyint(1) DEFAULT 0
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `elicitation`
+--
+
+INSERT INTO `elicitation` (`id`, `gID`, `requirement`, `m1`, `m2`, `m3`, `m4`, `m5`, `approved`) VALUES
+(3, 3, 'The system shall idk', 1, NULL, NULL, NULL, NULL, 0),
+(4, 3, 'the system should try', 0, NULL, NULL, NULL, NULL, 0),
+(5, 3, 'The system will poafbka', NULL, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -436,6 +463,12 @@ ALTER TABLE `dependant`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `elicitation`
+--
+ALTER TABLE `elicitation`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `inspection1`
 --
 ALTER TABLE `inspection1`
@@ -528,6 +561,12 @@ ALTER TABLE `user`
 --
 ALTER TABLE `createproject`
   MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `elicitation`
+--
+ALTER TABLE `elicitation`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `inspection1`
