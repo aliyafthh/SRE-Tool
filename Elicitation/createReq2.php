@@ -17,15 +17,15 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://kit.fontawesome.com/9eba2c9c5c.js" crossorigin="anonymous"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script> -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script>
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <!-- <link href="inspection.css" rel="stylesheet">
-  <link href="checklist.css" rel="stylesheet"> -->
+  <link href="inspection.css" rel="stylesheet">
+  <link href="checklist.css" rel="stylesheet">
 
   <?php
   require_once "config.php";
@@ -51,7 +51,7 @@
       float: left;
       width: 100%;
       /* background-color: #F29D4B; */
-      background-image: url("../images/black.jpg");
+      background-image: url("../images/green.jpg");
       background-size: 1550px 135px;
       height: 120px;
     }
@@ -65,7 +65,7 @@
     .topbarz {
       float: right;
       width: 100%;
-      background-color: #F0A35E;
+      background-color: #68491B;
       /* background-image: url("../images/wood.png"); */
       height: 50px;
     }
@@ -76,13 +76,12 @@
     }
 
     .bodyody {
-      /* background-image: url("../images/black.jpg");
-      background-size: 1500px 1000px; */
-      background-color: #FCF0CF !important;
+      background-image: url("../images/2173.jpg");
+      background-size: 1500px 1000px;
     }
 
     .sidenavi {
-      background-color: #70AE98;
+      background-color: #68491B;
       /* background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%); */
       background-size: cover;
       font-family: myFirstFont;
@@ -103,16 +102,9 @@
       margin-right: 16%;
       padding: 10px;
     }
-
-    .btn-pastel {
-      color: #fff;
-      background-color: #F6A7C1;
-      border-color: #F6A7C1
-    }
   </style>
 
 </head>
-<!-- Header -->
 <header class="heder">
   <div class="hed3">
     <img src="../images/clip.gif" alt="Study" class="img1" style="margin-top: 20px;">
@@ -120,10 +112,7 @@
     <img src="../images/paperplane.gif" alt="Study" class="img1">
   </div>
 </header>
-
 <br class="clearBoth" />
-
-<!-- Body -->
 
 <body id="page-top">
 
@@ -247,7 +236,7 @@
                 <h2>Requirement Elicitation </h2>
               </h3>
 
-              <button type="button" class="btn btn-pastel" data-toggle="modal" data-target="#addReqModal" style="float:right;"><i class="material-icons">&#xE147;</i> Add New Requirement</button>
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addReqModal" style="float:right;"><i class="material-icons">&#xE147;</i> Add New Requirement</button>
               <br class="clearBoth" /><br>
               <?php
               $query = "SELECT * FROM elicitation";
@@ -284,197 +273,194 @@
               }
               ?>
             </div>
+            <!-- /.container-fluid -->
+
           </div>
-          <!-- /.container-fluid -->
+          <!-- End of Main Content -->
+
+          <!-- Footer -->
+          <footer class="sticky-footer bg-white">
+            <div class="container my-auto">
+              <div class="copyright text-center my-auto">
+                <span>Copyright &copy; Your Website 2020</span>
+              </div>
+            </div>
+          </footer>
+          <!-- End of Footer -->
 
         </div>
-        <!-- End of Main Content -->
-
-        <!-- Footer -->
-        <footer class="sticky-footer bg-white">
-          <div class="container my-auto">
-            <div class="copyright text-center my-auto">
-              <span>Copyright &copy; Your Website 2020</span>
-            </div>
-          </div>
-        </footer>
-        <!-- End of Footer -->
+        <!-- End of Content Wrapper -->
 
       </div>
-      <!-- End of Content Wrapper -->
+      <!-- End of Page Wrapper -->
 
+      <!-- Scroll to Top Button-->
+      <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+      </a>
+
+      <!-- Logout Modal-->
+      <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+              <a class="btn btn-primary" href="login.html">Logout</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <!-- End of Page Wrapper -->
 
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
-    </a>
+    <!-- Bootstrap core JavaScript-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="rvp.js"></script>
+    <!-- Add Requirement Modal-->
+    <div class="modal fade" id="addReqModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
+            <h5 class="modal-title" id="addModalLabel">Add New Requirement</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
             </button>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+          <form action="insertReq.php" method="POST" autocomplete="off">
+            <div class="modal-body">
 
-  <!-- Bootstrap core JavaScript-->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  <!-- Core plugin JavaScript-->
-  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
-
-  <!-- Custom scripts for all pages-->
-  <script src="js/sb-admin-2.min.js"></script>
-  <script src="rvp.js"></script>
-
-  <!-- Add Requirement Modal-->
-  <div class="modal fade" id="addReqModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addModalLabel">Add New Requirement</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="insertReq.php" method="POST" autocomplete="off">
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label>Requirement</label>
-              <input type="text" name="requirement" class="form-control" placeholder="Enter requirement">
-              <input type="hidden" name="gID" class="form-control" value="3">
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="insertData" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- ###################################################################################################################################### -->
-
-  <!-- Edit Requirement Modal -->
-
-  <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editModalLabel">Edit Requirement</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="updateReq.php" method="POST" autocomplete="off">
-
-          <input type="hidden" name="update_id" id="update_id">
-
-          <div class="modal-body">
-
-            <div class="form-group">
-              <label>Requirement</label>
-              <input type="text" name="requirement" id="requirement" class="form-control" placeholder="Enter requirement">
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="updateData" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-  <!-- Delete Dependant Modal -->
-
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Requirement</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="deleteReq.php" method="POST">
-
-          <div class="modal-body">
-
-            <input type="hidden" name="delete_id" id="delete_id">
-
-
-            <h4>Are you sure you want to delete this requirement?</h4>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <button type="submit" name="deleteData" class="btn btn-primary">Yes</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Approve Requirement Modal -->
-
-  <div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="editModalLabel">Approval Status</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="approveReq.php" method="POST" autocomplete="off">
-
-          <input type="hidden" name="approval_id" id="approval_id">
-
-          <div class="modal-body">
-
-            <div class="form-group" style="text-align:center;">
-              <h3>Do you approve the requirement created?</h3>
-              <div class="button inline">
-                <input type="radio" name="approval" value="1" id="yes">
-                <label for="yes"><i class="fas fa-check fa-3x" style="color:green;"></i></label>
-
+              <div class="form-group">
+                <label>Requirement</label>
+                <input type="text" name="requirement" class="form-control" placeholder="Enter requirement">
+                <input type="hidden" name="gID" class="form-control" value="3">
               </div>
-              <div class="button inline">
-                <input type="radio" name="approval" value="0" id="no">
-                <label for="no"><i class="fas fa-times fa-3x" style="color:red;"></i></label>
-              </div>
-              <br class="clearBoth" />
-            </div>
 
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="updateData" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" name="insertData" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-  </div>
-  </div>
+
+    <!-- ###################################################################################################################################### -->
+
+    <!-- Edit Requirement Modal -->
+
+    <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Edit Requirement</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="updateReq.php" method="POST" autocomplete="off">
+
+            <input type="hidden" name="update_id" id="update_id">
+
+            <div class="modal-body">
+
+              <div class="form-group">
+                <label>Requirement</label>
+                <input type="text" name="requirement" id="requirement" class="form-control" placeholder="Enter requirement">
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" name="updateData" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- Delete Dependant Modal -->
+
+    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="deleteModalLabel">Delete Requirement</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="deleteReq.php" method="POST">
+
+            <div class="modal-body">
+
+              <input type="hidden" name="delete_id" id="delete_id">
+
+
+              <h4>Are you sure you want to delete this requirement?</h4>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
+              <button type="submit" name="deleteData" class="btn btn-primary">Yes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Approve Requirement Modal -->
+
+    <div class="modal fade" id="approvalModal" tabindex="-1" role="dialog" aria-labelledby="approvalModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="editModalLabel">Approval Status</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <form action="approveReq.php" method="POST" autocomplete="off">
+
+            <input type="hidden" name="approval_id" id="approval_id">
+
+            <div class="modal-body">
+
+              <div class="form-group" style="text-align:center;">
+                <h3>Do you approve the requirement created?</h3>
+                <div class="button inline">
+                  <input type="radio" name="approval" value="1" id="yes">
+                  <label for="yes"><i class="fas fa-check fa-3x" style="color:green;"></i></label>
+
+                </div>
+                <div class="button inline">
+                  <input type="radio" name="approval" value="0" id="no">
+                  <label for="no"><i class="fas fa-times fa-3x" style="color:red;"></i></label>
+                </div>
+                <br class="clearBoth" />
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" name="updateData" class="btn btn-primary">Save changes</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
 </body>
 <script>

@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Requirements Elicitation</title>
+  <title>Requirements Management</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -27,10 +27,10 @@ require_once "config.php";
       <br>
       <div id="navbar" style="float: right;">
 
-        <a class="active" href="createReq.php">Create New Requirement</a>
+        <a href="javascript:void(0)">Create New Requirement</a>
         <a href="javascript:void(0)">Negotiate Requirement</a>
         <a href="javascript:void(0)">Validate Requirement</a>
-        <a href="index.php">Manage Requirement</a>
+        <a class="active" href="index.php">Manage Requirement</a>
 
 
 
