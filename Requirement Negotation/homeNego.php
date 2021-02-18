@@ -76,21 +76,11 @@
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <!-- Nav Item - Win Win Tree -->
+      <li class="nav-item ">
+        <a class="nav-link" href="winwinTree.php">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
+          <span>WinWin Tree</span></a>
       </li>
 
       <!-- Divider -->
@@ -331,9 +321,6 @@
 
           <!-- Page Heading -->
           <h1 class="h3 mb-4 text-gray-800">Requirement Negotiation</h1>
-          <div class="row">
-
-            <div class="container">
               <div class="jumbotron">
                   <ul class="breadcrumbs">
                       <li class="breadcrumbs__item">
@@ -445,7 +432,6 @@
 
                             </div>
                         </div>
-                    </div>
                     <?php  
                     // Looping the data as object
                     function pre_r($array){
@@ -454,7 +440,6 @@
                         echo '</pre>';
                     }
                     ?>
-        </div>
         <!-- /.container-fluid -->
 
       </div>

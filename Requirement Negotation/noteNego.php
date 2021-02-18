@@ -74,21 +74,11 @@
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <!-- Nav Item - Win Win Tree -->
+      <li class="nav-item ">
+        <a class="nav-link" href="winwinTree.php">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
+          <span>WinWin Tree</span></a>
       </li>
 
       <!-- Divider -->
@@ -328,77 +318,77 @@
         <div class="container-fluid">
 
           <!-- Page Heading -->
-          <h1 class="h3 mb-4 text-gray-800 ">Extra Notes : Requirement Negotiation</h1>
-          <div class="card">
-            <div class="card-body">
-                <div class="container-lg">
-                <div class="row">
-                    <div class="col-lg-12">
-                        <div class="accordion" id="accordionExample">
-                            <div class="card">
-                                <div class="card-header" id="headingOne">
-                                    <h2 class="clearfix mb-0">
-                                        <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> Definition of Requirement Negotiation</a>									
-                                    </h2>
-                                </div>
-                                <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
-                                    <div class="card-body"><b>Requirement Negotiation</b> is a process used to reach agreement among stakeholders regarding requirements of software to be developed.</div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingThree">
-                                    <h2 class="mb-0">
-                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-chevron-circle-down"></i> Conflicts occurs in Requirement Negotiation</a>                     
-                                    </h2>
-                                </div>
-                                <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                    <div class="card-body"><ul><li><b>Between stakeholders</b></li>    When stakeholders have different point of views and when a customer asks you to make the system do two things you can't possibly do at the same time needs and expection<li><b>Between requirements</b></li>When a stakeholder asks you to make the system do two things you can't possibly do at the same time
-<li><b>Between software project vision and the agreed requirements</b></li></ul></div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" id="headingFour">
-                                    <h2 class="mb-0">
-                                        <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><i class="fa fa-chevron-circle-down"></i>Four task in Conflict Management</a>                               
-                                    </h2>
-                                </div>
-                                <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
-                                <div class="card-body"><ul><li><b>Task 1 : </b>Conflict identification</li><a style="color:teal;">Identify conflicts during all requirements engineering activities</a><li><b>Task 2 : </b>Conflict analysis of each conflict</li><a style="color:teal;">Determine the reason of an identified conflict</a><li><b>Task 3 : </b>Conflict resolution (By means of all appropriate strategies)</li><a style="color:teal;">Develop the strategy for conflict resolution to ensure stakeholders continue to have willingness to work together</a><li><b>Task 4 : </b>Documentation of conflict resolution (Including the rationale for future reference)</li><a style="color:teal;">Produce traceable conflict resolution document to avoid the same conflict to be arised again.</a></ul></div>
-                                </div>
-                                </div>
-                            
-                                <div class="card">
-                                    <div class="card-header" id="headingFive">
-                                        <h2 class="mb-0">
-                                            <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><i class="fa fa-chevron-circle-down"></i> Five conflict types</a>                     
-                                        </h2>
-                                    </div>
-                                    <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
-                                        <div class="card-body"><ul><li>Data Conflict</li><li>Interest Conflict</li><li>Value Conflict</li><li>Relationship Conflict</li><li>Structural Conflict</li></ul></div>
-                                    </div>
-                                    </div>
-
-                                    <div class="card">
-                                    <div class="card-header" id="headingSix">
-                                        <h2 class="mb-0">
-                                            <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"><i class="fa fa-chevron-circle-down"></i>Three basic strategies for resolving </a>                     
-                                        </h2>
-                                    </div>
-                                    <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
-                                        <div class="card-body"><ul><li><b>Negotiation</b></li><a style="color:teal;">the conflicting parties agree on a solution by means of negotiation</a><li><b>Creative</b></li><a style="color:teal;">the original viewpoint of conflicting parties are discarded and a new creative solution is developed that harmonized the viewpoint of conflict parties.</a><li><b>Decision</b></li><a style="color:teal;">a higher authority makes a decision in favour of one conflicting parties.</a></ul></div>
-                                    </div>
-                                    </div>
-                                </div>
-                                </div>
-                        </div>
-                    </div>
+          <div class="card shadow mb-4">
+                <div class="card-header py-3">
+                  <h6 class="m-0 font-weight-bold text-primary">Extra Notes : Requirement Negotiation</h6>
                 </div>
-            </div>
-            </div>
-        </div>
+                <div class="card-body">
+                  <div class="container-lg">
+                  <div class="row">
+                      <div class="col-lg-12">
+                          <div class="accordion" id="accordionExample">
+                              <div class="card">
+                                  <div class="card-header" id="headingOne">
+                                      <h2 class="clearfix mb-0">
+                                          <a class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne"><i class="fa fa-chevron-circle-down"></i> Definition of Requirement Negotiation</a>									
+                                      </h2>
+                                  </div>
+                                  <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                      <div class="card-body"><b>Requirement Negotiation</b> is a process used to reach agreement among stakeholders regarding requirements of software to be developed.</div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header" id="headingThree">
+                                      <h2 class="mb-0">
+                                          <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree"><i class="fa fa-chevron-circle-down"></i> Conflicts occurs in Requirement Negotiation</a>                     
+                                      </h2>
+                                  </div>
+                                  <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                      <div class="card-body"><ul><li><b>Between stakeholders</b></li>    When stakeholders have different point of views and when a customer asks you to make the system do two things you can't possibly do at the same time needs and expection<li><b>Between requirements</b></li>When a stakeholder asks you to make the system do two things you can't possibly do at the same time
+  <li><b>Between software project vision and the agreed requirements</b></li></ul></div>
+                                  </div>
+                              </div>
+                              <div class="card">
+                                  <div class="card-header" id="headingFour">
+                                      <h2 class="mb-0">
+                                          <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour"><i class="fa fa-chevron-circle-down"></i>Four task in Conflict Management</a>                               
+                                      </h2>
+                                  </div>
+                                  <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                                  <div class="card-body"><ul><li><b>Task 1 : </b>Conflict identification</li><a style="color:teal;">Identify conflicts during all requirements engineering activities</a><li><b>Task 2 : </b>Conflict analysis of each conflict</li><a style="color:teal;">Determine the reason of an identified conflict</a><li><b>Task 3 : </b>Conflict resolution (By means of all appropriate strategies)</li><a style="color:teal;">Develop the strategy for conflict resolution to ensure stakeholders continue to have willingness to work together</a><li><b>Task 4 : </b>Documentation of conflict resolution (Including the rationale for future reference)</li><a style="color:teal;">Produce traceable conflict resolution document to avoid the same conflict to be arised again.</a></ul></div>
+                                  </div>
+                                  </div>
+                              
+                                  <div class="card">
+                                      <div class="card-header" id="headingFive">
+                                          <h2 class="mb-0">
+                                              <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive"><i class="fa fa-chevron-circle-down"></i> Five conflict types</a>                     
+                                          </h2>
+                                      </div>
+                                      <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                                          <div class="card-body"><ul><li>Data Conflict</li><li>Interest Conflict</li><li>Value Conflict</li><li>Relationship Conflict</li><li>Structural Conflict</li></ul></div>
+                                      </div>
+                                      </div>
+
+                                      <div class="card">
+                                      <div class="card-header" id="headingSix">
+                                          <h2 class="mb-0">
+                                              <a class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseSix" aria-expanded="false" aria-controls="collapseSix"><i class="fa fa-chevron-circle-down"></i>Three basic strategies for resolving </a>                     
+                                          </h2>
+                                      </div>
+                                      <div id="collapseSix" class="collapse" aria-labelledby="headingSix" data-parent="#accordionExample">
+                                          <div class="card-body"><ul><li><b>Negotiation</b></li><a style="color:teal;">the conflicting parties agree on a solution by means of negotiation</a><li><b>Creative</b></li><a style="color:teal;">the original viewpoint of conflicting parties are discarded and a new creative solution is developed that harmonized the viewpoint of conflict parties.</a><li><b>Decision</b></li><a style="color:teal;">a higher authority makes a decision in favour of one conflicting parties.</a></ul></div>
+                                      </div>
+                                      </div>
+                                  </div>
+                                  </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+                </div>
+          </div>
         <!-- /.container-fluid -->
-
-
       <!-- End of Main Content -->
 
       <!-- Footer -->

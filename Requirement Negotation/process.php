@@ -163,4 +163,13 @@ if(isset($_GET['viewresolve'])){
         endwhile;
     
 }
+if(isset($_GET['statusNego'])){
+    $req_id = $_GET['statusNego'];
+    $mysqli->query("UPDATE progress SET status='0' where module='Negotiation'") 
+    or die($mysqli->error);
+
+    header("location:resultNego.php");        
+    $_SESSION['message']= "Win win tree has been updated";
+    $_SESSION['msg_type']= "success";
+}
 ?>

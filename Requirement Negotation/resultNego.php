@@ -76,21 +76,11 @@
         </div>
       </li>
 
-      <!-- Nav Item - Utilities Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities" aria-expanded="true" aria-controls="collapseUtilities">
+      <!-- Nav Item - Win Win Tree -->
+      <li class="nav-item ">
+        <a class="nav-link" href="winwinTree.php">
           <i class="fas fa-fw fa-wrench"></i>
-          <span>Utilities</span>
-        </a>
-        <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Custom Utilities:</h6>
-            <a class="collapse-item" href="utilities-color.html">Colors</a>
-            <a class="collapse-item" href="utilities-border.html">Borders</a>
-            <a class="collapse-item" href="utilities-animation.html">Animations</a>
-            <a class="collapse-item" href="utilities-other.html">Other</a>
-          </div>
-        </div>
+          <span>WinWin Tree</span></a>
       </li>
 
       <!-- Divider -->
@@ -325,7 +315,15 @@
 
         </nav>
         <!-- End of Topbar -->
-
+        <?php
+            if(isset($_SESSION['message'])):?>
+            <div class="alert alert-<?=$_SESSION['msg_type']?>">
+            <?php
+                echo $_SESSION['message'];
+                unset($_SESSION['message']);
+            ?>
+            </div>
+        <?php endif;?>
         <!-- Begin Page Content -->
         <div class="container-fluid">
 
@@ -346,6 +344,10 @@
             <div class="card">
                 <div class="card-body">
                     <h3>Conflicted Requirement</h3>
+                    <?php
+                          $result=$mysqli->query("SELECT DISTINCT rn_issue.req_id,rq_main.req_detail FROM rn_issue INNER JOIN rq_main ON rn_issue.req_id=rq_main.req_id ORDER BY rn_issue.req_id");                      
+                      ?>
+                    <?php if($result->num_rows){?>
                     <div class="row">
                         <div class="table-box">
                             <table class="table table-striped" >
@@ -357,11 +359,8 @@
                                         <th></th>
                                     </tr>
                                 </thead>
-                                <?php
-                                    $result=$mysqli->query("SELECT DISTINCT rn_issue.req_id,rq_main.req_detail FROM rn_issue INNER JOIN rq_main ON rn_issue.req_id=rq_main.req_id ORDER BY rn_issue.req_id");        
-                                    
-                                ?>
                                 <tbody>
+                                
                                 <?php while($row=$result->fetch_assoc()): ?>
                                     <tr>
                                         <td><?php echo $row['req_id'];?></td>
@@ -379,12 +378,29 @@
                                         }
                                     ?>  
                                     </tr>
-                                <?php endwhile;?>
+                                <?php endwhile;
+                                
+                                ?>
                                 
                                 </tbody>
                             </table>
                         </div>
                     </div>
+                    
+                    <?php $status=0;
+                    $progress=$mysqli->query("SELECT * FROM progress WHERE module='Negotiation'");
+                          if($progress->num_rows){
+                            echo "<a href=\"process.php?statusNego=1\" class=\"btn btn-success \">
+                            <span class=\"text\">Submit Module</span>
+                          </a>";
+                          }else{
+                          }
+                    ?>      
+                    <?php 
+                    }
+                    else{
+                     echo "<h5> No result</h5>";
+                    }?>
                 </div>
             </div>
         </div>
