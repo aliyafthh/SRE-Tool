@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 17, 2021 at 03:40 PM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
+-- Generation Time: Feb 18, 2021 at 06:26 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -81,7 +82,7 @@ CREATE TABLE `elicitation` (
   `m3` tinyint(1) DEFAULT NULL,
   `m4` tinyint(1) DEFAULT NULL,
   `m5` tinyint(1) DEFAULT NULL,
-  `approved` tinyint(1) DEFAULT 0
+  `approved` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -190,6 +191,28 @@ INSERT INTO `login` (`id`, `email`, `pw`) VALUES
 (1, 'maisara@yahoo.com', 'akhir'),
 (2, '', ''),
 (3, '', '');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `progress`
+--
+
+CREATE TABLE `progress` (
+  `module` varchar(20) NOT NULL,
+  `status` tinyint(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `progress`
+--
+
+INSERT INTO `progress` (`module`, `status`) VALUES
+('Elicitation', 0),
+('Documentation', 0),
+('Negotiation', 0),
+('Validation', 0),
+('Management', 0);
 
 -- --------------------------------------------------------
 
