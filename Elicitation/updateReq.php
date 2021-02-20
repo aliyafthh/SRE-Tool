@@ -3,6 +3,7 @@ require_once "config.php";
 
 if(isset($_POST['updateData'])){
 
+    $studentID=$_GET['id'];
     $id = $_POST['update_id'];
     $req = $_POST['requirement'];
 
@@ -11,7 +12,7 @@ if(isset($_POST['updateData'])){
 
     if($query_run_2){
         echo '<script> alert("Data Saved");</script>';
-        header('Location: createReq.php');
+        header('Location: createReq.php?id='.$studentID);
     }else{
         echo '<script> alert("Data Not Saved");</script>';
     }

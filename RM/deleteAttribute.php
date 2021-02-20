@@ -4,6 +4,7 @@ require_once "config.php";
 if(isset($_POST['deleteData'])){
 
     $id = $_POST['delete_id'];
+    $gId = $_GET['id'];
 
     $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
 
@@ -29,7 +30,7 @@ if(isset($_POST['deleteData'])){
     if($query_run){
 
         echo '<script> alert("Data Deleted");</script>';
-        header('Location: manageColumn.php');
+        header('Location: manageColumn.php?id='.$gId);
     }else{
         echo '<script> alert("Data Not Deleted");</script>';
     }

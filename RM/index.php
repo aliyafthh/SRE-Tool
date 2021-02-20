@@ -8,7 +8,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
-
   <title>SRE Tool</title>
 
   <!-- Custom fonts for this template-->
@@ -17,18 +16,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://kit.fontawesome.com/9eba2c9c5c.js" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script> -->
 
   <!-- Custom styles for this template-->
   <link href="../Elicitation/css/sb-admin-2.min.css" rel="stylesheet">
-  <!-- <link href="inspection.css" rel="stylesheet">
-  <link href="checklist.css" rel="stylesheet"> -->
 
   <?php
   require_once "config.php";
+  $id = 0;
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  }
+
   ?>
   <style>
     .img1 {
@@ -150,7 +148,7 @@
     <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?id=<?php echo $id;?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laptop-code"></i>
         </div>
@@ -169,21 +167,25 @@
         // output data of each row
         while ($row2 = $result2->fetch_assoc()) {
           echo "<li class='nav-item'>
-          <a class='nav-link' href=\"edit.php?id=$row2[id]\">
-            <i class='fas fa-id-badge'></i>
+          <a class='nav-link' href=\"edit.php?id=$row2[id]&gId=$id\">
+          <i class='fas fa-clipboard-list'></i>
             <span>" . $row2['title'] . "</span></a>
         </li>";
 
           echo "<hr class='sidebar-divider my-0'>";
-          // echo "<br>";
-          // echo "<a href=\"edit.php?id=$row2[id]\">" . $row2['title'] . "</a>";
-          // echo "<br>";
         }
       } else {
         echo "";
       }
 
       ?>
+
+      <li class='nav-item'>
+        <a class='nav-link' href="/SRET/sret/RM/book/basic/index.html">
+          <i class="fas fa-book-open"></i>
+          <span>Handbook</span></a>
+      </li>
+
       <br>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -208,8 +210,13 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
+          <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="home.php?id=<?php echo $id;?>" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Home</span>
+              </a>
+            </li>
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php" role="button">
+              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $id;?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
               </a>
             </li>
@@ -227,7 +234,7 @@
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="index.php" role="button">
+              <a class="nav-link dropdown-toggle" href="index.php?id=<?php echo $id;?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
               </a>
             </li>
@@ -237,7 +244,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Akhma Luna</span>
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;"><?php echo $id; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -261,52 +268,52 @@
               <h3 class="text-muted">
                 <h2>Requirement Management </h2>
               </h3>
-              <button class="button" onclick="location.href='manageColumn.php';">Manage Columns</button>
-              <button class="button" onclick="location.href='manageViews.php';">Manage Views</button>
-              <button class="button" onclick="location.href='prioritisation.php';">Prioritize Requirements</button>
+                <button class="button" onclick="location.href='manageColumn.php?id=<?php echo $id;?>';">Manage Columns</button>
+                <button class="button" onclick="location.href='manageViews.php?id=<?php echo $id;?>';">Manage Views</button>
+                <button class="button" onclick="location.href='prioritisation.php?id=<?php echo $id;?>';">Prioritize Requirements</button>
 
               <?php
 
-              $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
+                $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
 
-              while ($row = $query->fetch_assoc()) {
-                $result[] = $row;
-              }
-
-              // Array of all column names
-              $columnArr = array_column($result, 'COLUMN_NAME');
-
-              $sql = "SELECT * FROM requirements";
-              $result = $mysqli->query($sql);
-
-              if ($result->num_rows > 0) {
-
-                echo "<table class='table table-striped' id='req'><thead><tr>";
-                $s = 0;
-                foreach ($columnArr as $string) {
-                  echo "<th onclick='sortTable(" . $s . ")'>$string</th>";
-                  $s = $s + 1;
+                while ($row = $query->fetch_assoc()) {
+                  $result[] = $row;
                 }
-                echo "</tr></thead><tbody>";
-                while ($row = $result->fetch_assoc()) {
-                  echo "<tr>";
+
+                // Array of all column names
+                $columnArr = array_column($result, 'COLUMN_NAME');
+
+                $sql = "SELECT * FROM requirements";
+                $result = $mysqli->query($sql);
+
+                if ($result->num_rows > 0) {
+
+                  echo "<table class='table table-striped' id='req'><thead><tr>";
+                  $s = 0;
                   foreach ($columnArr as $string) {
-                    echo "<td>" . $row[$string] . "</td>";
+                      echo "<th onclick='sortTable(" . $s . ")'>$string</th>";
+                      $s = $s + 1;
                   }
-                  echo "</tr>";
-                }
+                  echo "</tr></thead><tbody>";
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<tr>";
+                    foreach ($columnArr as $string) {
+                      echo "<td>" . $row[$string] . "</td>";
+                      }
+                    echo "</tr>";
+                  }
 
-                echo "</tbody></table>";
-              } else {
-                echo "0 results";
-              }
+                  echo "</tbody></table>";
+                } else {
+                  echo "<br>";
+                  echo "No available requirements yet, please complete other processes first.";
+                }
 
               $mysqli->close();
               ?>
             </div>
           </div>
           <!-- /.container-fluid -->
-
         </div>
         <!-- End of Main Content -->
 
@@ -344,7 +351,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="home.php">Logout</a>
           </div>
         </div>
       </div>
@@ -360,6 +367,20 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../Elicitation/js/sb-admin-2.js"></script>
+
+  <!-- Add Attribute Modal -->
+  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="addModalLabel">Add New Attribute</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 
 </body>
 <script>

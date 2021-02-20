@@ -17,18 +17,18 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-  <script src="https://kit.fontawesome.com/9eba2c9c5c.js" crossorigin="anonymous"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script> -->
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <!-- <link href="inspection.css" rel="stylesheet">
-  <link href="checklist.css" rel="stylesheet"> -->
+
 
   <?php
   require_once "config.php";
+  $id = 0;
+  $mID = 0;
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  }
   ?>
   <style>
     .img1 {
@@ -134,65 +134,50 @@
     <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laptop-code"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SRE Tool </div>
+        <div class="sidebar-brand-text mx-3">Navigation</div>
+
       </a>
 
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Dashboard -->
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-id-badge"></i>
-          <span>Profile</span></a>
+      <li class='nav-item'>
+        <a class='nav-link' href="../RV/createProject.php?id=<?php echo $id; ?>">
+          <i class="fas fa-book-open"></i>
+          <span>Create Project</span></a>
       </li>
-
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link" href="charts.html">
-          <i class="fas fa-tasks"></i>
-          <span>Progress</span></a>
+      <li class='nav-item'>
+        <a class='nav-link' href="../Elicitation/createReq.php?id=<?php echo $id; ?>">
+          <i class="fas fa-book-open"></i>
+          <span>Requirement Elicitation</span></a>
       </li>
-
-      <!-- Nav Item - Pages Collapse Menu -->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-folder"></i>
-          <span>Modules</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">REQUIREMENT</h6>
-            <a class="collapse-item" href="buttons.html">1- Elicitation</a>
-            <a class="collapse-item" href="cards.html">2- Documentation</a>
-            <a class="collapse-item" href="cards.html">3- Negotiation</a>
-            <a class="collapse-item" href="rvpoption.php">4- Validation</a>
-            <a class="collapse-item" href="cards.html">5- Management</a>
-
-          </div>
-        </div>
+      <li class='nav-item'>
+        <a class='nav-link' href="../Requirement Negotation/homeNego.php?id=<?php echo $id; ?>">
+          <i class="fas fa-book-open"></i>
+          <span>Requirement Negotiation</span></a>
       </li>
-
-      <!-- Setting thing -->
       <hr class="sidebar-divider my-0">
-
-      <li class="nav-item">
-        <a class="nav-link" href="index.html">
-          <i class="fas fa-fw fa-wrench"></i>
-          <span>Setting</span></a>
+      <li class='nav-item'>
+        <a class='nav-link' href="../RV/principles.php?id=<?php echo $id; ?>">
+          <i class="fas fa-book-open"></i>
+          <span>Requirement Validation</span></a>
+      </li>
+      <hr class="sidebar-divider my-0">
+      <li class='nav-item'>
+        <a class='nav-link' href="../RM/index.php?id=<?php echo $id; ?>">
+          <i class="fas fa-book-open"></i>
+          <span>Requirement Management</span></a>
       </li>
 
-
-      <!-- Divider -->
-      <hr class="sidebar-divider d-none d-md-block">
-
+      <br>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -214,11 +199,41 @@
             <i class="fa fa-bars"></i>
           </button>
 
-
-
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
+
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="../RM/home.php?id=<?php echo $id ?>" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Home</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="/SRET/sret/Elicitation/createReq.php?id=<?php echo $id ?>" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Negotiate Requirement</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Validate Requirement</span>
+              </a>
+            </li>
+
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="../RM/index.php?id=<?php echo $id ?>" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
+              </a>
+            </li>
+
             <div class="topbar-divider d-none d-sm-block"></div>
+
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -250,38 +265,57 @@
               <button type="button" class="btn btn-pastel" data-toggle="modal" data-target="#addReqModal" style="float:right;"><i class="material-icons">&#xE147;</i> Add New Requirement</button>
               <br class="clearBoth" /><br>
               <?php
-              $query = "SELECT * FROM elicitation";
-              $result = $mysqli->query($query);
+              if (isset($_GET['id'])) {
+                $studentID = 0;
+                for ($i = 1; $i < 6; $i++) {
+                  $queryA = "SELECT id FROM createproject WHERE groupmember" . $i . "=" . $id;
+                  $resultA = $mysqli->query($queryA);
+                  if ($resultA->num_rows > 0) {
+                    while ($rowA = $resultA->fetch_assoc()) {
+                      $studentID = $i;
+                    }
+                  }
+                }
 
-              if ($result->num_rows > 0) {
-                echo "<table class='table table-striped' id='req'>";
-                echo "<thead>
+                $query = "SELECT * FROM elicitation";
+                $result = $mysqli->query($query);
+                $mID = "m" . $studentID;
+                if ($result->num_rows > 0) {
+                  echo "<table class='table table-striped' id='req'>";
+                  echo "<thead>
                 <tr>
                 <th style='display:none;'onclick='sortTable(0)'>No</th>
                 <th onclick='sortTable(1)'>Requirement</th>
                 <th onclick='sortTable(2)'>&nbsp &nbsp Edit/Delete</th>
                 <th onclick='sortTable(3)'>&nbsp &nbsp &nbsp Approval</th>
                 </tr></thead><tbody>";
-                // output data of each row
-                while ($row = $result->fetch_assoc()) {
-                  echo "<tr><td style='display:none;'>" . $row["id"] . "</td>
+                  // output data of each row
+                  while ($row = $result->fetch_assoc()) {
+                    echo "<tr><td style='display:none;'>" . $row["id"] . "</td>
                   <td>" . $row["requirement"] . "</td>";
-                  echo "<td><button type='button' class='btn editbtn'><i class='far fa-edit fa-lg'></i></button>
+                    echo "<td><button type='button' class='btn editbtn'><i class='far fa-edit fa-lg'></i></button>
                   <button type='button' class='btn deletebtn'><i class='far fa-trash-alt fa-lg'></i></button></td>";
-                  if ($row["m1"] == null) {
-                    echo "<td><button type='button' class='btn approvalbtn'>Pending <i class='fas fa-cog fa-pulse'></i></i></button></td>";
-                  } elseif ($row["m1"] == true) {
-                    echo "<td><button type='button' class='btn approvalbtn'>Approved <i class='fas fa-check' style='color:green;'></i></i></button></td>";
-                  } elseif ($row["m1"] == false) {
-                    echo "<td><button type='button' class='btn approvalbtn'>Rejected <i class='fas fa-times' style='color:red;'></i></button></td>";
-                  }
+                    if ($row[$mID] == null) {
+                      echo "<td><button type='button' class='btn approvalbtn'>Pending <i class='fas fa-cog fa-pulse'></i></i></button></td>";
+                    } elseif ($row[$mID] == true) {
+                      echo "<td><button type='button' class='btn approvalbtn'>Approved <i class='fas fa-check' style='color:green;'></i></i></button></td>";
+                    } elseif ($row[$mID] == false) {
+                      echo "<td><button type='button' class='btn approvalbtn'>Rejected <i class='fas fa-times' style='color:red;'></i></button></td>";
+                    }
 
-                  echo "</tr>";
+                    echo "</tr>";
+                  }
+                  echo "</tbody></table>";
+                } else {
+                  echo "No Requirements Created Yet.";
                 }
-                echo "</tbody></table>";
               } else {
-                echo "No Requirements Created Yet.";
+                echo "<br>";
+                echo "Nothing to see yet, please join a group.";
               }
+
+              $queryB = "UPDATE elicitation SET approved=1 WHERE m1=1 AND m2=1 AND m3=1 AND m4=1 AND m5=1";
+              $resultB = $mysqli->query($queryB);
               ?>
             </div>
           </div>
@@ -352,13 +386,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="insertReq.php" method="POST" autocomplete="off">
+        <form action="insertReq.php?id=<?php echo $id; ?>" method="POST" autocomplete="off">
           <div class="modal-body">
 
             <div class="form-group">
               <label>Requirement</label>
               <input type="text" name="requirement" class="form-control" placeholder="Enter requirement">
-              <input type="hidden" name="gID" class="form-control" value="3">
             </div>
 
           </div>
@@ -384,7 +417,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="updateReq.php" method="POST" autocomplete="off">
+        <form action="updateReq.php?id=<?php echo $id; ?>" method="POST" autocomplete="off">
 
           <input type="hidden" name="update_id" id="update_id">
 
@@ -415,7 +448,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="deleteReq.php" method="POST">
+        <form action="deleteReq.php?id=<?php echo $id; ?>" method="POST">
 
           <div class="modal-body">
 
@@ -445,9 +478,10 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="approveReq.php" method="POST" autocomplete="off">
+        <form action="approveReq.php?id=<?php echo $id; ?>" method="POST" autocomplete="off">
 
           <input type="hidden" name="approval_id" id="approval_id">
+          <input type="hidden" name="member" value="<?php echo $mID; ?>">
 
           <div class="modal-body">
 
@@ -531,7 +565,8 @@
       console.log(data);
 
       $('#approval_id').val(data[0]);
-      $('#approval').val(data[1]);
+      $('#member').val(data[1]);
+      $('#approval').val(data[2]);
 
     });
 

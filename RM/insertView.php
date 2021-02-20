@@ -3,6 +3,7 @@ require_once "config.php";
 
 if(isset($_POST['insertData'])){
 
+    $studentID=$_GET['id'];
     $viewer = $_POST['viewer'];
     $att = $_POST['att'];
     $max_id;
@@ -36,7 +37,7 @@ if(isset($_POST['insertData'])){
 
     if($run){
         echo '<script> alert("Data Saved");</script>';
-        header('Location: manageViews.php');
+        header('Location: manageViews.php?id='.$studentID);
     }else{
         echo '<script> alert("Data Not Saved");</script>';
     }

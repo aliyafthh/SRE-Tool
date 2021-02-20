@@ -14,6 +14,7 @@ $success=0;
 if (isset($_POST['updateReq'])) {
 
     $id = $_POST['update_id'];
+    $gId = $_GET['gId'];
 
     for ($r = 1; $r < $count; $r++) {
 
@@ -21,7 +22,7 @@ if (isset($_POST['updateReq'])) {
         $query_run = mysqli_query($mysqli, $rslt);
     }
 
-    header("Location: index.php");
+    header("Location: index.php?id=".$gId);
              
     
 }

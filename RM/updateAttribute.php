@@ -4,6 +4,7 @@ require_once "config.php";
 if(isset($_POST['updateData'])){
 
     $id = $_POST['update_id'];
+    $gId = $_GET['id'];
 
     $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
 
@@ -30,7 +31,7 @@ if(isset($_POST['updateData'])){
     if($query_run){
 
         echo '<script> alert("Data Saved");</script>';
-        header('Location: manageColumn.php');
+        header('Location: manageColumn.php?id='.$gId);
     }else{
         echo '<script> alert("Data Not Saved");</script>';
     }

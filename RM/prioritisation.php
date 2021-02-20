@@ -25,6 +25,10 @@
 
   <?php
   require_once "config.php";
+  $id = 0;
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  }
   ?>
   <style>
     .img1 {
@@ -196,7 +200,7 @@
     <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?id=<?php echo $id; ?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laptop-code"></i>
         </div>
@@ -215,21 +219,25 @@
         // output data of each row
         while ($row2 = $result2->fetch_assoc()) {
           echo "<li class='nav-item'>
-          <a class='nav-link' href=\"edit.php?id=$row2[id]\">
-            <i class='fas fa-id-badge'></i>
-            <span>" . $row2['title'] . "</span></a>
-        </li>";
+    <a class='nav-link' href=\"edit.php?id=$row2[id]&gId=$id\">
+    <i class='fas fa-clipboard-list'></i>
+      <span>" . $row2['title'] . "</span></a>
+  </li>";
 
           echo "<hr class='sidebar-divider my-0'>";
-          // echo "<br>";
-          // echo "<a href=\"edit.php?id=$row2[id]\">" . $row2['title'] . "</a>";
-          // echo "<br>";
         }
       } else {
         echo "";
       }
 
       ?>
+
+      <li class='nav-item'>
+        <a class='nav-link' href="/SRET/sret/RM/book/basic/index.html">
+          <i class="fas fa-book-open"></i>
+          <span>Handbook</span></a>
+      </li>
+
       <br>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -255,7 +263,12 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php" role="button">
+              <a class="nav-link dropdown-toggle" href="home.php?id=<?php echo $id; ?>" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Home</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
               </a>
             </li>
@@ -273,7 +286,7 @@
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="index.php" role="button">
+              <a class="nav-link dropdown-toggle" href="index.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
               </a>
             </li>
@@ -283,7 +296,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Akhma Luna</span>
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;"><?php echo $id; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -307,12 +320,12 @@
               <h3 class="text-muted">
                 <h2>Requirement Management </h2>
               </h3>
-              <button class="button" onclick="location.href='manageColumn.php';">Manage Columns</button>
-              <button class="button" onclick="location.href='manageViews.php';">Manage Views</button>
-              <button class="button" onclick="location.href='prioritisation.php';">Prioritize Requirements</button>
+              <button class="button" onclick="location.href='manageColumn.php?id=<?php echo $id; ?>';">Manage Columns</button>
+              <button class="button" onclick="location.href='manageViews.php?id=<?php echo $id; ?>';">Manage Views</button>
+              <button class="button" onclick="location.href='prioritisation.php?id=<?php echo $id; ?>';">Prioritize Requirements</button>
               <div style="margin-left:5%; margin-right:10%; font-size:medium; text-align:left;">
                 <h5><strong>Step 1: Determine purpose of prioritization and group requirements which need to be prioritized.</strong></h5>
-                <form action="prioritisation2.php" method="POST" class="mb-3" autocomplete="off">
+                <form action="prioritisation2.php?id=<?php echo $id;?>" method="POST" class="mb-3" autocomplete="off">
                   <input type='text' name='purpose' class='form-control' placeholder="Purpose of prioritisation" required><br>
                   <h6><strong>Select all the requirements that applies</strong></h6>
                   <div class="options">
@@ -405,7 +418,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="home.php">Logout</a>
           </div>
         </div>
       </div>

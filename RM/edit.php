@@ -30,6 +30,7 @@
 
   <?php
   require_once "config.php";
+  $gId = $_GET['gId'];
 
   $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
 
@@ -225,7 +226,7 @@
     <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?id=<?php echo $gId; ?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laptop-code"></i>
         </div>
@@ -244,29 +245,25 @@
         // output data of each row
         while ($row2 = $result2->fetch_assoc()) {
           echo "<li class='nav-item'>
-          <a class='nav-link' href=\"edit.php?id=$row2[id]\">
-            <i class='fas fa-id-badge'></i>
-            <span>" . $row2['title'] . "</span></a>
-        </li>";
+    <a class='nav-link' href=\"edit.php?id=$row2[id]&gId=$gId\">
+    <i class='fas fa-clipboard-list'></i>
+      <span>" . $row2['title'] . "</span></a>
+  </li>";
 
           echo "<hr class='sidebar-divider my-0'>";
-          // echo "<br>";
-          // echo "<a href=\"edit.php?id=$row2[id]\">" . $row2['title'] . "</a>";
-          // echo "<br>";
         }
       } else {
         echo "";
       }
 
-      $id = $_GET['id'];
-      $arrayDepReq = array();
-      $arrayReqDep = array();
-      $query_d = "SELECT title FROM requirements WHERE  id = $id ";
-      $query_run = mysqli_query($mysqli, $query_d);
-      $row = $query_run->fetch_assoc();
-      $title_d = $row['title'];
-
       ?>
+
+      <li class='nav-item'>
+        <a class='nav-link' href="/SRET/sret/RM/book/basic/index.html">
+          <i class="fas fa-book-open"></i>
+          <span>Handbook</span></a>
+      </li>
+
       <br>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -292,7 +289,12 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php" role="button">
+              <a class="nav-link dropdown-toggle" href="home.php?id=<?php echo $gId; ?>" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Home</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $gId; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
               </a>
             </li>
@@ -310,7 +312,7 @@
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="index.php" role="button">
+              <a class="nav-link dropdown-toggle" href="index.php?id=<?php echo $gId; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
               </a>
             </li>
@@ -320,7 +322,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Akhma Luna</span>
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;"><?php echo $gId; ?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -351,14 +353,20 @@
               </div>
 
               <?php
-
+              $id = $_GET['id'];
+              $arrayDepReq = array();
+              $arrayReqDep = array();
+              $query_d = "SELECT title FROM requirements WHERE  id = $id ";
+              $query_run = mysqli_query($mysqli, $query_d);
+              $row = $query_run->fetch_assoc();
+              $title_d = $row['title'];
 
               //selecting data associated with this particular id
               $result = mysqli_query($mysqli, "SELECT * FROM requirements WHERE id=$id");
               ?>
 
               <div id="Edit" class="tabcontent">
-                <form method="post" action="editReq.php" autocomplete="off">
+                <form method="post" action="editReq.php?gId=<?php echo $gId;?>" autocomplete="off">
 
                   <?php
 
@@ -505,7 +513,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="home.php">Logout</a>
           </div>
         </div>
       </div>
@@ -532,7 +540,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="insertDependant.php" method="POST" autocomplete="off">
+        <form action="insertDependant.php?gId=<?php echo $gId;?>" method="POST" autocomplete="off">
           <div class="modal-body">
 
             <div class="form-group">
@@ -590,7 +598,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="deleteDependant.php" method="POST">
+        <form action="deleteDependant.php?gId=<?php echo $gId;?>" method="POST">
 
           <div class="modal-body">
 

@@ -29,6 +29,10 @@
 
   <?php
   require_once "config.php";
+  $id = 0;
+  if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  }
   ?>
   <style>
     .img1 {
@@ -130,10 +134,10 @@
 </head>
 
 <?php
-$id = $_GET['v_id'];
+$vId = $_GET['v_id'];
 $array = [];
 $view;
-$query = "SELECT * FROM views WHERE v_id=$id";
+$query = "SELECT * FROM views WHERE v_id=$vId";
 $result = $mysqli->query($query);
 if ($result->num_rows > 0) {
   // output data of each row
@@ -164,109 +168,118 @@ if ($result->num_rows > 0) {
     <!-- Sidebar -->
     <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laptop-code"></i>
+<!-- Sidebar - Brand -->
+<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?id=<?php echo $id; ?>">
+  <div class="sidebar-brand-icon rotate-n-15">
+    <i class="fas fa-laptop-code"></i>
+  </div>
+  <div class="sidebar-brand-text mx-3">Requirements</div>
+</a>
+
+<!-- Divider -->
+<hr class="sidebar-divider my-0">
+
+<?php
+
+$query2 = "SELECT * FROM requirements";
+$result2 = $mysqli->query($query2);
+
+if ($result2->num_rows > 0) {
+  // output data of each row
+  while ($row2 = $result2->fetch_assoc()) {
+    echo "<li class='nav-item'>
+<a class='nav-link' href=\"edit.php?id=$row2[id]&gId=$id\">
+<i class='fas fa-clipboard-list'></i>
+<span>" . $row2['title'] . "</span></a>
+</li>";
+
+    echo "<hr class='sidebar-divider my-0'>";
+  }
+} else {
+  echo "";
+}
+
+?>
+
+<li class='nav-item'>
+  <a class='nav-link' href="/SRET/sret/RM/book/basic/index.html">
+    <i class="fas fa-book-open"></i>
+    <span>Handbook</span></a>
+</li>
+
+<br>
+<!-- Sidebar Toggler (Sidebar) -->
+<div class="text-center d-none d-md-inline">
+  <button class="rounded-circle border-0" id="sidebarToggle"></button>
+</div>
+
+</ul>
+<!-- End of Sidebar -->
+
+<!-- Content Wrapper -->
+<div id="content-wrapper" class="d-flex flex-column bodyody">
+<!-- Main Content -->
+<div id="content">
+
+  <!-- Topbar -->
+  <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow topbarz">
+
+    <!-- Sidebar Toggle (Topbar) -->
+    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+      <i class="fa fa-bars"></i>
+    </button>
+
+    <!-- Topbar Navbar -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="home.php?id=<?php echo $id; ?>" role="button">
+          <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Home</span>
+        </a>
+      </li>
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $id; ?>" role="button">
+          <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" role="button">
+          <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Negotiate Requirement</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" role="button">
+          <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Validate Requirement</span>
+        </a>
+      </li>
+
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="index.php?id=<?php echo $id; ?>" role="button">
+          <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
+        </a>
+      </li>
+
+      <div class="topbar-divider d-none d-sm-block"></div>
+
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;"><?php echo $id; ?></span>
+          <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+        </a>
+        <!-- Dropdown - User Information -->
+        <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+          <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+            Logout
+          </a>
         </div>
-        <div class="sidebar-brand-text mx-3">Requirements</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-      <?php
-
-      $query2 = "SELECT * FROM requirements";
-      $result2 = $mysqli->query($query2);
-
-      if ($result2->num_rows > 0) {
-        // output data of each row
-        while ($row2 = $result2->fetch_assoc()) {
-          echo "<li class='nav-item'>
-          <a class='nav-link' href=\"edit.php?id=$row2[id]\">
-            <i class='fas fa-id-badge'></i>
-            <span>" . $row2['title'] . "</span></a>
-        </li>";
-
-          echo "<hr class='sidebar-divider my-0'>";
-          // echo "<br>";
-          // echo "<a href=\"edit.php?id=$row2[id]\">" . $row2['title'] . "</a>";
-          // echo "<br>";
-        }
-      } else {
-        echo "";
-      }
-
-      ?>
-      <br>
-      <!-- Sidebar Toggler (Sidebar) -->
-      <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
-      </div>
+      </li>
 
     </ul>
-    <!-- End of Sidebar -->
 
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column bodyody">
-      <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow topbarz">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php" role="button">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
-              </a>
-            </li>
-
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" role="button">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Negotiate Requirement</span>
-              </a>
-            </li>
-
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" role="button">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Validate Requirement</span>
-              </a>
-            </li>
-
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="index.php" role="button">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
-              </a>
-            </li>
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Akhma Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
-
-          </ul>
-
-        </nav>
+  </nav>
         <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
@@ -276,16 +289,16 @@ if ($result->num_rows > 0) {
               <h3 class="text-muted">
                 <h2>Requirement Management </h2>
               </h3>
-              <button class="button" onclick="location.href='manageColumn.php';">Manage Columns</button>
-              <button class="button" onclick="location.href='manageViews.php';">Manage Views</button>
-              <button class="button" onclick="location.href='prioritisation.php';">Prioritize Requirements</button>
+              <button class="button" onclick="location.href='manageColumn.php?id=<?php echo $id; ?>';">Manage Columns</button>
+              <button class="button" onclick="location.href='manageViews.php?id=<?php echo $id; ?>';">Manage Views</button>
+              <button class="button" onclick="location.href='prioritisation.php?id=<?php echo $id; ?>';">Prioritize Requirements</button>
               <h4><strong><?php echo $view; ?>'s View</strong></h4>
               <table class='table table-striped' id="views">
                 <tr>
 
                   <?php
 
-                  $query = "SELECT * FROM views WHERE v_id=$id";
+                  $query = "SELECT * FROM views WHERE v_id=$vId";
                   $result = $mysqli->query($query);
 
                   if ($result->num_rows > 0) {
@@ -362,7 +375,7 @@ if ($result->num_rows > 0) {
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="home.php">Logout</a>
           </div>
         </div>
       </div>

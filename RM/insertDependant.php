@@ -6,6 +6,7 @@ if(isset($_POST['insertData'])){
     $id = $_POST['id'];
     $did = $_POST['did'];
     $title_d = $_POST['title_d'];
+    $gId = $_GET['gId'];
 
     $query = "SELECT title FROM requirements WHERE  id = $did ";
     $query_run = mysqli_query($mysqli,$query);
@@ -17,7 +18,7 @@ if(isset($_POST['insertData'])){
 
     if($query_run_2){
         echo '<script> alert("Data Saved");</script>';
-        header('Location: edit.php?id=' . $id);
+        header('Location: edit.php?id=' . $id . '&gId=' . $gId);
     }else{
         echo '<script> alert("Data Not Saved");</script>';
     }
