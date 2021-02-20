@@ -393,6 +393,9 @@
                             echo "<a href=\"process.php?statusNego=1\" class=\"btn btn-success \">
                             <span class=\"text\">Submit Module</span>
                           </a>";
+                            echo "<a href=\"process.php?statusNego=0\" style=\"margin:10px;\" class=\"btn btn-danger \">
+                            <span class=\"text\">Unsubmit Module</span>
+                          </a>";
                           }else{
                           }
                     ?>      

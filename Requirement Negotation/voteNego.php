@@ -471,6 +471,7 @@
                                     <select class="custom-select mb-3" name="option_id">
                                         <?php while($row=$result_optiondet->fetch_assoc()){?>
                                                 <option value="<?php echo $row['option_id'];?>"> <?php echo $row['option_detail'];?></option>
+                                                <option style="display:none;" value="<?php echo $row['option_detail'];?>"></option>
                                         <?php }?>
                                     </select>
                                     </div>

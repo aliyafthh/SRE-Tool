@@ -103,7 +103,7 @@
             <h6 class="collapse-header">REQUIREMENT:</h6>
             <a class="collapse-item" href="">Elicitation</a>
             <a class="collapse-item" href="">Documentation</a>
-            <a class="collapse-item active" href="homeNego.php">Negotiation</a>      
+            <a class="collapse-item" href="homeNego.php">Negotiation</a>      
             <a class="collapse-item" href="">Validation</a> 
             <a class="collapse-item" href="">Management</a>
           </div>
@@ -366,6 +366,21 @@
                                     echo "</ul>";
                                     echo "</li>";
                                   }else{}
+                                $agreements="SELECT option_detail,option_id,COUNT(roles_id) AS HIGHEST FROM rn_vote WHERE req_id=$req_id GROUP BY option_id order by HIGHEST DESC ";
+                                  $output=$mysqli->query($agreements) or die($mysqli->error);
+                                  if($output->num_rows){
+                                    echo "<li><a>Agreement</a>";
+                                    echo "<ul>";
+                                    while($list=$output->fetch_assoc()){
+                                      if($list['option_id']==1){
+                                        echo "<li><a>".$list['option_detail']."</a></li>";
+                                      }else{
+                                        echo "<li><a>".$list['option_detail'].". <b>Voted</b> = (".$list['HIGHEST'].") </a></li>";
+                                      }
+                                    }
+                                    echo "</ul>";
+                                    echo "</li>";
+                                  }else{}
                               ?>
                             </ul>
                           </li>
@@ -396,27 +411,27 @@
                     if($row['row']==0){
                       echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">0%</span></h4>";
                       echo "<div class=\"progress mb-4\">";
-                          echo "<div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: 0%\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                      echo "<div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: 0%\" aria-valuenow=\"0\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
                     }else if($row['row']==1){
                       echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">20%</span></h4>";
                       echo "<div class=\"progress mb-4\">";
-                          echo "<div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: 20%\" aria-valuenow=\"20\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
-                  }else if($row['row']==2){
-                    echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">40%</span></h4>";
-                    echo "<div class=\"progress mb-4\">";
-                        echo "<div class=\"progress-bar bg-warning\" role=\"progressbar\" style=\"width: 40%\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
-                  }else if($row['row']==3){
-                    echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">60%</span></h4>";
-                    echo "<div class=\"progress mb-4\">";
-                        echo "<div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: 60%\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
-                  }else if($row['row']==4){
-                    echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">80%</span></h4>";
-                    echo "<div class=\"progress mb-4\">";
-                        echo "<div class=\"progress-bar bg-info\" role=\"progressbar\" style=\"width: 80%\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
-                  }else if($row['row']==5){
-                    echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">Complete!</span></h4>";
-                    echo "<div class=\"progress mb-4\">";
-                        echo "<div class=\"progress-bar bg-success\" role=\"progressbar\" style=\"width: 100%\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                      echo "<div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: 20%\" aria-valuenow=\"20\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                    }else if($row['row']==2){
+                      echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">40%</span></h4>";
+                      echo "<div class=\"progress mb-4\">";
+                      echo "<div class=\"progress-bar bg-warning\" role=\"progressbar\" style=\"width: 40%\" aria-valuenow=\"40\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                    }else if($row['row']==3){
+                      echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">60%</span></h4>";
+                      echo "<div class=\"progress mb-4\">";
+                      echo "<div class=\"progress-bar bg-danger\" role=\"progressbar\" style=\"width: 60%\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                    }else if($row['row']==4){
+                      echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">80%</span></h4>";
+                      echo "<div class=\"progress mb-4\">";
+                      echo "<div class=\"progress-bar bg-info\" role=\"progressbar\" style=\"width: 80%\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
+                    }else if($row['row']==5){
+                      echo "<h4 class=\"small font-weight-bold\">Overall progress <span class=\"float-right\">Complete!</span></h4>";
+                      echo "<div class=\"progress mb-4\">";
+                      echo "<div class=\"progress-bar bg-success\" role=\"progressbar\" style=\"width: 100%\" aria-valuenow=\"60\" aria-valuemin=\"0\" aria-valuemax=\"100\"></div></div>";
                   }
                   }?>
                   <h2 class="small font-weight-bold" style="text-align:center;">Modules</h4>

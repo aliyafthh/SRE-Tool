@@ -122,11 +122,22 @@ if(isset($_POST['vote'])){
         if(mysqli_num_rows($check)>0){
             
         }else{
-            $mysqli->query("INSERT INTO rn_vote(req_id,option_id,userr_id) VALUES('$req_id','$option_id','$selected')") 
+            $sql="SELECT * FROM user WHERE user_id = $selected";
+            $result=$mysqli->query($sql) or die($mysqli->error);
+            while($row=$result->fetch_assoc()){
+                $roles_id =$row['roles_id'];
+                $mysqli->query("INSERT INTO rn_vote(req_id,option_id,userr_id,roles_id) VALUES('$req_id','$option_id','$selected','$roles_id')") 
                 or die($mysqli->error);
+            }
+            $sql="SELECT * FROM rn_option WHERE option_id = $option_id";
+            $result=$mysqli->query($sql) or die($mysqli->error);
+            while($row=$result->fetch_assoc()){
+                $option_detail =$row['option_detail'];
+                $mysqli->query("UPDATE rn_vote SET option_detail='$option_detail' where option_id='$option_id'") 
+                or die($mysqli->error);
+            }
         }
     }
-    
 
     header("location:voteNego.php?req_id=$req_id");
     // $_SESSION['message']= "Record has been saved";
@@ -165,7 +176,7 @@ if(isset($_GET['viewresolve'])){
 }
 if(isset($_GET['statusNego'])){
     $req_id = $_GET['statusNego'];
-    $mysqli->query("UPDATE progress SET status='0' where module='Negotiation'") 
+    $mysqli->query("UPDATE progress SET status='$req_id' where module='Negotiation'") 
     or die($mysqli->error);
 
     header("location:resultNego.php");        
