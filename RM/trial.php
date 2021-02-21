@@ -82,28 +82,28 @@ if (isset($_POST["action"])) {
 
                                 if ($priority == "high") {
                                     if ($row['priority'] == "high") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high" checked>
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" checked required>
                             <label for="high">High (Recommended)</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium</label><br>
                             <input type="radio" id="low" name="priority" value="low">
                             <label for="low">Low</label>';
                                     } elseif ($row['priority'] == "medium") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High (Recommended)</label><br>
                             <input type="radio" id="medium" name="priority" value="medium" checked>
                             <label for="medium">Medium</label><br>
                             <input type="radio" id="low" name="priority" value="low">
                             <label for="low">Low</label>';
                                     } elseif ($row['priority'] == "low") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High (Recommended)</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium</label><br>
                             <input type="radio" id="low" name="priority" value="low" checked>
                             <label for="low">Low</label>';
                                     } else {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High (Recommended)</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium</label><br>
@@ -112,28 +112,28 @@ if (isset($_POST["action"])) {
                                     }
                                 } elseif ($priority == "medium") {
                                     if ($row['priority'] == "high") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high" checked>
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" checked required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium (Recommended)</label><br>
                             <input type="radio" id="low" name="priority" value="low">
                             <label for="low">Low</label>';
                                     } elseif ($row['priority'] == "medium") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium" checked>
                             <label for="medium">Medium (Recommended)</label><br>
                             <input type="radio" id="low" name="priority" value="low">
                             <label for="low">Low</label>';
                                     } elseif ($row['priority'] == "low") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium (Recommended)</label><br>
                             <input type="radio" id="low" name="priority" value="low" checked>
                             <label for="low">Low</label>';
                                     } else {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium (Recommended)</label><br>
@@ -142,28 +142,28 @@ if (isset($_POST["action"])) {
                                     }
                                 } elseif ($priority == "low") {
                                     if ($row['priority'] == "high") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high" checked>
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" checked required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium</label><br>
                             <input type="radio" id="low" name="priority" value="low">
                             <label for="low">Low (Recommended)</label>';
                                     } elseif ($row['priority'] == "medium") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium" checked>
                             <label for="medium">Medium</label><br>
                             <input type="radio" id="low" name="priority" value="low">
                             <label for="low">Low (Recommended)</label>';
                                     } elseif ($row['priority'] == "low") {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium</label><br>
                             <input type="radio" id="low" name="priority" value="low" checked>
                             <label for="low">Low (Recommended)</label>';
                                     } else {
-                                        $output .= '<input type="radio" id="high" name="priority" value="high">
+                                        $output .= '<input type="radio" id="high" name="priority" value="high" required>
                             <label for="high">High</label><br>
                             <input type="radio" id="medium" name="priority" value="medium">
                             <label for="medium">Medium</label><br>
@@ -181,28 +181,28 @@ if (isset($_POST["action"])) {
 
             if ($dependency == false) {
                 if ($row['priority'] == "high") {
-                    $output .= '<input type="radio" id="high" name="priority" value="high" checked>
+                    $output .= '<input type="radio" id="high" name="priority" value="high" checked required>
                 <label for="high">High</label><br>
                 <input type="radio" id="medium" name="priority" value="medium">
                 <label for="medium">Medium</label><br>
                 <input type="radio" id="low" name="priority" value="low">
                 <label for="low">Low</label>';
                 } elseif ($row['priority'] == "medium") {
-                    $output .= '<input type="radio" id="high" name="priority" value="high">
+                    $output .= '<input type="radio" id="high" name="priority" value="high" required>
                 <label for="high">High</label><br>
                 <input type="radio" id="medium" name="priority" value="medium" checked>
                 <label for="medium">Medium</label><br>
                 <input type="radio" id="low" name="priority" value="low">
                 <label for="low">Low</label>';
                 } elseif ($row['priority'] == "low") {
-                    $output .= '<input type="radio" id="high" name="priority" value="high">
+                    $output .= '<input type="radio" id="high" name="priority" value="high" required>
                 <label for="high">High</label><br>
                 <input type="radio" id="medium" name="priority" value="medium">
                 <label for="medium">Medium</label><br>
                 <input type="radio" id="low" name="priority" value="low" checked>
                 <label for="low">Low</label>';
                 } else {
-                    $output .= '<input type="radio" id="high" name="priority" value="high">
+                    $output .= '<input type="radio" id="high" name="priority" value="high" required>
                 <label for="high">High</label><br>
                 <input type="radio" id="medium" name="priority" value="medium">
                 <label for="medium">Medium</label><br>

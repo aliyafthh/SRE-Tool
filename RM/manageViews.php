@@ -408,6 +408,10 @@
                   $result[] = $row;
                 }
 
+                foreach($array as $temp){
+                 echo" <input type='hidden' name='arr[]' value='" . $temp . "'>";
+                }
+
                 // Array of all column names
                 $columnArr = array_column($result, 'COLUMN_NAME');
                 foreach ($columnArr as $string) {
