@@ -1,6 +1,7 @@
 <?php
     include_once ("config.php");
     $req_id=$_GET['req_id'];
+    $gID=$_GET["group_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -344,7 +345,7 @@
               <?php $nextbtn=$mysqli->query("SELECT req_id FROM rn_issue WHERE req_id=$req_id"); 
                 if(mysqli_num_rows($nextbtn)>0){
                 echo "<li class=\"breadcrumbs__item\">";
-                    echo "<a href=\"optionNego.php?req_id=$req_id\" style=\"text-decoration:none\" class=\"breadcrumbs__link\">Suggest Option</a>";
+                    echo "<a href=\"optionNego.php?req_id=".$req_id."&group_id=".$gID."\" style=\"text-decoration:none\" class=\"breadcrumbs__link\">Suggest Option</a>";
                 echo "</li>";
                 }
               ?>
@@ -353,10 +354,10 @@
     <div class="card">
       <div class="card-body">
         <?php
-          $sql="SELECT req_detail FROM rq_main WHERE req_id = $req_id";
+          $sql="SELECT requirement FROM elicitation WHERE id = $req_id AND approved=1 AND gID = $gID ";
           $result=$mysqli->query($sql) or die($mysqli->error);
           while($row=$result->fetch_assoc()):
-            echo "<a>Requirement: ".$row['req_detail']."</a>";
+            echo "<a>Requirement: ".$row['requirement']."</a>";
           endwhile;
         ?>
       </div>
@@ -368,7 +369,7 @@
       <button style="margin:0px 10px 5px 0px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_issue"> Add Issue</button>
         <!-- Display current issue in table form -->
         <?php
-          $result = $mysqli->query("SELECT * FROM rn_issue WHERE req_id=$req_id") or die($mysqli->error);
+          $result = $mysqli->query("SELECT * FROM rn_issue WHERE req_id=$req_id AND group_id=$gID") or die($mysqli->error);
           // pre_r($result->fetch_assoc());
         ?>
           <div class="row">
@@ -402,7 +403,7 @@
           </div>
           <button type="button" class="btn btn-light" id="previousbtn" onclick="location.href='homeNego.php';" >Previous</button>
       <?php if(mysqli_num_rows($nextbtn)>0){
-          echo "<button type=\"button\" class=\"btn btn-success float-right\" id=\"nextbtn\" onclick=\"location.href='optionNego.php?req_id=$req_id';\">Next</button>";
+          echo "<button type=\"button\" class=\"btn btn-success float-right\" id=\"nextbtn\" onclick=\"location.href='optionNego.php?req_id=$req_id&group_id=$gID';\">Next</button>";
           } ?>
       </div>
     </div>
@@ -435,7 +436,8 @@
                 <div class="modal-body">
                   <input type="hidden" name="issue_id" value="<?php echo $id;?>">
                   <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
-                  <div class="form-group">
+                  <input type="hidden" name="group_id" value="<?php echo $gID;?>">
+                  <Div class="form-group">
                     <label>Add Issue</label>
                     <input type="text" id="input" name="issue" class="form-control" placeholder= "Enter an issue" required>
                     <!-- <span id="msg" class="badge badge-primary badge-pill"></span> -->
@@ -477,6 +479,7 @@
                 <div class="modal-body">
                     <input type="hidden" id="issue_id" name="issue_id" value="<?php echo $id;?>">
                     <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
+                    <input type="hidden" name="group_id" value="<?php echo $gID;?>">
                     <div class="form-group">
                       <label>Issue</label>
                       <input type="text" id="input2" name="issue2" class="form-control" placeholder= "Enter an issue" required>
@@ -522,6 +525,7 @@
                   <div class="modal-body">
                     <input type="hidden" id="delete_id" name="issue_id" value="<?php echo $id;?>">
                     <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
+                    <input type="hidden" name="group_id" value="<?php echo $gID;?>">
                     <h5>Are you sure you want to delete this issue?</h5>
                     <br>
                     <h6><b style="color: tomato;">Warning</b> : If you already complete the step in [Suggest Option/Vote Option]. This action may delete all the progress you have done .<h6>

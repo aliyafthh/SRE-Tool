@@ -347,24 +347,25 @@
                                   </thead>
                                   <tbody>
                                       <?php
-                                          $result=$mysqli->query("SELECT * FROM rq_main") or die($mysqli->error);
+                                          $result=$mysqli->query("SELECT * FROM elicitation WHERE approved=1") or die($mysqli->error);
                                           
                                       ?>
                                       <?php while($row=$result->fetch_assoc()):?>
                                       <tr>
-                                          <td><?php echo $row['req_id'];?></td>
-                                          <td><?php echo $row['req_detail'];?></td>
-                                          <?php $issue_req=$row['req_id'];?>
-                                      <?php $result_issue=$mysqli->query("SELECT * FROM rn_issue WHERE req_id = $issue_req") 
+                                          <td><?php echo $row['id'];?></td>
+                                          <td><?php echo $row['requirement'];?></td>
+                                          <?php $issue_req=$row['id'];?>
+                                          <?php $gID=$row['gID'];?>
+                                      <?php $result_issue=$mysqli->query("SELECT * FROM rn_issue WHERE req_id = $issue_req AND group_id=$gID") 
                                               or die($mysqli->error);
                                               if($result_issue->num_rows){
                                                   // have data in rn_issue --> assign tick
                                                   // $rows=$result_issue->fetch_array();
-                                                  echo "<td align=\"center\"><a href=\"issueNego.php?req_id=".$issue_req."\"><i class=\"material-icons\" id=\"completebtn\">check_box</i></a></td>";
+                                                  echo "<td align=\"center\"><a href=\"issueNego.php?req_id=".$issue_req."&group_id=".$gID."\"><i class=\"material-icons\" id=\"completebtn\">check_box</i></a></td>";
                                               }else
                                               {
                                                   // no data in rn_issue --> assign edit 
-                                                  echo "<td align=\"center\"><a href=\"issueNego.php?req_id=".$issue_req."\"><i class=\"material-icons\" >assignment</i></a></td>";
+                                                  echo "<td align=\"center\"><a href=\"issueNego.php?req_id=".$issue_req."&group_id=".$gID."\"><i class=\"material-icons\" >assignment</i></a></td>";
                                               }
                                       ?>
                                       <?php $result_option=$mysqli->query("SELECT * FROM rn_option WHERE req_id = $issue_req") 
@@ -373,13 +374,13 @@
                                                   if($result_option->num_rows){
                                                       // have data in rn_option --> assign tick 
                                                       // $rows=$result_option->fetch_array();
-                                                      echo "<td align=\"center\"><a href=\"optionNego.php?req_id=".$issue_req."\"><i class=\"material-icons\" id=\"completebtn\">check_box</i></a></td>";
+                                                      echo "<td align=\"center\"><a href=\"optionNego.php?req_id=".$issue_req."&group_id=".$gID."\"><i class=\"material-icons\" id=\"completebtn\">check_box</i></a></td>";
 
                                                   }
                                                   else
                                                   {
                                                       // no data in rn_option --> assign clear
-                                                      echo "<td align=\"center\"><a href=\"optionNego.php?req_id=".$issue_req."\"><i class=\"material-icons\" id=\"incompletebtn\">clear</i></a></td>";
+                                                      echo "<td align=\"center\"><a href=\"optionNego.php?req_id=".$issue_req."&group_id=".$gID."\"><i class=\"material-icons\" id=\"incompletebtn\">clear</i></a></td>";
                                                   }
                                               }
                                               else{
@@ -393,13 +394,13 @@
                                                   if($result_vote->num_rows){
                                                       // have data in rn_vote --> assign tick 
                                                       // $rows=$result_option->fetch_array();
-                                                      echo "<td align=\"center\"><a href=\"voteNego.php?req_id=".$issue_req."\"><i class=\"material-icons\" id=\"completebtn\">check_box</i></a></td>";
+                                                      echo "<td align=\"center\"><a href=\"voteNego.php?req_id=".$issue_req."&group_id=".$gID."\"><i class=\"material-icons\" id=\"completebtn\">check_box</i></a></td>";
 
                                                   }
                                                   else
                                                   {
                                                       // no data in rn_vote --> assign clear
-                                                      echo "<td align=\"center\"><a href=\"voteNego.php?req_id=".$issue_req."\"><i class=\"material-icons\" id=\"incompletebtn\">clear</i></a></td>";
+                                                      echo "<td align=\"center\"><a href=\"voteNego.php?req_id=".$issue_req."&group_id=".$gID."\"><i class=\"material-icons\" id=\"incompletebtn\">clear</i></a></td>";
                                                   }
                                               }
                                               else

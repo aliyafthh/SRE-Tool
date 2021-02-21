@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 06:41 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
+-- Generation Time: Feb 21, 2021 at 07:09 AM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -172,7 +173,7 @@ CREATE TABLE `elicitation` (
   `m3` tinyint(1) DEFAULT NULL,
   `m4` tinyint(1) DEFAULT NULL,
   `m5` tinyint(1) DEFAULT NULL,
-  `approved` tinyint(1) DEFAULT 0
+  `approved` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -370,6 +371,7 @@ INSERT INTO `requirements` (`id`, `title`, `requirement`, `priority`, `idk`) VAL
 
 CREATE TABLE `rn_issue` (
   `req_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `issue_id` int(11) NOT NULL,
   `issue_detail` varchar(300) NOT NULL,
   `Category` varchar(20) NOT NULL,
@@ -380,10 +382,11 @@ CREATE TABLE `rn_issue` (
 -- Dumping data for table `rn_issue`
 --
 
-INSERT INTO `rn_issue` (`req_id`, `issue_id`, `issue_detail`, `Category`, `person_id`) VALUES
-(1, 37, 'user unable to login without credentials', 'Stakeholder', 'person_1'),
-(1, 39, 'Takes longer time to login', 'Schedule', 'person_1'),
-(1, 41, 'System takes longer time to login', 'Schedule', 'person_1');
+INSERT INTO `rn_issue` (`req_id`, `group_id`, `issue_id`, `issue_detail`, `Category`, `person_id`) VALUES
+(1, 0, 37, 'user unable to login without credentials', 'Stakeholder', 'person_1'),
+(1, 0, 39, 'Takes longer time to login', 'Schedule', 'person_1'),
+(1, 0, 41, 'System takes longer time to login', 'Schedule', 'person_1'),
+(3, 3, 43, 'Required stable internet connection ', 'Schedule', 'person_1');
 
 -- --------------------------------------------------------
 
@@ -393,6 +396,7 @@ INSERT INTO `rn_issue` (`req_id`, `issue_id`, `issue_detail`, `Category`, `perso
 
 CREATE TABLE `rn_option` (
   `req_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `option_detail` varchar(50) NOT NULL,
   `reason` varchar(50) NOT NULL,
@@ -403,9 +407,10 @@ CREATE TABLE `rn_option` (
 -- Dumping data for table `rn_option`
 --
 
-INSERT INTO `rn_option` (`req_id`, `option_id`, `option_detail`, `reason`, `person_id`) VALUES
-(1, 2, 'User required to have an account to login ', 'To have personal workspace for each user', 'person_1'),
-(1, 3, 'Reduce unnecesssary features to load for login', 'To reduce loading time for login', 'person_1');
+INSERT INTO `rn_option` (`req_id`, `group_id`, `option_id`, `option_detail`, `reason`, `person_id`) VALUES
+(1, 0, 2, 'User required to have an account to login ', 'To have personal workspace for each user', 'person_1'),
+(1, 0, 3, 'Reduce unnecesssary features to load for login', 'To reduce loading time for login', 'person_1'),
+(3, 3, 5, 'Reduce unnecesssary features to load for login', 'To reduce loading time for login', 'person_1');
 
 -- --------------------------------------------------------
 
@@ -415,6 +420,7 @@ INSERT INTO `rn_option` (`req_id`, `option_id`, `option_detail`, `reason`, `pers
 
 CREATE TABLE `rn_vote` (
   `req_id` int(11) NOT NULL,
+  `group_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
   `userr_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -801,13 +807,13 @@ ALTER TABLE `requirements`
 -- AUTO_INCREMENT for table `rn_issue`
 --
 ALTER TABLE `rn_issue`
-  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=42;
+  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 
 --
 -- AUTO_INCREMENT for table `rn_option`
 --
 ALTER TABLE `rn_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `role`

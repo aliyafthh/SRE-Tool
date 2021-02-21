@@ -338,12 +338,12 @@
               <ul>
                   <li><a>Winwin Tree</a>
                       <ul>
-                          <?php $sql="SELECT * FROM rq_main";
+                          <?php $sql="SELECT * FROM elicitation WHERE approved=1";
                             $result=$mysqli->query($sql) or die($mysqli->error);
                             while($row=$result->fetch_assoc()):
-                              $req_id = $row["req_id"];
+                              $req_id = $row["id"];
                           ?>
-                          <li><a>Win Conditions : <?php echo $row['req_detail'];?></a>
+                          <li><a>Win Conditions : <?php echo $row['requirement'];?></a>
                             <ul>
                               <?php $issue="SELECT * FROM rn_issue WHERE req_id=$req_id";
                                 $output=$mysqli->query($issue) or die($mysqli->error);

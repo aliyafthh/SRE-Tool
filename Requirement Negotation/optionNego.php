@@ -1,6 +1,7 @@
 <?php
     include_once ("config.php");
     $req_id=$_GET['req_id'];
+    $group_id=$_GET["group_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -341,15 +342,15 @@
                     <a href="homeNego.php" style="text-decoration:none" class="breadcrumbs__link">Requirement Negotiation</a>
                 </li>
                 <li class="breadcrumbs__item">
-                    <a href="issueNego.php?req_id=<?php echo $req_id?>" style="text-decoration:none" class="breadcrumbs__link">Identify Issue</a>
+                    <a href="issueNego.php?req_id=<?php echo $req_id?>&group_id=<?php echo $group_id?>" style="text-decoration:none" class="breadcrumbs__link">Identify Issue</a>
                 </li>
                 <li class="breadcrumbs__item">
                     <a href="" style="text-decoration:none" class="breadcrumbs__link--active">Suggest Option</a>
                 </li>
-                <?php $nextbtn=$mysqli->query("SELECT req_id FROM rn_option WHERE req_id=$req_id"); 
+                <?php $nextbtn=$mysqli->query("SELECT req_id FROM rn_option WHERE req_id=$req_id AND group_id=$group_id"); 
                 if(mysqli_num_rows($nextbtn)>0){
                 echo "<li class=\"breadcrumbs__item\">";
-                    echo "<a href=\"voteNego.php?req_id=$req_id\" style=\"text-decoration:none\" class=\"breadcrumbs__link\">Vote Option</a>";
+                    echo "<a href=\"voteNego.php?req_id=".$req_id."&group_id=".$group_id."\" style=\"text-decoration:none\" class=\"breadcrumbs__link\">Vote Option</a>";
                 echo "</li>";
                 }
                 ?>
@@ -360,11 +361,11 @@
                     <thead >
                         <tr>
                             <?php
-                            $sql="SELECT req_detail FROM rq_main WHERE req_id = $req_id";
+                            $sql="SELECT requirement FROM elicitation WHERE id = $req_id AND approved=1 AND gID = $group_id ";
                             $result=$mysqli->query($sql) or die($mysqli->error);
                             while($row=$result->fetch_assoc()):
                                 echo "<th>Requirement: </th>";
-                                echo "<td>".$row['req_detail']."</td>";
+                                echo "<td>".$row['requirement']."</td>";
                             endwhile;
                             ?>
                         </tr>
@@ -372,7 +373,7 @@
                     <tbody >
                         <tr>
                         <?php
-                        $sql="SELECT issue_detail,Category FROM rn_issue WHERE req_id = $req_id";
+                        $sql="SELECT issue_detail,Category FROM rn_issue WHERE req_id = $req_id AND group_id=$group_id";
                         $result=$mysqli->query($sql) or die($mysqli->error);
                         echo "<th>Issue: </th> ";
                         echo "<td>";
@@ -394,7 +395,7 @@
                 <button style="margin:0px 10px 5px 0px;" type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal_option"> Add Option</button>
                     <!-- Display current option in table form -->
                     <?php
-                        $result = $mysqli->query("SELECT * FROM rn_option WHERE req_id=$req_id") or die($mysqli->error);
+                        $result = $mysqli->query("SELECT * FROM rn_option WHERE req_id=$req_id AND group_id=$group_id") or die($mysqli->error);
                         // pre_r($result->fetch_assoc());
                     ?>
                     <div class="row">
@@ -425,9 +426,9 @@
                         </div>
                     </div>
 
-                    <button type="button" class="btn btn-light" id="previousbtn" onclick="location.href='issueNego.php?req_id=<?php echo $req_id?>';">Previous</button>
+                    <button type="button" class="btn btn-light" id="previousbtn" onclick="location.href='issueNego.php?req_id=<?php echo $req_id?>&group_id=<?php echo $group_id?>';">Previous</button>
                     <?php if(mysqli_num_rows($nextbtn)>0){
-                        echo "<button type=\"button\" class=\"btn btn-success float-right\" id=\"nextbtn\" onclick=\"location.href='voteNego.php?req_id=$req_id';\">Next</button>";
+                        echo "<button type=\"button\" class=\"btn btn-success float-right\" id=\"nextbtn\" onclick=\"location.href='voteNego.php?req_id=$req_id&group_id=$group_id';\">Next</button>";
                     } ?>
                 </div>
             </div>
@@ -458,6 +459,7 @@
                                 <div class="modal-body">
                                     <input type="hidden" name="option_id" value="<?php echo $id;?>">
                                     <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
+                                    <input type="hidden" name="group_id" value="<?php echo $group_id;?>">
                                     <div class="form-group">
                                     <label>Suggestion / Option</label>
                                     <input type="text" name="option" class="form-control" placeholder= "Enter an option" required>
@@ -489,6 +491,7 @@
                                 <div class="modal-body">
                                     <input type="hidden" id="option_id" name="option_id" value="<?php echo $id;?>">
                                     <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
+                                    <input type="hidden" name="group_id" value="<?php echo $group_id;?>">
                                     <div class="form-group">
                                     <label>Suggestion / Option</label>
                                     <input type="text" id="option" name="option" class="form-control" placeholder= "Enter an option" required>
@@ -519,6 +522,7 @@
                                 <div class="modal-body">
                                     <input type="hidden" id="delete_id" name="option_id" value="<?php echo $id;?>">
                                     <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
+                                    <input type="hidden" name="group_id" value="<?php echo $group_id;?>">
                                     <h5>Are you sure you want to delete the option?</h5>
                                     <br>
                                     <h6><b style="color: tomato;">Warning</b> : If you already complete the step in [Vote Option]. This action may also delete the vote.<h6>
