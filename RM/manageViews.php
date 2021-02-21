@@ -408,6 +408,10 @@
                   $result[] = $row;
                 }
 
+                foreach($array as $temp){
+                 echo" <input type='hidden' name='arr[]' value='" . $temp . "'>";
+                }
+
                 // Array of all column names
                 $columnArr = array_column($result, 'COLUMN_NAME');
                 foreach ($columnArr as $string) {
@@ -429,13 +433,13 @@
     </div>
   </div>
 
-  <!-- Delete Attribute Modal -->
+  <!-- Delete View Modal -->
 
   <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Attribute</h5>
+          <h5 class="modal-title" id="deleteModalLabel">Delete View</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
@@ -447,7 +451,6 @@
             <input type="hidden" name="delete_id" id="delete_id">
 
             <h4>Are you sure you want to delete this view?</h4>
-            <small>All data related will be deleted as well</small>
 
           </div>
           <div class="modal-footer">

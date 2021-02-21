@@ -24,7 +24,7 @@
 
   <?php
   require_once "config.php";
-  $id =0;
+  $id = 0;
   ?>
   <style>
     .img1 {
@@ -150,7 +150,7 @@
             <i class="fas fa-laptop-code"></i>
           </div>
           <div class="sidebar-brand-text mx-3">Navigation</div>
-    
+
         </a>
 
         <!-- Divider -->
@@ -183,7 +183,7 @@
         </li>
         <hr class="sidebar-divider my-0">
         <li class='nav-item'>
-          <a class='nav-link' href="../RM/index.php?id=<?php echo $id; ?>" >
+          <a class='nav-link' href="../RM/index.php?id=<?php echo $id; ?>">
             <i class="fas fa-book-open"></i>
             <span>Requirement Management</span></a>
         </li>
@@ -215,21 +215,29 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
 
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="index.php" role="button">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">About</span>
-              </a>
-            </li>
+            <?php if (isset($_GET['id'])) {
+              echo '<div class="topbar-divider d-none d-sm-block"></div>';
+              echo '<li class="nav-item dropdown no-arrow">';
+              echo '<a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">' . $id . '</span>
+                  <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                </a>';
 
+              echo ' <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                  <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
+                    <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                    Logout
+                  </a>
+                </div>
+              </li>';
+            } else {
 
-            <div class="topbar-divider d-none d-sm-block"></div>
-
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="../RV/login.php" role="button">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Login</span>
-              </a>
-            </li>
-
+              echo "<li class='nav-item dropdown no-arrow'>";
+              echo "<a class='nav-link dropdown-toggle' href='../RV/login.php' role='button'>";
+              echo " <span class='mr-2 d-none d-lg-inline small' style='color: lightgoldenrodyellow;'>Login</span>";
+              echo " </a>
+              </li>";
+            } ?>
           </ul>
 
         </nav>
@@ -292,7 +300,25 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../Elicitation/js/sb-admin-2.js"></script>
-
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="home.php">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
 </body>
 
 </html>

@@ -442,7 +442,7 @@
 
                                     ?>
 
-                                    <div class="table-responsive table table-striped" id="user_data">
+                                    <div class="table-responsive table table-striped" id="user_data" style="margin-left: 35%;">
 
                                     </div>
                                     <br />

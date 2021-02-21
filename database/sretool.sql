@@ -1,19 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.4
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
-
--- Generation Time: Feb 21, 2021 at 07:51 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.6
-
-
-
-
+-- Generation Time: Feb 21, 2021 at 10:34 AM
+-- Server version: 10.4.17-MariaDB
+-- PHP Version: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -161,7 +155,9 @@ CREATE TABLE `dependant` (
 --
 
 INSERT INTO `dependant` (`id`, `title_d`, `title`) VALUES
-('102', 'Hold students records', 'Register');
+('102', 'Manage patient’s medical report', 'View patient’s medical report'),
+('302', 'Modify patient’s detail', 'View patient’s medical report'),
+('402', 'Delete patient’s record', 'View patient’s medical report');
 
 -- --------------------------------------------------------
 
@@ -171,24 +167,24 @@ INSERT INTO `dependant` (`id`, `title_d`, `title`) VALUES
 
 CREATE TABLE `elicitation` (
   `id` int(11) NOT NULL,
-  `gID` int(11) NOT NULL,
   `requirement` varchar(255) NOT NULL,
   `m1` tinyint(1) DEFAULT NULL,
   `m2` tinyint(1) DEFAULT NULL,
   `m3` tinyint(1) DEFAULT NULL,
   `m4` tinyint(1) DEFAULT NULL,
   `m5` tinyint(1) DEFAULT NULL,
-  `approved` tinyint(1) DEFAULT '0'
+  `approved` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `elicitation`
 --
 
-INSERT INTO `elicitation` (`id`, `gID`, `requirement`, `m1`, `m2`, `m3`, `m4`, `m5`, `approved`) VALUES
-(3, 3, 'The system shall idk', 1, NULL, NULL, NULL, NULL, 0),
-(4, 3, 'the system should try', 0, NULL, NULL, NULL, NULL, 0),
-(5, 3, 'The system will poafbka', NULL, NULL, NULL, NULL, NULL, 0);
+INSERT INTO `elicitation` (`id`, `requirement`, `m1`, `m2`, `m3`, `m4`, `m5`, `approved`) VALUES
+(8, 'The system shall allow medical officer to view previous medical record of patients by entering patient’s name or IC number', 1, NULL, NULL, NULL, NULL, 0),
+(9, 'The system shall allow medical officer or nurse to login into the system by entering their username and password.', 0, NULL, NULL, NULL, NULL, 0),
+(10, 'The system shall allow admin to login to the system by entering his/her username and password', NULL, NULL, NULL, NULL, NULL, 0),
+(11, 'The system shall allow National Registration staff to login to the system by entering username and password', NULL, NULL, NULL, NULL, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -357,16 +353,18 @@ CREATE TABLE `requirements` (
   `title` varchar(255) NOT NULL,
   `requirement` varchar(255) NOT NULL,
   `priority` varchar(50) NOT NULL,
-  `idk` varchar(25) DEFAULT NULL
+  `status` varchar(25) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `requirements`
 --
 
-INSERT INTO `requirements` (`id`, `title`, `requirement`, `priority`, `idk`) VALUES
-(1, 'Hold students records', 'The system shall daiwdkajbanflk', 'medium', 'uh'),
-(2, 'Register', 'uaqinasonfon aisfbkaef abak', 'low', NULL);
+INSERT INTO `requirements` (`id`, `title`, `requirement`, `priority`, `status`) VALUES
+(1, 'Manage patient’s medical report', 'The system shall allow medical officer to view previous medical record of patients by entering patient’s name or IC number', 'low', NULL),
+(2, 'View patient’s medical report', 'The system shall allow medical officer or nurse to login into the system by entering their username and password.', 'high', NULL),
+(3, 'Modify patient’s detail', 'The system shall allow admin to login to the system by entering his/her username and password', 'medium', ''),
+(4, 'Delete patient’s record', 'The system shall allow National Registration staff to login to the system by entering username and password', 'low', NULL);
 
 -- --------------------------------------------------------
 
@@ -416,6 +414,18 @@ INSERT INTO `rn_option` (`req_id`, `group_id`, `option_id`, `option_detail`, `re
 (1, 0, 2, 'User required to have an account to login ', 'To have personal workspace for each user', 'person_1'),
 (1, 0, 3, 'Reduce unnecesssary features to load for login', 'To reduce loading time for login', 'person_1'),
 (3, 3, 5, 'Reduce unnecesssary features to load for login', 'To reduce loading time for login', 'person_1');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `rn_user`
+--
+
+CREATE TABLE `rn_user` (
+  `group_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `roles_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -565,28 +575,6 @@ INSERT INTO `rvp3` (`id`, `requirement`, `error`, `solution`, `status`, `correct
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
---
-
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `user_name` varchar(30) NOT NULL,
-  `roles_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`user_id`, `user_name`, `roles_id`) VALUES
-(1, 'person_1', 1),
-(2, 'person_2', 2),
-(3, 'person_3', 2),
-(4, 'person_4', 4);
-
--- --------------------------------------------------------
-
---
 -- Table structure for table `views`
 --
 
@@ -697,6 +685,12 @@ ALTER TABLE `rn_option`
   ADD PRIMARY KEY (`option_id`,`option_detail`);
 
 --
+-- Indexes for table `rn_user`
+--
+ALTER TABLE `rn_user`
+  ADD PRIMARY KEY (`user_id`);
+
+--
 -- Indexes for table `rn_vote`
 --
 ALTER TABLE `rn_vote`
@@ -733,12 +727,6 @@ ALTER TABLE `rvp3`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -770,7 +758,7 @@ ALTER TABLE `createproject`
 -- AUTO_INCREMENT for table `elicitation`
 --
 ALTER TABLE `elicitation`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `inspection1`
@@ -806,7 +794,7 @@ ALTER TABLE `register`
 -- AUTO_INCREMENT for table `requirements`
 --
 ALTER TABLE `requirements`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `rn_issue`

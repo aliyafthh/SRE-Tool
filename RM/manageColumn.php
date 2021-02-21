@@ -17,10 +17,10 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
- 
+
   <!-- Custom styles for this template-->
   <link href="../Elicitation/css/sb-admin-2.min.css" rel="stylesheet">
-  
+
 
   <?php
   require_once "config.php";
@@ -165,7 +165,7 @@
     <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?id=<?php echo $id;?>">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?id=<?php echo $id; ?>">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laptop-code"></i>
         </div>
@@ -227,13 +227,13 @@
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
-          <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="home.php?id=<?php echo $id;?>" role="button">
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="home.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Home</span>
               </a>
             </li>
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $id;?>" role="button">
+              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
               </a>
             </li>
@@ -251,7 +251,7 @@
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="index.php?id=<?php echo $id;?>" role="button">
+              <a class="nav-link dropdown-toggle" href="index.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
               </a>
             </li>
@@ -285,48 +285,53 @@
               <h3 class="text-muted">
                 <h2>Requirement Management </h2>
               </h3>
-              <button class="button" onclick="location.href='manageColumn.php?id=<?php echo $id;?>';">Manage Columns</button>
-                <button class="button" onclick="location.href='manageViews.php?id=<?php echo $id;?>';">Manage Views</button>
-                <button class="button" onclick="location.href='prioritisation.php?id=<?php echo $id;?>';">Prioritize Requirements</button>
+              <button class="button" onclick="location.href='manageColumn.php?id=<?php echo $id; ?>';">Manage Columns</button>
+              <button class="button" onclick="location.href='manageViews.php?id=<?php echo $id; ?>';">Manage Views</button>
+              <button class="button" onclick="location.href='prioritisation.php?id=<?php echo $id; ?>';">Prioritize Requirements</button>
 
-              <table class='table table-striped' id="att">
-                <tr>
+
+
+              <?php
+
+              $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
+
+              while ($row = $query->fetch_assoc()) {
+                $result[] = $row;
+              }
+
+              // Array of all column names
+              $columnArr = array_column($result, 'COLUMN_NAME');
+              $count = count($columnArr);
+              if ($count > 4) {
+                echo " <table class='table table-striped' id='att'>";
+                echo " <tr>
                   <th>ID</th>
                   <th>Attributes</th>
                   <th>Edit/Delete</th>
-                </tr>
-
-                <?php
-
-                $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
-
-                while ($row = $query->fetch_assoc()) {
-                  $result[] = $row;
-                }
-
-                // Array of all column names
-                $columnArr = array_column($result, 'COLUMN_NAME');
-                $count = count($columnArr);
-
+                </tr>";
                 $k = 1;
                 for ($i = 4; $i < $count; $i++) {
                   echo "<tr><td>$k</td>";
                   echo "<td>$columnArr[$i]</td>";
 
-                ?>
+              ?>
 
                   <td><button type="button" class='btn editbtn'><i class='far fa-edit fa-lg'></i></button>
                     <button type="button" class='btn deletebtn'><i class='far fa-trash-alt fa-lg'></i></button>
                   </td>
                   </tr>
 
-                <?php
+              <?php
 
                   $k++;
                 }
 
-                ?>
-              </table>
+
+                echo "</table>";
+              }else{
+                echo "Nothing to display yet.";
+              } ?>
+              <br><br>
               <button type="button" class="button" data-toggle="modal" data-target="#addModal" style="margin-left:40%;">Add New Attribute</button>
 
             </div>
@@ -399,12 +404,12 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="insertAttribute.php?id=<?php echo $id;?>" method="POST" autocomplete="off">
+        <form action="insertAttribute.php?id=<?php echo $id; ?>" method="POST" autocomplete="off">
           <div class="modal-body">
 
             <div class="form-group">
               <label>Attribute</label>
-              <input type="text" name="attribute" class="form-control" placeholder="Enter attribute">
+              <input type="text" name="attribute" class="form-control" placeholder="Enter attribute" required>
             </div>
 
           </div>
@@ -430,7 +435,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="updateAttribute.php?id=<?php echo $id;?>" method="POST" autocomplete="off">
+        <form action="updateAttribute.php?id=<?php echo $id; ?>" method="POST" autocomplete="off">
 
           <input type="hidden" name="update_id" id="update_id">
 
@@ -464,7 +469,7 @@
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
-        <form action="deleteAttribute.php?id=<?php echo $id;?>" method="POST">
+        <form action="deleteAttribute.php?id=<?php echo $id; ?>" method="POST">
 
           <div class="modal-body">
 

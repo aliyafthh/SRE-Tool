@@ -237,7 +237,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Akhma Luna</span>
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;"><?php echo $id;?></span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -358,12 +358,24 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="login.html">Logout</a>
+            <a class="btn btn-primary" href="../RM/home.php">Logout</a>
           </div>
         </div>
       </div>
     </div>
   </div>
+
+    <?php
+         $queryC = "SELECT * FROM elicitation WHERE approved=1";
+         $resultC = $mysqli->query($queryC);
+         if ($resultC->num_rows > 0) {
+          while ($row = $resultC->fetch_assoc()) {
+            $queryD = "INSERT INTO rvp2 (id,requirement) VALUES ('" . $row['id'] . "','" .$row['requirement']. "'); ";
+            $resultD = $mysqli->query($queryD);
+          }
+         }
+              
+    ?>          
 
   <!-- Bootstrap core JavaScript-->
   <script src="vendor/jquery/jquery.min.js"></script>
@@ -391,7 +403,7 @@
 
             <div class="form-group">
               <label>Requirement</label>
-              <input type="text" name="requirement" class="form-control" placeholder="Enter requirement">
+              <input type="text" name="requirement" class="form-control" placeholder="Enter requirement" required>
             </div>
 
           </div>
@@ -425,7 +437,7 @@
 
             <div class="form-group">
               <label>Requirement</label>
-              <input type="text" name="requirement" id="requirement" class="form-control" placeholder="Enter requirement">
+              <input type="text" name="requirement" id="requirement" class="form-control" placeholder="Enter requirement" required>
             </div>
 
           </div>

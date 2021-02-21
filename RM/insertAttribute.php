@@ -14,7 +14,9 @@ if(isset($_POST['insertData'])){
         echo '<script> alert("Data Saved");</script>';
         header('Location: manageColumn.php?id='.$gId);
     }else{
-        echo '<script> alert("Data Not Saved");</script>';
+        echo '<script> alert("Data Not Valid");
+        window.location = window.history.back();
+        </script>';
     }
 
 }
