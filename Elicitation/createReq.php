@@ -403,7 +403,7 @@
 
             <div class="form-group">
               <label>Requirement</label>
-              <input type="text" name="requirement" class="form-control" placeholder="Enter requirement">
+              <input type="text" name="requirement" class="form-control" placeholder="Enter requirement" required>
             </div>
 
           </div>
@@ -437,7 +437,7 @@
 
             <div class="form-group">
               <label>Requirement</label>
-              <input type="text" name="requirement" id="requirement" class="form-control" placeholder="Enter requirement">
+              <input type="text" name="requirement" id="requirement" class="form-control" placeholder="Enter requirement" required>
             </div>
 
           </div>
