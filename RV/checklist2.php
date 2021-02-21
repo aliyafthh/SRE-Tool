@@ -197,64 +197,23 @@ p {
 .option-input.radio::after {
     border-radius: 50%
 }
-    /* @keyframes check {0% {height: 0;width: 0;}
-    25% {height: 0;width: 10px;}
-    50% {height: 20px;width: 10px;}
-  }
-  .checkbox{
-      background-color:#fff;
-      display:inline-block;
-      height:28px;
-      margin:0 .25em;
-      width:28px;
-      border-radius:4px;
-      border:1px solid #ccc;
-      float:right
-      }
-.roww{ */
-
-/* width:4000px;
-padding-right:3000px; */
-/* 
-padding-right:320px;
-padding-left:1px;
-
-
+   
+@font-face {
+      font-family: myFirstFont;
+      src: url("images/EraserDust.ttf");
+    }
+.hi{
+    background:#70AE98;
+    font-family: myFirstFont;
 }
-  .checkbox span{
-      display:block;
-      height:28px;
-      position:relative;
-      width:28px;
-      adding:0
-      }
-
-  .checkbox span:after{
-      -moz-transform:scaleX(-1) rotate(135deg);
-      -ms-transform:scaleX(-1) rotate(135deg);
-      -webkit-transform:scaleX(-1) rotate(135deg);
-      transform:scaleX(-1) rotate(135deg);
-      -moz-transform-origin:left top;
-      -ms-transform-origin:left top;
-      -webkit-transform-origin:left top;
-      transform-origin:left top;
-      border-right:4px solid #fff;
-      border-top:4px solid #fff;
-      content:'';display:block;
-      height:20px;left:3px;
-      position:absolute;
-      top:15px;width:10px
-      
-      }
-  .checkbox span:hover:after{border-color:#999}
-  .checkbox input{display:none}
-  .checkbox input:checked + span:after{-webkit-animation:check .8s;-moz-animation:check .8s;-o-animation:check .8s;animation:check .8s;border-color:#555}
-.checkbox input:checked + .default:after{border-color:#444}
-.checkbox input:checked + .primary:after{border-color:#2196F3}
-.checkbox input:checked + .success:after{border-color:#8bc34a}
-.checkbox input:checked + .info:after{border-color:#3de0f5}
-.checkbox input:checked + .warning:after{border-color:#FFC107}
-.checkbox input:checked + .danger:after{border-color:#f44336} */
+.topbarz {
+      float: right;
+      width: 100%;
+      background-color: #F0A35E;
+      /* background-image: url("../images/wood.png"); */
+      height: 50px;
+    }
+    
 </style>
 
 
@@ -263,7 +222,7 @@ padding-left:1px;
 	<!-- Page Wrapper -->
 	<div id="wrapper">
 		<!-- Sidebar -->
-		<ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+		<ul class="navbar-nav hi sidebar sidebar-dark accordion" id="accordionSidebar">
 			<!-- Sidebar - Brand -->
 			<a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
 				<div class="sidebar-brand-icon rotate-n-15">
@@ -274,51 +233,57 @@ padding-left:1px;
 			<!-- Divider -->
 			<hr class="sidebar-divider my-0">
 			<!-- Nav Item - Dashboard -->
-			<li class="nav-item">
-				<a class="nav-link" href="index.html">
-					<i class="fas fa-id-badge"></i>
-					<span>Profile</span>
-				</a>
-			</li>
+			
 			<hr class="sidebar-divider my-0">
-			<li class="nav-item">
-				<a class="nav-link" href="charts.html">
-					<i class="fas fa-tasks"></i>
-					<span>Progress</span>
-				</a>
-			</li>
-			<!-- Divider -->
-			<!-- <hr class="sidebar-divider"> -->
-			<!-- Heading -->
-			<!-- <div class="sidebar-heading">
-        interface
-      </div> -->
-			<!-- Nav Item - Pages Collapse Menu -->
-			<hr class="sidebar-divider my-0">
-			<li class="nav-item">
-				<a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-					<i class="fas fa-folder-open"></i>
-					<span>Modules</span>
-				</a>
-				<div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-					<div class="bg-white py-2 collapse-inner rounded">
-						<h6 class="collapse-header">REQUIREMENT:</h6>
-						<a class="collapse-item" href="buttons.html">1- Elicitation</a>
-						<a class="collapse-item" href="cards.html">2- Documentation</a>
-						<a class="collapse-item" href="cards.html">3- Negotiation</a>
-						<a class="collapse-item" href="rvpoption.php">4- Validation</a>
-						<a class="collapse-item" href="cards.html">5- Management</a>
-					</div>
-				</div>
-			</li>
-			<!-- Setting thing -->
-			<hr class="sidebar-divider my-0">
-			<li class="nav-item">
-				<a class="nav-link" href="index.html">
-					<i class="fas fa-fw fa-wrench"></i>
-					<span>Setting</span>
-				</a>
-			</li>
+
+<li class='nav-item'>
+  <a class='nav-link' href="../RV/createProject.php">
+    <i class="fas fa-book-open"></i>
+    <span>Create Project</span></a>
+</li>
+    <hr class="sidebar-divider my-0">
+
+    <li class="nav-item">
+      
+      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div class="bg-white py-2 collapse-inner rounded">
+        <li class='nav-item'>
+      <a class='nav-link' href="../Elicitation/createReq.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Elicitation</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+
+    <li class='nav-item'>
+      <a class='nav-link' href="../Requirement Negotation/homeNego.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Negotiation</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+    <li class='nav-item'>
+      <a class='nav-link' href="../RV/rvpoption.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Validation</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo">
+          <i class="far fa-folder-open"></i>
+          <span>Validation</span>
+        </a>
+        <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            
+            <a class="collapse-item" href="principles.php">Principles</a>
+            <a class="collapse-item" href="techniques.php">Techniques</a>
+          </div>
+        </div>
+      </li>
+    <hr class="sidebar-divider my-0">
+    <li class='nav-item'>
+      <a class='nav-link' href="../RM/index.php?id=<?php echo $id; ?>" >
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Management</span></a>
+    </li>
 			<!-- Divider -->
 			<hr class="sidebar-divider d-none d-md-block">
 			<!-- Sidebar Toggler (Sidebar) -->
@@ -332,7 +297,7 @@ padding-left:1px;
 			<!-- Main Content -->
 			<div id="content">
 				<!-- Topbar -->
-				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+				<nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow topbarz">
 					<!-- Sidebar Toggle (Topbar) -->
 					<button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
 						<i class="fa fa-bars"></i>

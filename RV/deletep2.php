@@ -18,7 +18,7 @@ if (!$connection) {
     if($query_run)
     {
         echo '<script> alert("Data deleted"); </script>';
-        header("location:p2t.php");
+        header("location:previewp2.php");
     }
     else
     {

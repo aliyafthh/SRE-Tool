@@ -1,33 +1,3 @@
-<!-- insert into db -->
-
-<?php
-if(isset($_POST['insert']))
-{
-  $connection = mysqli_connect("localhost","root","");
-  $db = mysqli_select_db($connection, 'sretool');
-
-    $id = $_POST['idd'];
-    $name = $_POST['name'];
-    $pos = $_POST['position'];
-   
-    $query = "INSERT INTO rvp1(name,position) VALUES ('".$_POST["name"]."','".$_POST["position"]."')";
-    $query_run = mysqli_query($connection, $query);
-
-    if(!$query_run)
-    {
-      echo '<script> alert("Data Not Saved"); </script>';
-    }
-    if($name !=''&& $pos !='')
-{
-//  To redirect form on a particular page
-header("Location:previewp1.php");
-}
-else{
-?><span><?php echo "Please fill all fields.....!!!!!!!!!!!!";?></span> <?php
-  }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -53,11 +23,9 @@ else{
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script> -->
 
   <!-- Custom styles for this template-->
+ 
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <!-- <link href="inspection.css" rel="stylesheet">
-  <link href="checklist.css" rel="stylesheet"> -->
-  <link href="rvp.css" rel="stylesheet">
-
+  <link href="rvoption.css" rel="stylesheet">
  
   <style>
     .img1 {
@@ -189,52 +157,43 @@ else{
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-     <!-- Nav Item - Dashboard -->
-     <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <i class="fas fa-id-badge"></i>
-           <span>Profile</span></a>
-    </li>
-
+<li class='nav-item'>
+  <a class='nav-link' href="../RV/createProject.php">
+    <i class="fas fa-book-open"></i>
+    <span>Create Project</span></a>
+</li>
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-tasks"></i>
-          <span>Progress</span></a>
-    </li>    
-
-     
-    <!-- Nav Item - Pages Collapse Menu -->
-    <hr class="sidebar-divider my-0">
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-folder-open"></i>
-        <span>Modules</span>
-      </a>
+      
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">REQUIREMENT:</h6>
-          <a class="collapse-item" href="buttons.html">1- Elicitation</a>
-          <a class="collapse-item" href="cards.html">2- Documentation</a>
-          <a class="collapse-item" href="cards.html">3- Negotiation</a>      
-          <a class="collapse-item" href="rvoption.html">4- Validation</a> 
-          <a class="collapse-item" href="cards.html">5- Management</a>
+        <li class='nav-item'>
+      <a class='nav-link' href="../Elicitation/createReq.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Elicitation</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
 
-        </div>
-      </div>
+    <li class='nav-item'>
+      <a class='nav-link' href="../Requirement Negotation/homeNego.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Negotiation</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+    <li class='nav-item'>
+      <a class='nav-link' href="../RV/rvpoption.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Validation</span></a>
+    </li>
+   
+    <hr class="sidebar-divider my-0">
+    <li class='nav-item'>
+      <a class='nav-link' href="../RM/index.php?id=<?php echo $id; ?>" >
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Management</span></a>
     </li>
 
-<!-- Setting thing -->
-<hr class="sidebar-divider my-0">
-
-<li class="nav-item">
- <a class="nav-link" href="index.html">
-   <i class="fas fa-fw fa-wrench"></i>
-     <span>Setting</span></a>
-</li>
-   
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
@@ -288,45 +247,43 @@ else{
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-          <div class="card shadow mb-4" style="background-color:rgba(255, 255, 255, 0.95)">
-            <div class="card-body shadow-sm p-5">
-              <h3 class="text-muted">
-                <h2>PRINCIPLE 1: INVOLVEMENT OF THE CORRECT STAKEHOLDERS </h2>
-                <br>
-                <!-- <h1 class="h3 mb-4 text-gray-800"><strong>PRINCIPLE 1: INVOLVEMENT OF THE CORRECT STAKEHOLDERS</strong>
-            </h1> -->
-          
-            <div style="background:linear-gradient(to bottom right, #4e73df 8%, #ff99cc 100%)" class="jumbotron" >
-              <div class="container">
 
-      <form class = "user" action="addp1.php" method = "post" id="my-form">
+<div class="row">
+  <div class="col-sm-6">
 
-      <input type="hidden" name = "idd" id = "idd" value = "idd">
-
-        <div class="form-group row">
-          <div class="col-sm-7 mb-3 mb-sm-0">
-            <label for="inputName"></label>
-            <input type="text" class="form-control form-control-user" name = "name" id="name" placeholder="Name ">
-          </div>
-          <div class="col-sm-5">
-            <label for="inputPassword"></label>
-            <input type="text" class="form-control form-control-user" name = "position" id="position" placeholder="Position ">
-          </div>
-        </div>
-
-        </div>
-
-        <button type="submit" name="insert" value = "submit"  class="btn btn-primary btn btn-block" style='width:400px;margin:0 50%;position:relative;left:-14em;'> Save Data </button>
-            
-      </form>
-
-</div>
-                
-              </h3>
-             
+          <div class="card-container"> 
+            <div class="card"><a href="principles.php">
+                <div class="card--display"><i class="material-icons">REQUIREMENT VALIDATION<br> PRINCIPLES</i>
+                </div>
+                <div class="card--hover">
+                  <h2>PRINCIPLES</h2>
+                  <p>There are six principles to be highlighted when we are doing requirement validation to ensure that any errors can be discovered earlier.</p>
+                  <p class="link" >Read more...</p>
+                </div></a>
+              <div class="card--border"></div>
             </div>
           </div>
-          <!-- /.container-fluid -->
+  </div>
+  <div class="col-sm-6">
+
+          <div class="card-container"> 
+            <div class="card"><a href="techniques.php">
+                <div class="card--display"><i class="material-icons">REQUIREMENT VALIDATION<br>  TECHNIQUES</i>
+                </div>
+                <div class="card--hover">
+                  <h2>TECHNIQUES</h2>
+                  <p>
+                  Several useful techniques can be performed during the validation process to ensure the validity of requirements by eliminating ambiguities and inconsistencies.</p>
+                  <p class="link" >Read more...</p>
+                </div></a>
+              <div class="card--border"></div>
+            </div>
+          </div>  
+  </div>
+        </div>
+      </div>
+
+        <!-- /.container-fluid -->
 
         </div>
         <!-- End of Main Content -->

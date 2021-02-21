@@ -1682,7 +1682,7 @@ pre code {
 }
 
 .table-hover tbody tr:hover {
-	color:aqua;
+	color:rgb(6, 54, 54);
 	/* background-color: rgb(26, 162, 196) */
 }
 

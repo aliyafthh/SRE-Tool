@@ -158,52 +158,55 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-     <!-- Nav Item - Dashboard -->
-     <li class="nav-item">
-      <a class="nav-link" href="index.html">
-        <i class="fas fa-id-badge"></i>
-           <span>Profile</span></a>
-    </li>
-
+<li class='nav-item'>
+  <a class='nav-link' href="../RV/createProject.php">
+    <i class="fas fa-book-open"></i>
+    <span>Create Project</span></a>
+</li>
     <hr class="sidebar-divider my-0">
 
     <li class="nav-item">
-      <a class="nav-link" href="charts.html">
-        <i class="fas fa-tasks"></i>
-          <span>Progress</span></a>
-    </li>    
-
-     
-    <!-- Nav Item - Pages Collapse Menu -->
-    <hr class="sidebar-divider my-0">
-
-    <li class="nav-item">
-      <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-        <i class="fas fa-folder-open"></i>
-        <span>Modules</span>
-      </a>
+      
       <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
         <div class="bg-white py-2 collapse-inner rounded">
-          <h6 class="collapse-header">REQUIREMENT:</h6>
-          <a class="collapse-item" href="buttons.html">1- Elicitation</a>
-          <a class="collapse-item" href="cards.html">2- Documentation</a>
-          <a class="collapse-item" href="cards.html">3- Negotiation</a>      
-          <a class="collapse-item" href="rvoption.html">4- Validation</a> 
-          <a class="collapse-item" href="cards.html">5- Management</a>
+        <li class='nav-item'>
+      <a class='nav-link' href="../Elicitation/createReq.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Elicitation</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
 
+    <li class='nav-item'>
+      <a class='nav-link' href="../Requirement Negotation/homeNego.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Negotiation</span></a>
+    </li>
+    <hr class="sidebar-divider my-0">
+    <li class='nav-item'>
+      <a class='nav-link' href="../RV/rvpoption.php">
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Validation</span></a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo">
+          <i class="far fa-folder-open"></i>
+          <span>Validation</span>
+        </a>
+        <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+          <div class="bg-white py-2 collapse-inner rounded">
+            
+            <a class="collapse-item" href="principles.php">Principles</a>
+            <a class="collapse-item" href="techniques.php">Techniques</a>
+          </div>
         </div>
-      </div>
+      </li>
+    <hr class="sidebar-divider my-0">
+    <li class='nav-item'>
+      <a class='nav-link' href="../RM/index.php?id=<?php echo $id; ?>" >
+        <i class="fas fa-book-open"></i>
+        <span>Requirement Management</span></a>
     </li>
 
-<!-- Setting thing -->
-<hr class="sidebar-divider my-0">
-
-<li class="nav-item">
- <a class="nav-link" href="index.html">
-   <i class="fas fa-fw fa-wrench"></i>
-     <span>Setting</span></a>
-</li>
-   
 
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">

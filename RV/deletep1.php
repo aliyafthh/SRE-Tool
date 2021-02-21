@@ -15,7 +15,7 @@ if (!$connection) {
     if($query_run)
     {
         echo '<script> alert("Data deleted"); </script>';
-        header("location:p1t.php");
+        header("location:previewp1.php");
     }
     else
     {
@@ -46,7 +46,7 @@ if(isset($_POST['insert']))
     if($name !=''&& $pos !='')
 {
 //  To redirect form on a particular page
-header("Location:p1t.php");
+header("Location:previewp1.php");
 }
 else{
 ?><span><?php echo "Please fill all fields.....!!!!!!!!!!!!";?></span> <?php
