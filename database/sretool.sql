@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 18, 2021 at 06:26 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Generation Time: Feb 21, 2021 at 06:41 AM
+-- Server version: 10.4.11-MariaDB
+-- PHP Version: 7.4.6
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,28 +24,119 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `checklist1`
+--
+
+CREATE TABLE `checklist1` (
+  `id` int(255) NOT NULL,
+  `groupid` int(11) NOT NULL,
+  `requirement` varchar(100) NOT NULL,
+  `atomic` varchar(10) NOT NULL,
+  `correct` varchar(10) NOT NULL,
+  `complete` varchar(10) NOT NULL,
+  `consistent` varchar(10) NOT NULL,
+  `comprehensible` varchar(10) NOT NULL,
+  `feasible` varchar(10) NOT NULL,
+  `identifiable` varchar(10) NOT NULL,
+  `necessary` varchar(10) NOT NULL,
+  `rated` varchar(10) NOT NULL,
+  `traceable` varchar(10) NOT NULL,
+  `unambiguous` varchar(10) NOT NULL,
+  `verifiable` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checklist1`
+--
+
+INSERT INTO `checklist1` (`id`, `groupid`, `requirement`, `atomic`, `correct`, `complete`, `consistent`, `comprehensible`, `feasible`, `identifiable`, `necessary`, `rated`, `traceable`, `unambiguous`, `verifiable`) VALUES
+(1, 0, '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(2, 0, '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(3, 0, '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(4, 0, '', '', '', '', '', '', '', '', '', '', '', '', ''),
+(5, 0, 'F01', 'yes', '', '', '', '', '', '', '', '', '', '', ''),
+(6, 0, 'F02', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'),
+(7, 0, 'F02', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'),
+(8, 0, 'Select Requirement', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'no', 'no'),
+(9, 0, 'Select Requirement', 'yes', 'yes', 'yes', 'yes', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'),
+(10, 0, 'Select Requirement', 'no', 'no', 'no', 'no', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'),
+(11, 0, 'F02', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes'),
+(12, 0, 'Select Requirement', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `checklist2`
+--
+
+CREATE TABLE `checklist2` (
+  `id` int(255) NOT NULL,
+  `groupid` int(11) NOT NULL,
+  `bounded` varchar(10) NOT NULL,
+  `complete` varchar(10) NOT NULL,
+  `consistent` varchar(10) NOT NULL,
+  `comprehensible` varchar(10) NOT NULL,
+  `modifiable` varchar(10) NOT NULL,
+  `traceable` varchar(10) NOT NULL,
+  `unambiguous` varchar(10) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checklist2`
+--
+
+INSERT INTO `checklist2` (`id`, `groupid`, `bounded`, `complete`, `consistent`, `comprehensible`, `modifiable`, `traceable`, `unambiguous`) VALUES
+(1, 0, 'yes', 'yes', 'yes', 'yes', 'yes', 'yes', 'yes');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `checklist3`
+--
+
+CREATE TABLE `checklist3` (
+  `id` int(50) NOT NULL,
+  `groupid` int(11) NOT NULL,
+  `agreed` varchar(30) NOT NULL,
+  `changes` varchar(30) NOT NULL,
+  `resolved` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `checklist3`
+--
+
+INSERT INTO `checklist3` (`id`, `groupid`, `agreed`, `changes`, `resolved`) VALUES
+(1, 0, 'yes', 'yes', 'yes');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `createproject`
 --
 
 CREATE TABLE `createproject` (
   `id` int(255) NOT NULL,
   `groupleader` varchar(50) NOT NULL,
-  `lecture` varchar(30) NOT NULL,
+  `role1` varchar(30) NOT NULL,
   `projectname` varchar(255) NOT NULL,
   `projectdesc` varchar(2000) NOT NULL,
   `groupmember1` int(30) NOT NULL,
+  `role2` varchar(30) NOT NULL,
   `groupmember2` int(30) NOT NULL,
+  `role3` varchar(30) NOT NULL,
   `groupmember3` int(30) NOT NULL,
+  `role4` varchar(30) NOT NULL,
   `groupmember4` int(30) NOT NULL,
-  `groupmember5` int(30) NOT NULL
+  `role5` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `createproject`
 --
 
-INSERT INTO `createproject` (`id`, `groupleader`, `lecture`, `projectname`, `projectdesc`, `groupmember1`, `groupmember2`, `groupmember3`, `groupmember4`, `groupmember5`) VALUES
-(2, 'Ahsan Iman', 'Lecture 1', 'Banking System', 'Banking system is a group or network of institutions that provide financial services for us. These institutions are responsible for operating a payment system, providing loans, taking deposits, and helping with investments.', 170878748, 178748663, 178056636, 182052545, 178562036);
+INSERT INTO `createproject` (`id`, `groupleader`, `role1`, `projectname`, `projectdesc`, `groupmember1`, `role2`, `groupmember2`, `role3`, `groupmember3`, `role4`, `groupmember4`, `role5`) VALUES
+(2, 'Ahsan Iman', 'Lecture 1', 'Banking System', 'Banking system is a group or network of institutions that provide financial services for us. These institutions are responsible for operating a payment system, providing loans, taking deposits, and helping with investments.', 170878748, '', 178748663, '', 178056636, '', 182052545, '178562036');
 
 -- --------------------------------------------------------
 
@@ -82,7 +172,7 @@ CREATE TABLE `elicitation` (
   `m3` tinyint(1) DEFAULT NULL,
   `m4` tinyint(1) DEFAULT NULL,
   `m5` tinyint(1) DEFAULT NULL,
-  `approved` tinyint(1) DEFAULT '0'
+  `approved` tinyint(1) DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -222,25 +312,33 @@ INSERT INTO `progress` (`module`, `status`) VALUES
 
 CREATE TABLE `register` (
   `id` int(255) NOT NULL,
-  `regname` varchar(50) NOT NULL,
+  `username` varchar(50) NOT NULL,
   `studentid` int(30) NOT NULL,
-  `email` varchar(50) NOT NULL,
-  `pw` varchar(30) NOT NULL,
-  `repeatpw` varchar(30) NOT NULL
+  `password` varchar(30) NOT NULL,
+  `confirm_password` varchar(30) NOT NULL,
+  `leader` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `register`
 --
 
-INSERT INTO `register` (`id`, `regname`, `studentid`, `email`, `pw`, `repeatpw`) VALUES
-(0, 'Nur Maisara', 17412554, 'maisara@yahoo.com', 'akhir', 'akhir'),
-(1, 'Nur Maisara', 170878748, 'maisara@yahoo.com', 'akhir', 'akhir'),
-(2, 'Ahsan Iman', 170878769, 'ahsan@yahoo.com', 'awal', 'awal'),
-(3, 'Aiman Aqma', 178748663, 'aqma@yahoo.com', 'first', 'first'),
-(4, 'Huda Izaty', 178056636, 'izaty@yahoo.com', 'last', 'last'),
-(5, 'Mia Farina', 182052545, 'farina@yahoo.com', 'middle', 'middle'),
-(6, 'Jonathan Ong', 178562036, 'jonathan@yahoo.com', 'tengah', 'tengah');
+INSERT INTO `register` (`id`, `username`, `studentid`, `password`, `confirm_password`, `leader`) VALUES
+(0, 'Nur Maisara', 17412554, 'akhir', 'akhir', 0),
+(1, 'Nur Maisara', 170878748, 'akhir', 'akhir', 0),
+(2, 'Ahsan Iman', 170878769, 'awal', 'awal', 0),
+(3, 'Aiman Aqma', 178748663, 'first', 'first', 0),
+(4, 'Huda Izaty', 178056636, 'last', 'last', 0),
+(5, 'Mia Farina', 182052545, 'middle', 'middle', 0),
+(6, 'Jonathan Ong', 178562036, 'tengah', 'tengah', 0),
+(7, 'test1', 17056321, '1234567', '12345', 0),
+(30, 'ida', 85225852, '$2y$10$MONe4MnsQLmJQxZz7d0C5.j', '$2y$10$0.0fDfze5RUD09yvoi159.Y', 1),
+(42, 'Aldo', 170808080, '$2y$10$kqNXGblG6rhkJnrgU/ZZvOx', '$2y$10$7DZ9dygqc5iafyfJvdsF5.Q', 1),
+(44, 'Farisha', 601601, '$2y$10$aWGWjc6.OMm0W2swmzbk4OF', '$2y$10$q7g8CzwarPprFK8vpcRlJux', 1),
+(46, 'regname', 63636363, '636363', '636363', 1),
+(47, 'saa', 303030, '303030', '303030', 1),
+(48, 'Adie', 963963963, '369369', '369369', 0),
+(50, 'fare', 1251251, '202020', '202020', 1);
 
 -- --------------------------------------------------------
 
@@ -324,6 +422,30 @@ CREATE TABLE `rn_vote` (
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `role`
+--
+
+CREATE TABLE `role` (
+  `roleid` int(11) NOT NULL,
+  `role` varchar(30) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `role`
+--
+
+INSERT INTO `role` (`roleid`, `role`) VALUES
+(1, 'Top Management'),
+(2, 'Project Manager'),
+(3, 'System Analyst'),
+(4, 'Requirement Engineering'),
+(5, 'Programmer'),
+(6, 'Stakeholder'),
+(7, 'User');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `rq_main`
 --
 
@@ -365,7 +487,8 @@ INSERT INTO `rvp1` (`id`, `name`, `position`) VALUES
 (38, 'Khairul Amar', 'Requirement Engineering'),
 (40, 'Nuriena Deen', 'Client'),
 (41, 'Yuvaneesha', 'Programmer'),
-(43, 'Adni ', 'Manager');
+(43, 'Adni ', 'Manager'),
+(44, 'Awa', 'Managerr');
 
 -- --------------------------------------------------------
 
@@ -393,7 +516,11 @@ INSERT INTO `rvp2` (`id`, `requirement`, `error`, `foundby`, `fdate`, `supportby
 (24, 'Q03', '3 seconds ? Need to discuss this..', 'Khairul Amar', '2020-09-05', 'Nuriena', '2020-09-05'),
 (25, 'F01', 'Not comprehensible to all', 'Munirah', '2020-09-07', 'Yuvaneesha', '2020-09-07'),
 (29, 'Choose requirement', '', '  Tyara ', '0000-00-00', '', '0000-00-00'),
-(30, 'Q01', 'Do not use shall', 'Farhah ', '2021-02-07', 'Melisa', '2021-02-07');
+(30, 'Q01', 'Do not use shall', 'Farhah ', '2021-02-07', 'Melisa', '2021-02-07'),
+(31, 'F01', 'The system shall be', 'Me', '2021-02-23', 'Yo', '2021-02-23'),
+(32, 'F01', 'The system shall be', 'Me', '2021-02-23', 'Yo', '2021-02-23'),
+(33, 'F01', 'wee', 'aaa', '2021-03-13', 'aaa', '2021-03-12'),
+(34, 'F01', 'as', 'as', '2021-03-10', 'sa', '2021-02-20');
 
 -- --------------------------------------------------------
 
@@ -421,7 +548,8 @@ INSERT INTO `rvp3` (`id`, `requirement`, `error`, `solution`, `status`, `correct
 (6, 'F02', 'Use ', 'The system shall reduce wastage of raw materials to improve cost savings.', '', 'Munirah', '0000-00-00', 'Zharif', '2020-09-07'),
 (7, 'Q02', 'What kind of software? Please state.', 'The system shall be simple to be easily upgrade to Quickbooks.', '', 'Yuvaneesha', '0000-00-00', 'Khairul', '2020-09-07'),
 (8, 'Q03', '3 seconds? Need to discuss this.. Yeay', 'The system will be able to response within 3 to 6 seconds.', '', 'Akhma', '0000-00-00', 'Nuriena', '2020-09-09'),
-(12, 'Choose requirement', '', '', '', '', '0000-00-00', '', '0000-00-00');
+(12, 'Choose requirement', '', '', '', '', '0000-00-00', '', '0000-00-00'),
+(13, 'F01', 'sasa', 'sas', '', 'sa', '2021-02-12', 'sas', '2021-02-25');
 
 -- --------------------------------------------------------
 
@@ -472,6 +600,24 @@ INSERT INTO `views` (`v_id`, `viewer`, `attribute`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `checklist1`
+--
+ALTER TABLE `checklist1`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `checklist2`
+--
+ALTER TABLE `checklist2`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `checklist3`
+--
+ALTER TABLE `checklist3`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `createproject`
@@ -546,6 +692,12 @@ ALTER TABLE `rn_vote`
   ADD PRIMARY KEY (`option_id`,`userr_id`);
 
 --
+-- Indexes for table `role`
+--
+ALTER TABLE `role`
+  ADD PRIMARY KEY (`roleid`);
+
+--
 -- Indexes for table `rq_main`
 --
 ALTER TABLE `rq_main`
@@ -578,6 +730,24 @@ ALTER TABLE `user`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `checklist1`
+--
+ALTER TABLE `checklist1`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+
+--
+-- AUTO_INCREMENT for table `checklist2`
+--
+ALTER TABLE `checklist2`
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `checklist3`
+--
+ALTER TABLE `checklist3`
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `createproject`
@@ -619,7 +789,7 @@ ALTER TABLE `login`
 -- AUTO_INCREMENT for table `register`
 --
 ALTER TABLE `register`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 
 --
 -- AUTO_INCREMENT for table `requirements`
@@ -640,6 +810,12 @@ ALTER TABLE `rn_option`
   MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
+-- AUTO_INCREMENT for table `role`
+--
+ALTER TABLE `role`
+  MODIFY `roleid` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT for table `rq_main`
 --
 ALTER TABLE `rq_main`
@@ -649,19 +825,19 @@ ALTER TABLE `rq_main`
 -- AUTO_INCREMENT for table `rvp1`
 --
 ALTER TABLE `rvp1`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=45;
 
 --
 -- AUTO_INCREMENT for table `rvp2`
 --
 ALTER TABLE `rvp2`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 
 --
 -- AUTO_INCREMENT for table `rvp3`
 --
 ALTER TABLE `rvp3`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
