@@ -10,7 +10,9 @@
   <meta name="author" content="">
 
   <title>SRE Tool</title>
-
+<!-- <-- Custom styles for this template -->
+<link href="css/styleprinciple.css" rel="stylesheet">
+  
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -20,11 +22,7 @@
   <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script> 
-  <!-- <link rel="stylesheet" href="CRUD Table/Bootstrap Database CRUD Data Table With Modal Form/css/style.css"> 
-  
-
-  <-- Custom styles for this template -->
-  <link href="css/styleprinciple.css" rel="stylesheet">
+  <!-- <link rel="stylesheet" href="CRUD Table/Bootstrap Database CRUD Data Table With Modal Form/css/style.css">  -->
 
 </head>
 

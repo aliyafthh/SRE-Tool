@@ -71,23 +71,37 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-folder-open"></i>
-          <span>Modules</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">REQUIREMENT:</h6>
-            <a class="collapse-item" href="buttons.html">1- Elicitation</a>
-            <a class="collapse-item" href="cards.html">2- Documentation</a>
-            <a class="collapse-item" href="cards.html">3- Negotiation</a>      
-            <a class="collapse-item" href="rvpoption.php">4- Validation</a> 
-            <a class="collapse-item" href="cards.html">5- Management</a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-folder-open"></i>
+              <span>Modules</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">REQUIREMENT:</h6>
+                <a class="collapse-item" href="buttons.html">1- Elicitation</a>
+                <a class="collapse-item" href="cards.html">2- Documentation</a>
+                <a class="collapse-item" href="cards.html">3- Negotiation</a>      
+                <a class="collapse-item" href="rvoption.html">4- Validation</a> 
+                <a class="collapse-item" href="cards.html">5- Management</a>
 
-          </div>
-        </div>
-      </li>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo">
+              <i class="far fa-folder-open"></i>
+              <span>Requirement Validation</span>
+            </a>
+            <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                
+                <a class="collapse-item" href="principles.php">Principles</a>
+                <a class="collapse-item" href="techniques.php">Techniques</a>
+              </div>
+            </div>
+          </li>
 
  <!-- Setting thing -->
  <hr class="sidebar-divider my-0">
@@ -244,48 +258,7 @@
             
             <div class="letter">
 
-            <?php
-       
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "sretool";
-
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-                $sql = "SELECT * FROM inspection1";
-                
-                $result = mysqli_query($conn, $sql);
-
-                if (mysqli_num_rows($result) > 0) {
-                    // output data of each row
-                    while($row = mysqli_fetch_assoc($result)) {
-     
-            ?>
-          
-          <p><b>Inspection Roles In A Team</b></p>
-          <hr>
-                <p>1. <?php echo $row['name1']; ?> [ <?php echo $row['role1']; ?> ] </p>
-                <p>2. <?php echo $row['name2']; ?> [ <?php echo $row['role2']; ?> ] </p>
-                <p>3. <?php echo $row['name3']; ?> [ <?php echo $row['role3']; ?> ] </p>
-                <p>4. <?php echo $row['name4']; ?> [ <?php echo $row['role4']; ?> ] </p>
-                <p>5. <?php echo $row['name5']; ?> [ <?php echo $row['role5']; ?> ] </p>
-                <p>6. <?php echo $row['name6']; ?> [ <?php echo $row['role6']; ?> ] </p>
-          <hr>
-
-          <?php
-                    }
-                } else {
-                    echo "No created project";
-                }
-
-                mysqli_close($conn);
-          ?>
+            
           <?php
        
                 $servername = "localhost";
@@ -300,35 +273,47 @@
                     die("Connection failed: " . mysqli_connect_error());
                 }
 
-                $sql = "SELECT * FROM inspection2";
+                if(isset($_POST['view'])){
+
+                  $id = $_POST['id'];
+
+                $sql = "SELECT * FROM inspection2 WHERE id=$id";
                 
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
-     
+                    
             ?>
-          <p><b>Requirement :</b></p>
-          
-          <p><?php echo $row['requirement']; ?></p>
           <hr>
-          <p><b>Error(s) Found :</b></p>
+          <h6><b>Requirement </h6></p>
+          <hr>
           
-          <p><?php echo $row['error']; ?></p>
+          <h6><?php echo $row['requirement']; ?></h6>
           
-        <hr>
-          <p><b>Comments :</b></p>
-          
-          <p><?php echo $row['comment']; ?></p>
-          
+          <br>
+
+          <hr>
+          <h6><b>Error(s) Found </b></h6>
+          <hr>
+
+          <h6><?php echo $row['error']; ?></h6>
+          <br>
+
+          <hr>
+          <h6><b>Comments </b></h6>
+          <hr>
+
+          <h6><?php echo $row['comment']; ?></h6>
+          <br>
     </div>
     <?php
                     }
                 } else {
                     echo "No created project";
                 }
-
+              }
                 mysqli_close($conn);
           ?>
            

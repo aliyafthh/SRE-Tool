@@ -1906,8 +1906,8 @@ pre code {
 }
 
 .table-dark.table-hover tbody tr:hover {
-	color: #fff;
-	background-color: rgba(255, 255, 255, .075)
+	color: rgb(255, 255, 255);
+	background-color: rgba(128, 53, 53, 0.075)
 }
 
 /* @media (max-width:575.98px) {
@@ -11574,6 +11574,7 @@ body.sidebar-toggled footer.sticky-footer {
 /* TABLE TINGS */
 .table-wrapper {
 	background: linear-gradient(to right,  #4e72df6c 8%, #ff99cc38 100%);
+	
 	padding: 20px 25px;
 	margin: 30px 0;
 	border-radius: 10px;

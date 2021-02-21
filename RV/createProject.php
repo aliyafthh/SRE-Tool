@@ -7,16 +7,20 @@ if(isset($_POST['insert']))
   $db = mysqli_select_db($connection, 'sretool');
 
     $groupleader = $_POST['groupleader'];
-    $lecture = $_POST['lecture'];
+    $role1 = $_POST['role1'];
     $projectname = $_POST['projectname'];
     $projectdesc = $_POST['projectdesc'];
     $groupmember1 = $_POST['groupmember1'];
+    $role2 = $_POST['role2'];
     $groupmember2 = $_POST['groupmember2'];
+    $role3 = $_POST['role3'];
     $groupmember3 = $_POST['groupmember3'];
+    $role4 = $_POST['role4'];
     $groupmember4 = $_POST['groupmember4'];
-    $groupmember5 = $_POST['groupmember5'];
+    $role5 = $_POST['role5'];
     
-    $query = "INSERT INTO createproject(groupleader,lecture,projectname,projectdesc,groupmember1,groupmember2,groupmember3,groupmember4,groupmember5) VALUES ('".$_POST["groupleader"]."','".$_POST["lecture"]."','".$_POST["projectname"]."','".$_POST["projectdesc"]."','".$_POST["groupmember1"]."','".$_POST["groupmember2"]."','".$_POST["groupmember3"]."','".$_POST["groupmember4"]."','".$_POST["groupmember5"]."')";
+    
+    $query = "INSERT INTO createproject(groupleader,role1,projectname,projectdesc,groupmember1,role2,groupmember2,role3,groupmember3,role4,groupmember4,role5) VALUES ('".$_POST["groupleader"]."','".$_POST["role1"]."','".$_POST["projectname"]."','".$_POST["projectdesc"]."','".$_POST["groupmember1"]."','".$_POST["role2"]."','".$_POST["groupmember2"]."','".$_POST["role3"]."','".$_POST["groupmember3"]."','".$_POST["role4"]."','".$_POST["groupmember4"]."','".$_POST["role5"]."')";
 
     $query_run = mysqli_query($connection, $query);
 
@@ -24,7 +28,7 @@ if(isset($_POST['insert']))
     {
       echo '<script> alert("Data Not Saved"); </script>';
     }
-    if($groupleader !='' && $lecture !='' && $projectname !='' && $projectdesc !='' && $groupmember1 !='' && $groupmember2 !='' && $groupmember3 !='' && $groupmember4 !='' && $groupmember5 !='')
+    if($groupleader !='' && $role1 !='' && $projectname !='' && $projectdesc !='' && $groupmember1 !='' && $role2 !='' && $groupmember2 !='' && $role3 !='' && $groupmember3 !='' && $role4 !='' && $groupmember4 !='' && $role5 !='')
         {
         //  To redirect form on a particular page
         // *******
@@ -270,38 +274,105 @@ if(isset($_POST['insert']))
                       <!-- <input type="hidden" name = "idd" id = "idd" value = "idd"> -->
                       
                         <div class="form-group row">
-                          <div class="col-sm-8 mb-5 mb-sm-0">
+                          <div class="col-sm-7 mb-5 mb-sm-0">
                             <input type="text" class="form-control " name = "groupleader" id="groupleader" placeholder="Group Leader">
                           </div>
-                          <div class="col-sm-4">
+                          <div class="col-sm-5">
                             <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
-                            <select name = "lecture" id = "lecture" class=" form-control custom-select" >
-                              <option selected>Lecture</option>
-                              <option value="Lecture 1">Lecture 1</option>
-                              <option value="Lecture 2">Lecture 2</option>
+                            <select name = "role1" id = "role1" class=" form-control custom-select" >
+                              <option selected>Roles</option>
+                              <option value="Top Management">Top Management</option>
+                              <option value="Project Manager">Project Manager</option>
+                              <option value="System Analyst">System Analyst</option>
+                              <option value="Requirement Engineering">Requirement Engineering</option>
+                              <option value="Programmer">Programmer</option>
+                              <option value="Stakeholder">Stakeholder</option>
+                              <option value="User">User</option>
                             </select>
                           </div>
                         </div>
                         <div class="form-group">
                           <input type="text" class="form-control" name = "projectname" id="projectname" placeholder="Project Name">
                         </div>
+                        
                         <div class="form-group">
                           <textarea class="form-control" name="projectdesc" rows="5" cols="30" id = "projectdesc" placeholder="Project Description"></textarea>
                         </div>
-                        <div class="form-group">
-                          <input type="text" class="form-control" name = "groupmember1" id="groupmember1" placeholder="Member's ID 1">
+
+                        <div class="form-group row">
+                          <div class="col-sm-7 mb-5 mb-sm-0">
+                            <input type="text" class="form-control " name = "groupmember1" id="groupmember1" placeholder="Member's ID 1">
+                          </div>
+                          <div class="col-sm-5">
+                            <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
+                            <select name = "role2" id = "role2" class=" form-control custom-select" >
+                              <option selected>Roles</option>
+                              <option value="1">Top Management</option>
+                              <option value="2">Project Manager</option>
+                              <option value="3">System Analyst</option>
+                              <option value="4">Requirement Engineering</option>
+                              <option value="5">Programmer</option>
+                              <option value="6">Stakeholder</option>
+                              <option value="7">User</option>
+                            </select>
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <input type="text" class="form-control" name = "groupmember2" id="groupmember2" placeholder="Member's ID 2">
+
+                        <div class="form-group row">
+                          <div class="col-sm-7 mb-5 mb-sm-0">
+                            <input type="text" class="form-control " name = "groupmember2" id="groupmember2" placeholder="Member's ID 2">
+                          </div>
+                          <div class="col-sm-5">
+                            <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
+                            <select name = "role3" id = "role3" class=" form-control custom-select" >
+                              <option selected>Roles</option>
+                              <option value="1">Top Management</option>
+                              <option value="2">Project Manager</option>
+                              <option value="3">System Analyst</option>
+                              <option value="4">Requirement Engineering</option>
+                              <option value="5">Programmer</option>
+                              <option value="6">Stakeholder</option>
+                              <option value="7">User</option>
+                            </select>
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <input type="text" class="form-control" name = "groupmember3" id="groupmember3" placeholder="Member's ID 3">
+
+                         <div class="form-group row">
+                          <div class="col-sm-7 mb-5 mb-sm-0">
+                            <input type="text" class="form-control " name = "groupmember3" id="groupmember3" placeholder="Member's ID 3">
+                          </div>
+                          <div class="col-sm-5">
+                            <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
+                            <select name = "role4" id = "role4" class=" form-control custom-select" >
+                              <option selected>Roles</option>
+                              <option value="1">Top Management</option>
+                              <option value="2">Project Manager</option>
+                              <option value="3">System Analyst</option>
+                              <option value="4">Requirement Engineering</option>
+                              <option value="5">Programmer</option>
+                              <option value="6">Stakeholder</option>
+                              <option value="7">User</option>
+                            </select>
+                          </div>
                         </div>
-                        <div class="form-group">
-                          <input type="text" class="form-control" name = "groupmember4" id="groupmember4" placeholder="Member's ID 4">
-                        </div>
-                        <div class="form-group">
-                          <input type="text" class="form-control" name = "groupmember5" id="groupmember5" placeholder="Member's ID 5">
+
+                        <div class="form-group row">
+                          <div class="col-sm-7 mb-5 mb-sm-0">
+                            <input type="text" class="form-control " name = "groupmember4" id="groupmember4" placeholder="Member's ID 4">
+                          </div>
+                          <div class="col-sm-5">
+                            <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
+                            <select name = "role5" id = "role5" class=" form-control custom-select" >
+                              <option selected>Roles</option>
+                              <option value="1">Top Management</option>
+                              <option value="2">Project Manager</option>
+                              <option value="3">System Analyst</option>
+                              <option value="4">Requirement Engineering</option>
+                              <option value="5">Programmer</option>
+                              <option value="6">Stakeholder</option>
+                              <option value="7">User</option>
+                            </select>
+                          </div>
                         </div>
                         <hr>
 

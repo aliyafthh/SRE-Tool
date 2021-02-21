@@ -252,6 +252,7 @@
 
                 $sql = "SELECT * FROM createproject INNER JOIN register ON createproject.groupmember1 = register.studentid ";
                 
+                
                 $result = mysqli_query($conn, $sql);
 
                 if (mysqli_num_rows($result) > 0) {
@@ -272,13 +273,13 @@
                 <hr>
                 <h5 style= "color:#0e817b"><b>Group Leader</b></h5></p>
                 <hr>
-                <h6><?php echo $row['groupleader']; ?></h6>
+                <h6><?php echo $row['groupleader']; ?> [ <?php echo $row['role1' ]; ?> ]</h6>
                 <br>
                 
                 <hr>
                 <h5 style= "color:#0e817b"><b>Group Members</h5></p>
                 <hr>
-                <h6>1. <?php echo $row['regname']; ?></h6>
+                <h6>1. <?php echo $row['regname']; ?> [ <?php echo $row['role2']; ?> ]</h6>
                 <?php
                     }
                 } else {
@@ -310,7 +311,7 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
             ?>
-                <h6>2. <?php echo $row['regname']; ?></h6>
+                <h6>2. <?php echo $row['regname']; ?> [ <?php echo $row['role3']; ?> ] </h6>
 
             <?php
                     }
@@ -343,7 +344,7 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
             ?>
-                <h6>3. <?php echo $row['regname']; ?></h6>
+                <h6>3. <?php echo $row['regname']; ?> [ <?php echo $row['role4']; ?> ]</h6>
 
             <?php
                     }
@@ -376,7 +377,7 @@
                     // output data of each row
                     while($row = mysqli_fetch_assoc($result)) {
             ?>
-                <h6>4. <?php echo $row['regname']; ?></h6>
+                <h6>4. <?php echo $row['regname']; ?> [ <?php echo $row['role5']; ?> ]</h6>
 
             <?php
                     }
@@ -387,38 +388,7 @@
                 mysqli_close($conn);
             ?>    
 
-<?php
-                
-                $servername = "localhost";
-                $username = "root";
-                $password = "";
-                $dbname = "sretool";
 
-                // Create connection
-                $conn = mysqli_connect($servername, $username, $password, $dbname);
-                // Check connection
-                if (!$conn) {
-                    die("Connection failed: " . mysqli_connect_error());
-                }
-
-                $sql = "SELECT * FROM createproject INNER JOIN register ON createproject.groupmember5 = register.studentid ";
-                
-                $result = mysqli_query($conn, $sql);
-
-                if (mysqli_num_rows($result) > 0) {
-                    // output data of each row
-                    while($row = mysqli_fetch_assoc($result)) {
-            ?>
-                <h6>5. <?php echo $row['regname']; ?></h6>
-
-            <?php
-                    }
-                } else {
-                    echo " ";
-                }
-
-                mysqli_close($conn);
-            ?>
                 <br>
                 <hr>
  

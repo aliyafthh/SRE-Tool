@@ -1,30 +1,77 @@
 <!-- insert into db -->
 
 <?php
+$password_err =  "";
 if(isset($_POST['insert']))
 {
   $connection = mysqli_connect("localhost","root","");
   $db = mysqli_select_db($connection, 'sretool');
 
-    $email = $_POST['email'];
-    $pw = $_POST['pw'];
+    $studentid = $_POST['studentid'];
+    $password = $_POST['password'];
+    
    
-    $query = "INSERT INTO login(email,pw) VALUES ('".$_POST["email"]."','".$_POST["pw"]."')";
-    $query_run = mysqli_query($connection, $query);
 
-    if(!$query_run)
+   
+    $query      = "SELECT * FROM register where studentid = '$studentid'";
+    $resultSet  = mysqli_query($connection, $query); //Syntax error: mysqli_query(connection,query);
+
+    
+
+    // $query = "INSERT INTO login(studentid,pw) VALUES ('".$_POST["studentid"]."','".$_POST["pw"]."')";
+    // $query_run = mysqli_query($connection, $query);
+
+    // if(!$query_run)
+    // {
+    //   echo '<script> alert("Data Not Saved"); </script>';
+    // }
+
+    $query2 = "SELECT id FROM createproject WHERE groupmember1=" . $studentid . " OR  groupmember2=" .  $studentid . " OR groupmember3=" . $studentid . " OR groupmember4=" . $studentid;
+
+    $query2_run = mysqli_query($connection, $query2);
+  //   $groupID = 0;
+  //   if ($query2_run->num_rows > 0) {
+  //         while ($row = $query2_run->fetch_assoc()) {
+  //                $groupID = $row['id'];
+  //       }
+  //  }
+
+
+  // Validate confirm password
+  if(empty(trim($_POST["password"]))){
+    $password_err = "Please confirm password.";     
+} else{
+    $password = trim($_POST["password"]);
+    
+        $password_err = "Password did not match.";
+    
+}
+
+
+
+    if($studentid !=''&& $password !='')
+
     {
-      echo '<script> alert("Data Not Saved"); </script>';
+      if(mysqli_num_rows($resultSet) > 0){
+        $row    = mysqli_fetch_assoc($resultSet);
+
+        if($row['password'] == $password){ // if you are using encryption like md5 or anything else then you have to add in this line accordingly
+            header("Location:../RM/home.php?id=".$studentid);
+            echo "Good, Logged In!";
+        }else{
+            echo "Oh No, password not correct!";
+        }
+    }else{
+        echo "Please enter correct ID !";
     }
-    if($email !=''&& $pw !='')
-{
-//  To redirect form on a particular page
-header("Location:createProject.php");
-}
-else{
-?><span><?php echo "Please fill all fields.....!!!!!!!!!!!!";?></span> <?php
-  }
-}
+
+
+    //  To redirect form on a particular page
+    }
+    else{
+    ?><span><?php echo "Please fill all fields.....!!!!!!!!!!!!";?></span> <?php
+      }
+    }
 ?>
 
 <!DOCTYPE html>
@@ -40,6 +87,16 @@ else{
 
   <title>SRE Tool</title>
 
+<style>
+.hi{
+  background : #238C89;
+
+
+}
+</style>
+
+
+
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
@@ -49,7 +106,7 @@ else{
 
 </head>
 
-<body class="bg-gradient-primary">
+<body class="hi">
 
   <div class="container">
 
@@ -72,17 +129,15 @@ else{
                   <br>
                   <form class = "user" action="login.php" id="my-form" method ="post">
                     <div class="form-group">
-                      <input type="email" class="form-control " name="email" id="email" aria-describedby="emailHelp" placeholder="Email Address">
+                      <input type="text" class="form-control " name="studentid" id="studentid"  placeholder="Student ID" required="required">
                     </div>
+
                     <div class="form-group">
-                      <input type="password" class="form-control " name="pw" id="pw" placeholder="Password">
+                      <input type="password" class="form-control " name="password" id="password" placeholder="Password" required="required">
+                      <span class="help-block"><?php echo $password_err; ?></span>
                     </div>
-                    <!-- <div class="form-group">
-                      <div class="custom-control custom-checkbox small">
-                        <input type="checkbox" class="custom-control-input" id="customCheck">
-                        <label class="custom-control-label" for="customCheck">Remember Me</label>
-                      </div>
-                    </div> -->
+                 
+
                     <br>
                     <hr>
                     <button type="submit" name="insert" value = "submit"  class="btn btn-primary btn-user btn-block" > Login </button>
@@ -94,9 +149,7 @@ else{
                   <!-- <div class="text-center">
                     <a class="small" href="forgot-password.html">Forgot Password?</a>
                   </div> -->
-                  <div class="text-center">
-                    <a class="small" href="register.php">Create an Account!</a>
-                  </div>
+                  <p class="text-center">Don't have an account? <a href="register.php">Sign up now</a>.</p>
                   <br>
                 </div>
               </div>
@@ -121,5 +174,50 @@ else{
   <script src="js/sb-admin-2.min.js"></script>
 
 </body>
+
+
+
+<!-- <div class="signup-form">
+    <form action="loginProcess.php" method="post" enctype="multipart/form-data">
+		<h2>Login</h2>
+		<p class="hint-text">Enter Login Details</p>
+        <div class="form-group">
+        	<input type="email" class="form-control" name="email" placeholder="Email" required="required">
+        </div>
+		<div class="form-group">
+            <input type="password" class="form-control" name="pass" placeholder="Password" required="required">
+        </div>
+		<div class="form-group">
+            <button type="submit" name="save" class="btn btn-success btn-lg btn-block">Login</button>
+        </div>
+        <div class="text-center">Don't have an account? <a href="register.php">Register Here</a></div>
+    </form>
+</div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 </html>

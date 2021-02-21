@@ -59,32 +59,45 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-folder-open"></i>
-          <span>Modules</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">REQUIREMENT:</h6>
-            <a class="collapse-item" href="buttons.html">1- Elicitation</a>
-            <a class="collapse-item" href="cards.html">2- Documentation</a>
-            <a class="collapse-item" href="cards.html">3- Negotiation</a>      
-            <a class="collapse-item" href="rvpoption.php">4- Validation</a> 
-            <a class="collapse-item" href="cards.html">5- Management</a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-folder-open"></i>
+              <span>Modules</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">REQUIREMENT:</h6>
+                <a class="collapse-item" href="buttons.html">1- Elicitation</a>
+                <a class="collapse-item" href="cards.html">2- Documentation</a>
+                <a class="collapse-item" href="cards.html">3- Negotiation</a>      
+                <a class="collapse-item" href="rvoption.html">4- Validation</a> 
+                <a class="collapse-item" href="cards.html">5- Management</a>
 
-          </div>
-        </div>
-      </li>
+              </div>
+            </div>
+          </li>
 
- <!-- Setting thing -->
- <hr class="sidebar-divider my-0">
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo">
+              <i class="far fa-folder-open"></i>
+              <span>Requirement Validation</span>
+            </a>
+            <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                
+                <a class="collapse-item" href="principles.php">Principles</a>
+                <a class="collapse-item" href="techniques.php">Techniques</a>
+              </div>
+            </div>
+          </li>
+        <!-- Setting thing -->
+        <hr class="sidebar-divider my-0">
 
- <li class="nav-item">
-   <a class="nav-link" href="index.html">
-     <i class="fas fa-fw fa-wrench"></i>
-       <span>Setting</span></a>
- </li>
+        <li class="nav-item">
+          <a class="nav-link" href="index.html">
+            <i class="fas fa-fw fa-wrench"></i>
+              <span>Setting</span></a>
+        </li>
      
 
       <!-- Divider -->
@@ -111,8 +124,6 @@
           <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
             <i class="fa fa-bars"></i>
           </button>
-
-        
 
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
@@ -145,50 +156,7 @@
                 <!-- Counter - Alerts -->
                 <span class="badge badge-danger badge-counter">3+</span>
               </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
-
-  
-
+             
             <div class="topbar-divider d-none d-sm-block"></div>
 
             <!-- Nav Item - User Information -->
@@ -228,51 +196,10 @@
               </ol>
             </nav>
 
-            <h4 class="text-muted"><b>Inspection : Error Detection</b></h4>
+            <h4 class="text-muted"><b>Inspection : Meeting</b></h4>
            
             <div class="letter">
-            <?php
-       
-       $servername = "localhost";
-       $username = "root";
-       $password = "";
-       $dbname = "sretool";
-
-       // Create connection
-       $conn = mysqli_connect($servername, $username, $password, $dbname);
-       // Check connection
-       if (!$conn) {
-           die("Connection failed: " . mysqli_connect_error());
-       }
-
-       $sql = "SELECT * FROM inspection1";
-       
-       $result = mysqli_query($conn, $sql);
-
-       if (mysqli_num_rows($result) > 0) {
-           // output data of each row
-           while($row = mysqli_fetch_assoc($result)) {
-
-   ?>
- 
-          <p><b>Inspection Roles In A Team</b></p>
-          <hr>
-                <p>1. <?php echo $row['name1']; ?> [ <?php echo $row['role1']; ?> ] </p>
-                <p>2. <?php echo $row['name2']; ?> [ <?php echo $row['role2']; ?> ] </p>
-                <p>3. <?php echo $row['name3']; ?> [ <?php echo $row['role3']; ?> ] </p>
-                <p>4. <?php echo $row['name4']; ?> [ <?php echo $row['role4']; ?> ] </p>
-                <p>5. <?php echo $row['name5']; ?> [ <?php echo $row['role5']; ?> ] </p>
-                <p>6. <?php echo $row['name6']; ?> [ <?php echo $row['role6']; ?> ] </p>
-          <hr>
-
-          <?php
-                    }
-                } else {
-                    echo "No created project";
-                }
-
-                mysqli_close($conn);
-          ?>
+            
            <?php
        
                   $servername = "localhost";
@@ -287,7 +214,11 @@
                       die("Connection failed: " . mysqli_connect_error());
                   }
 
-                  $sql = "SELECT * FROM inspection3";
+                  if(isset($_POST['view'])){
+
+                    $id = $_POST['id'];
+
+                  $sql = "SELECT * FROM inspection3 WHERE id=$id";
                   
                   $result = mysqli_query($conn, $sql);
 
@@ -296,33 +227,47 @@
                       while($row = mysqli_fetch_assoc($result)) {
 
             ?>
-                <p><b>Requirement :</b></p>
-                
-                <p><?php echo $row['requirement']; ?></p>
-                <hr>
-                <p><b>Classification of findings :</b></p>
-                
-                <p><?php echo $row['class']; ?></p>
-                <hr>
-                <p><b>Solution :</b></p>
-                
-                <p><?php echo $row['solution']; ?></p>
-                <hr>
-                <p><b>Decision :</b></p>
-                
-                <p><?php echo $row['decision']; ?></p>
-                <hr>
-                <p><b>Comments :</b></p>
-                
-                <p><?php echo $row['comment']; ?></p>
+                    <hr>
+                    <h6><b>Requirement </h6></p>
+                    <hr>
+                    
+                    <h6><?php echo $row['requirement']; ?></h6>
+                    
+                    <br>
+
+                    <hr>
+                    <h6><b>Classification of findings </b></h6>
+                    <hr>
+
+                    <h6><?php echo $row['class']; ?></h6>
+                    <br>
+
+                    <hr>
+                    <h6><b>Decision </b></h6>
+                    <hr>
+
+                    <h6><?php echo $row['decision']; ?></h6>
+                    <br>
+                    
+                    <hr>
+                    <h6><b>Comments </b></h6>
+                    <hr>
+
+                    <h6><?php echo $row['comment']; ?></h6>
+                    <br>
                 
                 </div>
+
+          
+
+
+
                 <?php
                     }
                 } else {
                     echo "No created project";
                 }
-
+              }
                 mysqli_close($conn);
           ?>
 

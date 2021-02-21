@@ -15,12 +15,34 @@
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
+  
+  <style>
+  	.hoverTable{
+		width:100%; 
+    border-collapse:collapse; 
+      }
+  
+ 
+	.hoverTable td{ 
+    padding:24px;
+  
+  }
+  
+	/* Define the default color for all the table rows */
+	.hoverTable tr{
+		background: rgba(190, 192, 192, 0.151);
+	}
+	/* Define the hover highlight color for the table row */
+    .hoverTable tr:hover {
+          background-color: rgba(0, 168, 252, 0.356);
+    }
+</style>
+
 
   <!-- Custom styles for this template-->
   <link href="css/sb-admin-2.min.css" rel="stylesheet">
-  <link href="principles.css" rel="stylesheet">
-
-
+  <!-- <link href="inspection.css" rel="stylesheet"> -->
+  <link href="checklist.css" rel="stylesheet">
 </head>
 
 <body id="page-top">
@@ -72,18 +94,18 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
+   <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-folder"></i>
+          <i class="fas fa-folder-open"></i>
           <span>Modules</span>
         </a>
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
           <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">REQUIREMENT</h6>
+            <h6 class="collapse-header">REQUIREMENT:</h6>
             <a class="collapse-item" href="buttons.html">1- Elicitation</a>
             <a class="collapse-item" href="cards.html">2- Documentation</a>
             <a class="collapse-item" href="cards.html">3- Negotiation</a>      
-            <a class="collapse-item" href="rvpoption.php">4- Validation</a> 
+            <a class="collapse-item" href="rvoption.html">4- Validation</a> 
             <a class="collapse-item" href="cards.html">5- Management</a>
 
           </div>
@@ -172,47 +194,7 @@
                 <!-- Counter - Alerts -->
                 <span class="badge badge-danger badge-counter">3+</span>
               </a>
-              <!-- Dropdown - Alerts -->
-              <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="alertsDropdown">
-                <h6 class="dropdown-header">
-                  Alerts Center
-                </h6>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-primary">
-                      <i class="fas fa-file-alt text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 12, 2019</div>
-                    <span class="font-weight-bold">A new monthly report is ready to download!</span>
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-success">
-                      <i class="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="#">
-                  <div class="mr-3">
-                    <div class="icon-circle bg-warning">
-                      <i class="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div class="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We've noticed unusually high spending for your account.
-                  </div>
-                </a>
-                <a class="dropdown-item text-center small text-gray-500" href="#">Show All Alerts</a>
-              </div>
-            </li>
+              
 
   
 
@@ -221,7 +203,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Akhma Luna</span>
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -241,55 +223,90 @@
 
         <!-- Begin Page Content -->
         <div class="container-fluid">
-            <!-- <h1 class="h2 mb-4 text-gray-800 text-center">REQUIREMENT VALIDATION TECHNIQUES</h1>
-         -->
 
-            <div class="card-container"> 
-              <div class="card"><a href="checklist1.php">
-                  <div class="card--display"><i class="material-icons">FIRST QUALITY ASPECT</i>
-                  </div>
-                  <div class="card--hover">
-                    <h2>VALIDATING INDIVIDUAL REQUIREMENTS</h2>
-                    <p>Goal – action for checking errors in the content. Errors in requirements influence the subsequent software development phase.        
-                      
-                    </p>
-                    <p class="link" >Perform quality aspect..</p>
-                  </div></a>
-                <div class="card--border"></div>
-              </div>
-            </div>
+        <div class="container">
+          
+            <div class="table-wrapper">
+            <br>
+                <div class="table-title">
 
-            <div class="card-container"> 
-              <div class="card"><a href="checklist2.php">
-                  <div class="card--display"><i class="material-icons">SECOND QUALITY ASPECT</i>
-                  </div>
-                  <div class="card--hover">
-                    <h2>VALIDATING INDIVIDUAL DOCUMENTATION</h2>
-                    <p>Goal – action of checking information gaps or the violation of agreed documentation guidelines.
-</p>
-                    <p class="link" >Perform quality aspect..</p>
-                  </div></a>
-                <div class="card--border"></div>
+                    <div class="row">
+                    
+                        <div class="col-sm-6">
+
+                        
+                        <h2 class="card-title text-info">Validating<b> Individual Requirement</b></h2>
+
               </div>
-            </div>  
-            
-            <div class="card-container"> 
-                <div class="card"><a href="checklist3.php">
-                    <div class="card--display"><i class="material-icons">THIRD QUALITY ASPECT</i>
+              <div  class="col-sm-6">
+                <a style="float:right; color:green" onclick="window.location.href='checklist1.php';" class="btn" data-toggle="modal"><i class="fas fa-plus-circle"></i><span>  Add New</span></a>
+              </div>
                     </div>
-                    <div class="card--hover">
-                      <h2>VALIDATING THE AGREEMENT</h2>
-                      <p> Goal - Action for checking if all stakeholders agree with the documented requirements.
-
-                      </p>
-                      <p class="link">Perform quality aspect..</p>
-                    </div></a>
-                  <div class="card--border"></div>
                 </div>
-              </div>
+                <br>
 
-                      
+               <?php
+                $connection = mysqli_connect("localhost","root","");
+                $db = mysqli_select_db($connection, 'sretool');
+                    
+                $query = "SELECT * FROM checklist1";
+                $query_run = mysqli_query($connection, $query);
+               ?>
+                <table class="table  hoverTable">
+                    <thead>
+                        <tr>
+                <th>
+                  <!-- <span class="custom-checkbox">
+                    <input type="checkbox" id="selectAll">
+                    <label for="selectAll"></label>
+                  </span> -->
+                </th>
+                           
+                            <th scope = "col">Requirement</th>
+                          
+                            <th scope = "col">View</th>
+                        </tr>
+                    </thead>
+                    <?php
+                          if($query_run)
+                          {
+                          foreach($query_run as $row)
+                          {
+                    ?>
+                    <tbody>
+                        <tr>
+                <td>
+                  
+                </td>      
 
+                            <div id = "requirement">
+                              <td>  <?php echo $row['requirement']; ?> </td>
+                            </div>
+
+
+                           <!-- <td> -->
+                              <form action="previewc1.php" method="post">
+                                  <input type="hidden" name="id" id="id" value="<?php echo $row['id'] ?>">
+                                  <th> <button  class="btn" type="submit" name="view"><i class="far fa-file-alt"></i></button></i> </th>
+                              </form>
+
+                            <!-- </td> -->
+                        </tr>
+                    </tbody>
+
+                    <?php          
+                            } 
+                        }
+                        else
+                        {
+                            echo "No record found..";
+                        }
+                    ?>
+                </table>
+          
+	       
+
+                
         </div>
         <!-- /.container-fluid -->
 
@@ -345,7 +362,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="js/sb-admin-2.min.js"></script>
-  <script src="rvp.js"></script>
 
 
 </body>

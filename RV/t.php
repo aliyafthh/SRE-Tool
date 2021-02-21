@@ -17,17 +17,17 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://kit.fontawesome.com/9eba2c9c5c.js" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.4.4/umd/popper.min.js" integrity="sha512-eUQ9hGdLjBjY3F41CScH3UX+4JDSI9zXeroz7hJ+RteoCaY+GP/LDoM8AO+Pt+DRFw3nXqsjh9Zsts8hnYv8/A==" crossorigin="anonymous"></script> -->
 
   <!-- Custom styles for this template-->
   <link href="../Elicitation/css/sb-admin-2.min.css" rel="stylesheet">
+  <!-- <link href="inspection.css" rel="stylesheet">
+  <link href="checklist.css" rel="stylesheet"> -->
 
-  <?php
-  require_once "config.php";
-  $id = 0;
-  if (isset($_GET['id'])) {
-    $id = $_GET['id'];
-  }
-  ?>
+
   <style>
     .img1 {
       width: 10%;
@@ -148,7 +148,7 @@
     <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
       <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php?id=<?php echo $id; ?>">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
           <i class="fas fa-laptop-code"></i>
         </div>
@@ -158,34 +158,7 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <?php
-
-      $query2 = "SELECT * FROM requirements";
-      $result2 = $mysqli->query($query2);
-
-      if ($result2->num_rows > 0) {
-        // output data of each row
-        while ($row2 = $result2->fetch_assoc()) {
-          echo "<li class='nav-item'>
-    <a class='nav-link' href=\"edit.php?id=$row2[id]&gId=$id\">
-    <i class='fas fa-clipboard-list'></i>
-      <span>" . $row2['title'] . "</span></a>
-  </li>";
-
-          echo "<hr class='sidebar-divider my-0'>";
-        }
-      } else {
-        echo "";
-      }
-
-      ?>
-
-      <li class='nav-item'>
-        <a class='nav-link' href="/SRET/sret/RM/book/basic/index.html">
-          <i class="fas fa-book-open"></i>
-          <span>Handbook</span></a>
-      </li>
-
+     
       <br>
       <!-- Sidebar Toggler (Sidebar) -->
       <div class="text-center d-none d-md-inline">
@@ -211,12 +184,7 @@
           <!-- Topbar Navbar -->
           <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="home.php?id=<?php echo $id; ?>" role="button">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Home</span>
-              </a>
-            </li>
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $id; ?>" role="button">
+              <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
               </a>
             </li>
@@ -234,7 +202,7 @@
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="index.php?id=<?php echo $id; ?>" role="button">
+              <a class="nav-link dropdown-toggle" href="index.php" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Manage Requirement</span>
               </a>
             </li>
@@ -244,7 +212,7 @@
             <!-- Nav Item - User Information -->
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;"><?php echo $id; ?></span>
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Akhma Luna</span>
                 <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
               </a>
               <!-- Dropdown - User Information -->
@@ -268,58 +236,7 @@
               <h3 class="text-muted">
                 <h2>Requirement Management </h2>
               </h3>
-              <button class="button" onclick="location.href='manageColumn.php?id=<?php echo $id; ?>';">Manage Columns</button>
-              <button class="button" onclick="location.href='manageViews.php?id=<?php echo $id; ?>';">Manage Views</button>
-              <button class="button" onclick="location.href='prioritisation.php?id=<?php echo $id; ?>';">Prioritize Requirements</button>
-              <?php $query = "SELECT * FROM views";
-              $result = $mysqli->query($query);
-              $array = [];
-
-              if ($result->num_rows > 0) { ?>
-                <table class='table table-striped' id="att">
-                  <tr>
-                    <th style='display:none;'>ID</th>
-                    <th>Views</th>
-                    <th>Preview/Delete</th>
-                  </tr>
-
-                  <?php
-
-
-                  // output data of each row
-                  while ($row = $result->fetch_assoc()) {
-                    $v_id = $row['v_id'];
-                    $view = $row['viewer'];
-
-                    if (in_array($view, $array)) {
-                    } else {
-                      echo "<tr><td style='display:none;'>$v_id</td>";
-                      echo "<td>$view's View</td>";
-                      array_push($array, $view);
-                      echo "<td>";
-                      echo "<a href=\"view.php?v_id=$v_id&id=$id\" class='btn'><i class='fas fa-eye'></i></a>";
-
-                  ?>
-
-                      <button type="button" class='btn deletebtn'><i class='far fa-trash-alt fa-lg'></i></button></td>
-                      </tr>
-
-
-                  <?php
-                    }
-                  }
-
-
-                  ?>
-                </table>
-              <?php
-              } else {
-                echo "<br>";
-                echo "No views created yet.";
-              } ?>
-              <br>
-              <br>
-              <button type="button" class="button" data-toggle="modal" data-target="#addModal" style="margin-left: 40%;">Add New View</button>
+             
             </div>
           </div>
           <!-- /.container-fluid -->
@@ -361,7 +278,7 @@
           <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
           <div class="modal-footer">
             <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-            <a class="btn btn-primary" href="home.php">Logout</a>
+            <a class="btn btn-primary" href="login.html">Logout</a>
           </div>
         </div>
       </div>
@@ -377,148 +294,6 @@
 
   <!-- Custom scripts for all pages-->
   <script src="../Elicitation/js/sb-admin-2.js"></script>
-
-  <!-- ###################################################################################################################################### -->
-
-  <!-- Add Views Modal -->
-  <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="addModalLabel">Add New View</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="insertView.php?id=<?php echo $id; ?>" method="POST" autocomplete="off">
-          <div class="modal-body">
-            <div class="form-group">
-              <label>Viewer</label>
-              <input type="text" name="viewer" class="form-control" placeholder="Enter viewer's role" required>
-            </div>
-            <div class="form-group">
-              <label>Select Attributes</label><br>
-              <div class="options">
-                <?php
-
-                $query = $mysqli->query("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_NAME = 'requirements'");
-                $result = [];
-
-                while ($row = $query->fetch_assoc()) {
-                  $result[] = $row;
-                }
-
-                // Array of all column names
-                $columnArr = array_column($result, 'COLUMN_NAME');
-                foreach ($columnArr as $string) {
-                  echo "<label><input type='checkbox' name='att[]' id ='req' value='" . $string . "' required>   " . $string . "</label><br>";
-                }
-
-
-                ?>
-              </div>
-            </div>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="submit" name="insertData" class="btn btn-primary">Save changes</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  <!-- Delete Attribute Modal -->
-
-  <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="deleteModalLabel">Delete Attribute</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <form action="deleteView.php?id=<?php echo $id;?>" method="POST">
-
-          <div class="modal-body">
-
-            <input type="hidden" name="delete_id" id="delete_id">
-
-            <h4>Are you sure you want to delete this view?</h4>
-            <small>All data related will be deleted as well</small>
-
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-            <button type="submit" name="deleteData" class="btn btn-primary">Yes</button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-
-
-  <?php
-
-  $mysqli->close();
-  ?>
-
-  <script>
-    $(document).ready(function() {
-      $('.deletebtn').on('click', function() {
-
-        $('#deleteModal').modal('show');
-
-        $tr = $(this).closest('tr');
-
-        var data = $tr.children("td").map(function() {
-          return $(this).text();
-        }).get();
-
-        console.log(data);
-
-        $('#delete_id').val(data[0]);
-
-      });
-
-    });
-  </script>
-
-
-  <script>
-    $(document).ready(function() {
-      $('.editbtn').on('click', function() {
-
-        $('#editModal').modal('show');
-
-        $tr = $(this).closest('tr');
-
-        var data = $tr.children("td").map(function() {
-          return $(this).text();
-        }).get();
-
-        console.log(data);
-
-        $('#update_id').val(data[0]);
-        $('#attribute').val(data[1]);
-
-      });
-
-    });
-
-    $(function() {
-      var requiredCheckboxes = $('.options :checkbox[required]');
-      requiredCheckboxes.change(function() {
-        if (requiredCheckboxes.is(':checked')) {
-          requiredCheckboxes.removeAttr('required');
-        } else {
-          requiredCheckboxes.attr('required', 'required');
-        }
-      });
-    });
-  </script>
 
 </body>
 

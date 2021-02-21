@@ -71,23 +71,37 @@
       <!-- Nav Item - Pages Collapse Menu -->
       <hr class="sidebar-divider my-0">
 
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-          <i class="fas fa-folder-open"></i>
-          <span>Modules</span>
-        </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">REQUIREMENT:</h6>
-            <a class="collapse-item" href="buttons.html">1- Elicitation</a>
-            <a class="collapse-item" href="cards.html">2- Documentation</a>
-            <a class="collapse-item" href="cards.html">3- Negotiation</a>      
-            <a class="collapse-item" href="rvpoption.php">4- Validation</a> 
-            <a class="collapse-item" href="cards.html">5- Management</a>
+        <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+              <i class="fas fa-folder-open"></i>
+              <span>Modules</span>
+            </a>
+            <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">REQUIREMENT:</h6>
+                <a class="collapse-item" href="buttons.html">1- Elicitation</a>
+                <a class="collapse-item" href="cards.html">2- Documentation</a>
+                <a class="collapse-item" href="cards.html">3- Negotiation</a>      
+                <a class="collapse-item" href="rvoption.html">4- Validation</a> 
+                <a class="collapse-item" href="cards.html">5- Management</a>
 
-          </div>
-        </div>
-      </li>
+              </div>
+            </div>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo">
+              <i class="far fa-folder-open"></i>
+              <span>Requirement Validation</span>
+            </a>
+            <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+              <div class="bg-white py-2 collapse-inner rounded">
+                
+                <a class="collapse-item" href="principles.php">Principles</a>
+                <a class="collapse-item" href="techniques.php">Techniques</a>
+              </div>
+            </div>
+          </li>
 
  <!-- Setting thing -->
  <hr class="sidebar-divider my-0">
@@ -256,8 +270,12 @@
                 if (!$conn) {
                     die("Connection failed: " . mysqli_connect_error());
                 }
+                if(isset($_POST['view'])){
 
-                $sql = "SELECT * FROM inspection1";
+                  $id = $_POST['id'];
+
+                
+                $sql = "SELECT * FROM inspection1 WHERE id=$id";
                 
                 $result = mysqli_query($conn, $sql);
 
@@ -294,7 +312,7 @@
                 } else {
                     echo "No created project";
                 }
-
+              }
                 mysqli_close($conn);
             ?>
                 
