@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 06:41 AM
+-- Generation Time: Feb 21, 2021 at 07:51 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.6
 
@@ -117,17 +117,17 @@ INSERT INTO `checklist3` (`id`, `groupid`, `agreed`, `changes`, `resolved`) VALU
 
 CREATE TABLE `createproject` (
   `id` int(255) NOT NULL,
-  `groupleader` varchar(50) NOT NULL,
+  `groupmember1` int(30) NOT NULL,
   `role1` varchar(30) NOT NULL,
   `projectname` varchar(255) NOT NULL,
   `projectdesc` varchar(2000) NOT NULL,
-  `groupmember1` int(30) NOT NULL,
-  `role2` varchar(30) NOT NULL,
   `groupmember2` int(30) NOT NULL,
-  `role3` varchar(30) NOT NULL,
+  `role2` varchar(30) NOT NULL,
   `groupmember3` int(30) NOT NULL,
-  `role4` varchar(30) NOT NULL,
+  `role3` varchar(30) NOT NULL,
   `groupmember4` int(30) NOT NULL,
+  `role4` varchar(30) NOT NULL,
+  `groupmember5` int(30) NOT NULL,
   `role5` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -135,8 +135,8 @@ CREATE TABLE `createproject` (
 -- Dumping data for table `createproject`
 --
 
-INSERT INTO `createproject` (`id`, `groupleader`, `role1`, `projectname`, `projectdesc`, `groupmember1`, `role2`, `groupmember2`, `role3`, `groupmember3`, `role4`, `groupmember4`, `role5`) VALUES
-(2, 'Ahsan Iman', 'Lecture 1', 'Banking System', 'Banking system is a group or network of institutions that provide financial services for us. These institutions are responsible for operating a payment system, providing loans, taking deposits, and helping with investments.', 170878748, '', 178748663, '', 178056636, '', 182052545, '178562036');
+INSERT INTO `createproject` (`id`, `groupmember1`, `role1`, `projectname`, `projectdesc`, `groupmember2`, `role2`, `groupmember3`, `role3`, `groupmember4`, `role4`, `groupmember5`, `role5`) VALUES
+(9, 170878769, 'Top Management', 'Banking system', 'Banking system is a group or network of institutions that provide financial services for us. These institutions are responsible for operating a payment system, providing loans, taking deposits, and helping with investments.', 178748663, 'Project Manager', 178056636, 'System Analyst', 182052545, 'Stakeholder', 178562036, 'Programmer');
 
 -- --------------------------------------------------------
 
@@ -753,7 +753,7 @@ ALTER TABLE `checklist3`
 -- AUTO_INCREMENT for table `createproject`
 --
 ALTER TABLE `createproject`
-  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `elicitation`
