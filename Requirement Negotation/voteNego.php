@@ -444,7 +444,6 @@
                     echo '</pre>';
                 }
             ?>
-
   <!-- ####################################################################################################### -->
             <!-- Add vote  -->
             <?php $result_optiondet=$mysqli->query("SELECT * FROM rn_option WHERE req_id=$req_id AND group_id=$group_id") 
