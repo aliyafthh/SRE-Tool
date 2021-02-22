@@ -1,7 +1,6 @@
 <?php
     include_once ("config.php");
     $req_id=$_GET['req_id'];
-    $group_id=$_GET["group_id"];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -341,10 +340,10 @@
                     <a href="homeNego.php" style="text-decoration:none" class="breadcrumbs__link">Requirement Negotiation</a>
                 </li>
                 <li class="breadcrumbs__item">
-                    <a href="issueNego.php?req_id=<?php echo $req_id?>&group_id=<?php echo $group_id ?>" style="text-decoration:none" class="breadcrumbs__link">Identify Issue</a>
+                    <a href="issueNego.php?req_id=<?php echo $req_id?>" style="text-decoration:none" class="breadcrumbs__link">Identify Issue</a>
                 </li>
                 <li class="breadcrumbs__item">
-                    <a href="optionNego.php?req_id=<?php echo $req_id?>&group_id=<?php echo $group_id ?>" style="text-decoration:none" class="breadcrumbs__link">Suggest Option</a>
+                    <a href="optionNego.php?req_id=<?php echo $req_id?>" style="text-decoration:none" class="breadcrumbs__link">Suggest Option</a>
                 </li>
                 <li class="breadcrumbs__item">
                     <a href="" style="text-decoration:none" class="breadcrumbs__link--active">Vote Option</a>
@@ -356,7 +355,7 @@
                     <thead >
                         <tr>
                             <?php
-                            $sql="SELECT requirement FROM elicitation WHERE id = $req_id AND approved=1 AND gID = $group_id ";
+                            $sql="SELECT requirement FROM elicitation WHERE id = $req_id AND approved=1";
                             $result=$mysqli->query($sql) or die($mysqli->error);
                             while($row=$result->fetch_assoc()):
                                 echo "<th>Requirement: </th>";
@@ -368,7 +367,7 @@
                     <tbody >
                         <tr>
                         <?php
-                        $sql="SELECT issue_detail,Category FROM rn_issue WHERE req_id = $req_id AND group_id=$group_id";
+                        $sql="SELECT issue_detail,Category FROM rn_issue WHERE req_id = $req_id";
                         $result=$mysqli->query($sql) or die($mysqli->error);
                         echo "<th>Issue: </th> ";
                         echo "<td>";
@@ -419,7 +418,7 @@
                                         <td>
                                         <?php while ($row_vote=$vote_result->fetch_assoc()){?>
                                             <a><?php echo $row_vote['user_name'];?></a>
-                                            <a href="process.php?delete_vote=<?php echo $row_vote['userr_id'];?>&req_id=<?php echo $row['req_id'];?>&opt_id=<?php echo $row['option_id'];?>&group_id=<?php echo $row['group_id'];?>">
+                                            <a href="process.php?delete_vote=<?php echo $row_vote['userr_id'];?>&req_id=<?php echo $row['req_id'];?>&opt_id=<?php echo $row['option_id'];?>">
                                             <i class="material-icons" id="deletebtn">delete</i></a><br>
                                         <?php } ?>
                                         </td>
@@ -429,7 +428,7 @@
                             </div>
                         </div>
 
-                        <button type="button" class="btn btn-light" id="previousbtn" onclick="location.href='optionNego.php?req_id=<?php echo $req_id?>&group_id=<?php echo $group_id?>';">Previous</button>
+                        <button type="button" class="btn btn-light" id="previousbtn" onclick="location.href='optionNego.php?req_id=<?php echo $req_id?>';">Previous</button>
                         <button type="button" class="btn btn-success float-right" id="nextbtn" onclick="location.href='homeNego.php'">Requirement Negotiation</button>
                     </div>
                 </div>
@@ -446,7 +445,7 @@
             ?>
   <!-- ####################################################################################################### -->
             <!-- Add vote  -->
-            <?php $result_optiondet=$mysqli->query("SELECT * FROM rn_option WHERE req_id=$req_id AND group_id=$group_id") 
+            <?php $result_optiondet=$mysqli->query("SELECT * FROM rn_option WHERE req_id=$req_id ") 
                 or die($mysqli->error);?>
             <?php $users=$mysqli->query("SELECT `user`.*, `rn_vote`.`req_id` FROM `user` LEFT JOIN `rn_vote` 
                 ON `user`.`user_id` = `rn_vote`.`userr_id` AND `rn_vote`.`req_id`=$req_id ORDER BY `user`.`user_id`") 
@@ -465,7 +464,6 @@
                               <form action="process.php" method="POST">
                                 <div class="modal-body">
                                     <input type="hidden" name="req_id" value="<?php echo $req_id;?>">
-                                    <input type="hidden" name="group_id" value="<?php echo $group_id;?>">
                                     <label>Suggestion / Option</label>
                                     <div class="form-group">
                                     <select class="custom-select mb-3" name="option_id">
