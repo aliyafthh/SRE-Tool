@@ -19,25 +19,7 @@ if(isset($_POST['insert']))
     
     
     $query = "INSERT INTO createproject(groupmember1,role1,projectname,projectdesc,groupmember2,role2,groupmember3,role3,groupmember4,role4,groupmember5,role5) VALUES ('".$_POST["groupmember1"]."','".$_POST["role1"]."','".$_POST["projectname"]."','".$_POST["projectdesc"]."','".$_POST["groupmember2"]."','".$_POST["role2"]."','".$_POST["groupmember3"]."','".$_POST["role3"]."','".$_POST["groupmember4"]."','".$_POST["role4"]."','".$_POST["groupmember5"]."','".$_POST["role5"]."')";
-    
-    for($i=1;$i<=5;$i++){
-      if($i==1){
-        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember1"]."','".$_POST["role1"]."')";
-        $queryy_run = mysqli_query($connection, $queryy);
-      }else if($i==2){
-        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember2"]."','".$_POST["role2"]."')";
-        $queryy_run = mysqli_query($connection, $queryy);
-      }else if($i==3){
-        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember3"]."','".$_POST["role3"]."')";
-        $queryy_run = mysqli_query($connection, $queryy);
-      }else if($i==4){
-        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember4"]."','".$_POST["role4"]."')";
-        $queryy_run = mysqli_query($connection, $queryy);
-      }else if($i==5){
-        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember4"]."','".$_POST["role5"]."')";
-        $queryy_run = mysqli_query($connection, $queryy);
-      }
-    }
+
     $query_run = mysqli_query($connection, $query);
 
     if(!$query_run)
