@@ -19,7 +19,25 @@ if(isset($_POST['insert']))
     
     
     $query = "INSERT INTO createproject(groupmember1,role1,projectname,projectdesc,groupmember2,role2,groupmember3,role3,groupmember4,role4,groupmember5,role5) VALUES ('".$_POST["groupmember1"]."','".$_POST["role1"]."','".$_POST["projectname"]."','".$_POST["projectdesc"]."','".$_POST["groupmember2"]."','".$_POST["role2"]."','".$_POST["groupmember3"]."','".$_POST["role3"]."','".$_POST["groupmember4"]."','".$_POST["role4"]."','".$_POST["groupmember5"]."','".$_POST["role5"]."')";
-
+    
+    for($i=1;$i<=5;$i++){
+      if($i==1){
+        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember1"]."','".$_POST["role1"]."')";
+        $queryy_run = mysqli_query($connection, $queryy);
+      }else if($i==2){
+        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember2"]."','".$_POST["role2"]."')";
+        $queryy_run = mysqli_query($connection, $queryy);
+      }else if($i==3){
+        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember3"]."','".$_POST["role3"]."')";
+        $queryy_run = mysqli_query($connection, $queryy);
+      }else if($i==4){
+        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember4"]."','".$_POST["role4"]."')";
+        $queryy_run = mysqli_query($connection, $queryy);
+      }else if($i==5){
+        $queryy = "INSERT INTO rn_user(user_id,roles) VALUES ('".$_POST["groupmember4"]."','".$_POST["role5"]."')";
+        $queryy_run = mysqli_query($connection, $queryy);
+      }
+    }
     $query_run = mysqli_query($connection, $query);
 
     if(!$query_run)
@@ -51,6 +69,16 @@ if(isset($_POST['insert']))
   <meta name="author" content="">
 
   <title>SRE Tool</title>
+  <style>
+.hi{
+  background : #238C89;
+
+
+}
+</style>
+</head>
+<body class =  "hi">
+
 
   <!-- Custom fonts for this template-->
   <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -69,241 +97,10 @@ if(isset($_POST['insert']))
   <link href="checklist.css" rel="stylesheet"> -->
 
  
-  <style>
-    .img1 {
-      width: 10%;
-      float: left;
-    }
-
-    .clearBoth {
-      clear: both;
-    }
-
-    .hed {
-      float: left;
-      padding: 30px;
-      margin-left: 10px;
-      margin-top: 10px;
-    }
-
-    .heder {
-      float: left;
-      width: 100%;
-      /* background-color: #F29D4B; */
-      background-image: url("images/black.jpg");
-      background-size: 1550px 135px;
-      height: 120px;
-    }
-
-    .hed3 {
-      margin-left: 24%;
-      color: lightgoldenrodyellow;
-      font-family: myFirstFont;
-    }
-
-    .topbarz {
-      float: right;
-      width: 100%;
-      background-color: #F0A35E;
-      /* background-image: url("../images/wood.png"); */
-      height: 50px;
-    }
-
-    @font-face {
-      font-family: myFirstFont;
-      src: url("images/EraserDust.ttf");
-    }
-
-    .bodyody {
-      /* background-image: url("../images/black.jpg");
-      background-size: 1500px 1000px; */
-      background-color: #FCF0CF !important;
-    }
-
-    .sidenavi {
-      background-color: #70AE98;
-      /* background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%); */
-      background-size: cover;
-      font-family: myFirstFont;
-    }
-
-    input[type="radio"] {
-      display: none;
-    }
-
-    input[type="radio"]:checked+label {
-      border: 2px solid lightgray;
-      border-radius: 4px;
-    }
-
-    div.inline {
-      float: left;
-      margin-left: 16%;
-      margin-right: 16%;
-      padding: 10px;
-    }
-
-    .btn-pastel {
-      color: #fff;
-      background-color: #F6A7C1;
-      border-color: #F6A7C1
-    }
-
-    .button {
-      border-style: solid;
-      border-width: 5px;
-      border-radius: 12px;
-      padding: 10px 10px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      margin: 30px 100px 30px;
-      cursor: pointer;
-      color: #fff;
-      background-color: #F6A7C1;
-      border-color: #F6A7C1
-    }
-  </style>
-
-</head>
-<!-- Header -->
-<header class="heder">
-  <div class="hed3">
-    <img src="images/clip.gif" alt="Study" class="img1" style="margin-top: 20px;">
-    <h2 class="hed">Software Requirements Engineering</h2>
-    <img src="images/paperplane.gif" alt="Study" class="img1">
-  </div>
-</header>
-
-<br class="clearBoth" />
-
-<!-- Body -->
-
-<body id="page-top">
-
-  <!-- Page Wrapper -->
-  <div id="wrapper">
-
-    <!-- Sidebar -->
-    <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
-
-      <!-- Sidebar - Brand -->
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-          <i class="fas fa-laptop-code"></i>
-        </div>
-        <div class="sidebar-brand-text mx-3">SRE Tool</div>
-      </a>
-
-      <!-- Divider -->
-      <hr class="sidebar-divider my-0">
-
-<li class='nav-item'>
-  <a class='nav-link' href="../RV/createProject.php">
-    <i class="fas fa-book-open"></i>
-    <span>Create Project</span></a>
-</li>
-    <hr class="sidebar-divider my-0">
-
-    <li class="nav-item">
-      
-      <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-        <div class="bg-white py-2 collapse-inner rounded">
-        <li class='nav-item'>
-      <a class='nav-link' href="../Elicitation/createReq.php">
-        <i class="fas fa-book-open"></i>
-        <span>Requirement Elicitation</span></a>
-    </li>
-    <hr class="sidebar-divider my-0">
-
-    <li class='nav-item'>
-      <a class='nav-link' href="../Requirement Negotation/homeNego.php">
-        <i class="fas fa-book-open"></i>
-        <span>Requirement Negotiation</span></a>
-    </li>
-    <hr class="sidebar-divider my-0">
-    <li class='nav-item'>
-      <a class='nav-link' href="../RV/rvpoption.php">
-        <i class="fas fa-book-open"></i>
-        <span>Requirement Validation</span></a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwoo" aria-expanded="true" aria-controls="collapseTwoo">
-          <i class="far fa-folder-open"></i>
-          <span>Validation</span>
-        </a>
-        <div id="collapseTwoo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            
-            <a class="collapse-item" href="principles.php">Principles</a>
-            <a class="collapse-item" href="techniques.php">Techniques</a>
-          </div>
-        </div>
-      </li>
-    <hr class="sidebar-divider my-0">
-    <li class='nav-item'>
-      <a class='nav-link' href="../RM/index.php?id=<?php echo $id; ?>" >
-        <i class="fas fa-book-open"></i>
-        <span>Requirement Management</span></a>
-    </li>
-
-
-   
-
-    <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
-
-    <!-- Sidebar Toggler (Sidebar) -->
-    <div class="text-center d-none d-md-inline">
-      <button class="rounded-circle border-0" id="sidebarToggle"></button>
-    </div>
-
-  </ul>
-    <!-- End of Sidebar -->
-
-    <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column bodyody">
-      <!-- Main Content -->
-      <div id="content">
-
-        <!-- Topbar -->
-        <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow topbarz">
-
-          <!-- Sidebar Toggle (Topbar) -->
-          <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-            <i class="fa fa-bars"></i>
-          </button>
-
-          <!-- Topbar Navbar -->
-          <ul class="navbar-nav ml-auto">
-           
-
-            <div class="topbar-divider d-none d-sm-block"></div>
-
-            <!-- Nav Item - User Information -->
-            <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Akhma Luna</span>
-                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
-              </a>
-              <!-- Dropdown - User Information -->
-              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Logout
-                </a>
-              </div>
-            </li>
-
-          </ul>
-
-        </nav>
-        <!-- End of Topbar -->
 
         <!-- Begin Page Content -->
-        <div class="container-fluid">
-          <div class="card shadow mb-4" style="background-color:rgba(255, 255, 255, 0.95)">
+        <div class="container-fluid hi">
+          <!-- <div class="card shadow mb-4" style="background-color:#238C89"> -->
             <div class="card-body shadow-sm p-5">
               <h3 class="text-muted">
               <div class="card o-hidden border-0 shadow-lg my-5">
@@ -321,12 +118,13 @@ if(isset($_POST['insert']))
                       
                         <div class="form-group row">
                           <div class="col-sm-7 mb-5 mb-sm-0">
-                            <input type="text" class="form-control " name = "groupmember1" id="groupmember1" placeholder="Group Leader ID">
+                            <input type="text" class="form-control " name = "groupmember1" id="groupmember1" placeholder="Group Leader ID" pattern="[0-9]+" maxlength="8" title = "ID must be [example: 18XXXXXXXX]" required>
                           </div>
+                         
                           <div class="col-sm-5">
                             <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
-                            <select name = "role1" id = "role1" class=" form-control custom-select" >
-                              <option selected>Roles</option>
+                            <select name = "role1" id = "role1" class=" form-control custom-select" required >
+                              <option disable value="" selected hidden>Roles</option>
                               <option value="Top Management">Top Management</option>
                               <option value="Project Manager">Project Manager</option>
                               <option value="System Analyst">System Analyst</option>
@@ -338,21 +136,21 @@ if(isset($_POST['insert']))
                           </div>
                         </div>
                         <div class="form-group">
-                          <input type="text" class="form-control" name = "projectname" id="projectname" placeholder="Project Name">
+                          <input type="text" class="form-control" name = "projectname" id="projectname" placeholder="Project Name" required>
                         </div>
                         
                         <div class="form-group">
-                          <textarea class="form-control" name="projectdesc" rows="5" cols="30" id = "projectdesc" placeholder="Project Description"></textarea>
+                          <textarea class="form-control" name="projectdesc" rows="5" cols="30" id = "projectdesc" placeholder="Project Description" required></textarea>
                         </div>
 
                         <div class="form-group row">
                           <div class="col-sm-7 mb-5 mb-sm-0">
-                            <input type="text" class="form-control " name = "groupmember2" id="groupmember2" placeholder="Member's ID 1">
+                            <input type="text" class="form-control " name = "groupmember2" id="groupmember2" placeholder="Member's ID 1" pattern="[0-9]+" maxlength="8" title = "ID must be [example: 18XXXXXXXX]" required>
                           </div>
                           <div class="col-sm-5">
                             <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
-                            <select name = "role2" id = "role2" class=" form-control custom-select" >
-                              <option selected>Roles</option>
+                            <select name = "role2" id = "role2" class=" form-control custom-select" required >
+                              <option disable value="" selected hidden>Roles</option>
                               <option value="Top Management">Top Management</option>
                               <option value="Project Manager">Project Manager</option>
                               <option value="System Analyst">System Analyst</option>
@@ -366,12 +164,12 @@ if(isset($_POST['insert']))
 
                         <div class="form-group row">
                           <div class="col-sm-7 mb-5 mb-sm-0">
-                            <input type="text" class="form-control " name = "groupmember3" id="groupmember3" placeholder="Member's ID 2">
+                            <input type="text" class="form-control " name = "groupmember3" id="groupmember3" placeholder="Member's ID 2" pattern="[0-9]+" maxlength="8" title = "ID must be [example: 18XXXXXXXX]" required>
                           </div>
                           <div class="col-sm-5">
                             <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
-                            <select name = "role3" id = "role3" class=" form-control custom-select" >
-                              <option selected>Roles</option>
+                            <select name = "role3" id = "role3" class=" form-control custom-select" required >
+                              <option disable value="" selected hidden>Roles</option>
                               <option value="Top Management">Top Management</option>
                               <option value="Project Manager">Project Manager</option>
                               <option value="System Analyst">System Analyst</option>
@@ -385,12 +183,12 @@ if(isset($_POST['insert']))
 
                          <div class="form-group row">
                           <div class="col-sm-7 mb-5 mb-sm-0">
-                            <input type="text" class="form-control " name = "groupmember4" id="groupmember4" placeholder="Member's ID 3">
+                            <input type="text" class="form-control " name = "groupmember4" id="groupmember4" placeholder="Member's ID 3" pattern="[0-9]+" maxlength="8" title = "ID must be [example: 18XXXXXXXX]" required>
                           </div>
                           <div class="col-sm-5">
                             <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
-                            <select name = "role4" id = "role4" class=" form-control custom-select" >
-                              <option selected>Roles</option>
+                            <select name = "role4" id = "role4" class=" form-control custom-select" required >
+                              <option disable value="" selected hidden>Roles</option>
                               <option value="Top Management">Top Management</option>
                               <option value="Project Manager">Project Manager</option>
                               <option value="System Analyst">System Analyst</option>
@@ -404,12 +202,12 @@ if(isset($_POST['insert']))
 
                         <div class="form-group row">
                           <div class="col-sm-7 mb-5 mb-sm-0">
-                            <input type="text" class="form-control " name = "groupmember5" id="groupmember5" placeholder="Member's ID 4">
+                            <input type="text" class="form-control " name = "groupmember5" id="groupmember5" placeholder="Member's ID 4" pattern="[0-9]+" maxlength="8" title = "ID must be [example: 18XXXXXXXX]" required>
                           </div>
                           <div class="col-sm-5">
                             <!-- <input type="text" class="form-control form-control-user" id="exampleLastName" placeholder="Lecture"> -->
-                            <select name = "role5" id = "role5" class=" form-control custom-select" >
-                              <option selected>Roles</option>
+                            <select name = "role5" id = "role5" class=" form-control custom-select" required >
+                              <option disable value="" selected hidden>Roles</option>
                               <option value="Top Management">Top Management</option>
                               <option value="Project Manager">Project Manager</option>
                               <option value="System Analyst">System Analyst</option>
@@ -439,12 +237,10 @@ if(isset($_POST['insert']))
                 
               </h3>
              
-            </div>
+            <!-- </div> -->
           </div>
           <!-- /.container-fluid -->
 
-        </div>
-        <!-- End of Main Content -->
 
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
