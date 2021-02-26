@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 4.8.5
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2021 at 10:34 AM
--- Server version: 10.4.17-MariaDB
--- PHP Version: 8.0.1
+-- Generation Time: Feb 26, 2021 at 04:43 PM
+-- Server version: 10.1.38-MariaDB
+-- PHP Version: 7.3.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -173,7 +174,7 @@ CREATE TABLE `elicitation` (
   `m3` tinyint(1) DEFAULT NULL,
   `m4` tinyint(1) DEFAULT NULL,
   `m5` tinyint(1) DEFAULT NULL,
-  `approved` tinyint(1) DEFAULT 0
+  `approved` tinyint(1) DEFAULT '0'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -181,8 +182,8 @@ CREATE TABLE `elicitation` (
 --
 
 INSERT INTO `elicitation` (`id`, `requirement`, `m1`, `m2`, `m3`, `m4`, `m5`, `approved`) VALUES
-(8, 'The system shall allow medical officer to view previous medical record of patients by entering patient’s name or IC number', 1, NULL, NULL, NULL, NULL, 0),
-(9, 'The system shall allow medical officer or nurse to login into the system by entering their username and password.', 0, NULL, NULL, NULL, NULL, 0),
+(8, 'The system shall allow medical officer to view previous medical record of patients by entering patient’s name or IC number', 0, NULL, NULL, NULL, NULL, 0),
+(9, 'The system shall allow medical officer or nurse to login into the system by entering their username and password.', 1, NULL, NULL, NULL, NULL, 0),
 (10, 'The system shall allow admin to login to the system by entering his/her username and password', NULL, NULL, NULL, NULL, NULL, 0),
 (11, 'The system shall allow National Registration staff to login to the system by entering username and password', NULL, NULL, NULL, NULL, NULL, 0);
 
@@ -291,6 +292,7 @@ INSERT INTO `login` (`id`, `email`, `pw`) VALUES
 --
 
 CREATE TABLE `progress` (
+  `group_id` int(11) NOT NULL,
   `module` varchar(20) NOT NULL,
   `status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -299,12 +301,12 @@ CREATE TABLE `progress` (
 -- Dumping data for table `progress`
 --
 
-INSERT INTO `progress` (`module`, `status`) VALUES
-('Elicitation', 0),
-('Documentation', 0),
-('Negotiation', 0),
-('Validation', 0),
-('Management', 0);
+INSERT INTO `progress` (`group_id`, `module`, `status`) VALUES
+(0, 'Elicitation', 0),
+(0, 'Documentation', 0),
+(0, 'Negotiation', 0),
+(0, 'Validation', 0),
+(0, 'Management', 0);
 
 -- --------------------------------------------------------
 
@@ -381,16 +383,6 @@ CREATE TABLE `rn_issue` (
   `person_id` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `rn_issue`
---
-
-INSERT INTO `rn_issue` (`req_id`, `group_id`, `issue_id`, `issue_detail`, `Category`, `person_id`) VALUES
-(1, 0, 37, 'user unable to login without credentials', 'Stakeholder', 'person_1'),
-(1, 0, 39, 'Takes longer time to login', 'Schedule', 'person_1'),
-(1, 0, 41, 'System takes longer time to login', 'Schedule', 'person_1'),
-(3, 3, 43, 'Required stable internet connection ', 'Schedule', 'person_1');
-
 -- --------------------------------------------------------
 
 --
@@ -406,15 +398,6 @@ CREATE TABLE `rn_option` (
   `person_id` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `rn_option`
---
-
-INSERT INTO `rn_option` (`req_id`, `group_id`, `option_id`, `option_detail`, `reason`, `person_id`) VALUES
-(1, 0, 2, 'User required to have an account to login ', 'To have personal workspace for each user', 'person_1'),
-(1, 0, 3, 'Reduce unnecesssary features to load for login', 'To reduce loading time for login', 'person_1'),
-(3, 3, 5, 'Reduce unnecesssary features to load for login', 'To reduce loading time for login', 'person_1');
-
 -- --------------------------------------------------------
 
 --
@@ -423,8 +406,8 @@ INSERT INTO `rn_option` (`req_id`, `group_id`, `option_id`, `option_detail`, `re
 
 CREATE TABLE `rn_user` (
   `group_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `roles_id` int(11) NOT NULL
+  `student_id` int(11) NOT NULL,
+  `roles` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -437,7 +420,8 @@ CREATE TABLE `rn_vote` (
   `req_id` int(11) NOT NULL,
   `group_id` int(11) NOT NULL,
   `option_id` int(11) NOT NULL,
-  `userr_id` int(11) NOT NULL
+  `option_detail` varchar(50) NOT NULL,
+  `student_id` int(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -532,6 +516,9 @@ CREATE TABLE `rvp2` (
 --
 
 INSERT INTO `rvp2` (`id`, `requirement`, `error`, `foundby`, `fdate`, `supportby`, `sdate`) VALUES
+(8, 'The system shall allow medical officer to view previous medical record of patients by entering patient’s name or IC number', '', '', '0000-00-00', '', '0000-00-00'),
+(9, 'The system shall allow medical officer or nurse to login into the system by entering their username and password.', '', '', '0000-00-00', '', '0000-00-00'),
+(10, 'The system shall allow admin to login to the system by entering his/her username and password', '', '', '0000-00-00', '', '0000-00-00'),
 (22, 'F02', 'Use shall instead of should', 'Akma Luna', '2020-09-03', 'Munirah', '2020-09-03'),
 (23, 'Q02', 'What kind of software, please state.', 'Zharif Fahmi', '2020-09-04', 'Yuvaneesha', '2020-09-04'),
 (24, 'Q03', '3 seconds ? Need to discuss this..', 'Khairul Amar', '2020-09-05', 'Nuriena', '2020-09-05'),
@@ -688,13 +675,14 @@ ALTER TABLE `rn_option`
 -- Indexes for table `rn_user`
 --
 ALTER TABLE `rn_user`
-  ADD PRIMARY KEY (`user_id`);
+  ADD PRIMARY KEY (`student_id`),
+  ADD KEY `group_id` (`group_id`);
 
 --
 -- Indexes for table `rn_vote`
 --
 ALTER TABLE `rn_vote`
-  ADD PRIMARY KEY (`option_id`,`userr_id`);
+  ADD PRIMARY KEY (`option_id`,`student_id`);
 
 --
 -- Indexes for table `role`
@@ -776,7 +764,7 @@ ALTER TABLE `inspection2`
 -- AUTO_INCREMENT for table `inspection3`
 --
 ALTER TABLE `inspection3`
-  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(50) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `login`
@@ -800,13 +788,13 @@ ALTER TABLE `requirements`
 -- AUTO_INCREMENT for table `rn_issue`
 --
 ALTER TABLE `rn_issue`
-  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
+  MODIFY `issue_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT for table `rn_option`
 --
 ALTER TABLE `rn_option`
-  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `option_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT for table `role`

@@ -14,11 +14,11 @@ $ID=$_GET['req_id'];
             <thead >
                 <tr>
                     <?php
-                    $sql="SELECT req_detail FROM rq_main WHERE req_id = $ID";
+                    $sql="SELECT requirement FROM elicitation WHERE id = $ID";
                     $result=$mysqli->query($sql) or die($mysqli->error);
                     while($row=$result->fetch_assoc()):
                         echo "<th>Requirement: </th>";
-                        echo "<td>".$row['req_detail']."</td>";
+                        echo "<td>".$row['requirement']."</td>";
                     endwhile;
                     ?>
                 </tr>
@@ -42,9 +42,9 @@ $ID=$_GET['req_id'];
         </table>
         <div class="container" style="background-color:#E0E0E0;padding:10px; margin:10px 0px;  border: 2px; border-radius: 8px;">
                 <p style="word-break:break-all;"><b>Voted Solution : </b><br>
-                * The highest voted of the suggested option will choosen as the solution for the issues. However, "Top Management" will make the <b>final decision</b> which solutions will be choosen as the solutions.
+                * The highest voted of the suggested option will choosen as the solution for the issues. 
                 <br>
-                * The voters who are the Top Management will be highlighted as red.
+                * However, " Top Management" roles will have the <b>final decision</b> which solutions will be chosen as the solutions.
                 </p>
                 
                 <div class="boxx" style="background-color:white; padding:10px;">
@@ -61,18 +61,13 @@ $ID=$_GET['req_id'];
                                 $resultt = $mysqli->query("SELECT * FROM rn_option WHERE req_id=$ID") or die($mysqli->error);                  
                                 while ($row=$resultt->fetch_assoc()):
                                     $opt_id=$row['option_id'];?>
-                                <?php $vote_result = $mysqli->query("SELECT `user`.* FROM rn_vote INNER JOIN user ON rn_vote.userr_id = user.user_id WHERE req_id=$ID AND option_id=$opt_id "); ?>
+                                <?php $vote_result = $mysqli->query("SELECT * FROM rn_vote WHERE req_id=$ID AND option_id=$opt_id") or die($mysqli->error);?>
                                     <tr>
                                     <td><?php echo $row['option_detail'];?></td>
                                     <td class="text-center">
                             <?php if($vote_result->num_rows){
                                     while ($row_vote=$vote_result->fetch_assoc()){?>
-                                    <?php
-                                        if($row_vote['roles_id']==1){?>
-                                            <a style="color:red;"><?php echo $row_vote['user_name'];?></a><br> 
-                                        <?php }?>
-                                       
-                                    <a><?php echo $row_vote['user_name'];?></a><br>
+                                    <a><?php echo $row_vote['student_id'];?></a><br>
                                 <?php } 
                                     }
                                     else{?>
