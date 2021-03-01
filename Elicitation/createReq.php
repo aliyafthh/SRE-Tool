@@ -151,7 +151,13 @@
           <span>Create Project</span></a>
       </li>
       <hr class="sidebar-divider my-0">
-
+      <hr class="sidebar-divider my-0">
+        <li class='nav-item'>
+          <a class='nav-link' href="/SRET/sret/Requirement%20Negotation/winwinTree.php?id=<?php echo $id; ?>">
+            <i class="fas fa-book-open"></i>
+            <span>View Progress</span></a>
+        </li>
+        <hr class="sidebar-divider my-0">
       <li class='nav-item'>
         <a class='nav-link' href="../Elicitation/createReq.php?id=<?php echo $id; ?>">
           <i class="fas fa-book-open"></i>
@@ -166,7 +172,7 @@
       </li>
       <hr class="sidebar-divider my-0">
       <li class='nav-item'>
-        <a class='nav-link' href="../RV/principles.php?id=<?php echo $id; ?>">
+        <a class='nav-link' href="../RV/rvpoption.php?id=<?php echo $id; ?>">
           <i class="fas fa-book-open"></i>
           <span>Requirement Validation</span></a>
       </li>
@@ -215,13 +221,13 @@
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" role="button">
+              <a class="nav-link dropdown-toggle" href="../Requirement Negotation/homeNego.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Negotiate Requirement</span>
               </a>
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" role="button">
+              <a class="nav-link dropdown-toggle" href="../RV/rvpoption.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Validate Requirement</span>
               </a>
             </li>

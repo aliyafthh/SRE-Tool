@@ -157,12 +157,17 @@
         <hr class="sidebar-divider my-0">
 
         <li class='nav-item'>
-          <a class='nav-link' href="../RV/createProject.php?id=<?php echo $id; ?>">
+          <a class='nav-link' href="../RV/previewCreateProject.php?id=<?php echo $id; ?>">
             <i class="fas fa-book-open"></i>
             <span>Create Project</span></a>
         </li>
         <hr class="sidebar-divider my-0">
-
+        <li class='nav-item'>
+          <a class='nav-link' href="/SRET/sret/Requirement%20Negotation/winwinTree.php?id=<?php echo $id; ?>">
+            <i class="fas fa-book-open"></i>
+            <span>View Progress</span></a>
+        </li>
+        <hr class="sidebar-divider my-0">
         <li class='nav-item'>
           <a class='nav-link' href="../Elicitation/createReq.php?id=<?php echo $id; ?>">
             <i class="fas fa-book-open"></i>
@@ -177,7 +182,7 @@
         </li>
         <hr class="sidebar-divider my-0">
         <li class='nav-item'>
-          <a class='nav-link' href="../RV/principles.php?id=<?php echo $id; ?>">
+          <a class='nav-link' href="../RV/rvpoption.php?id=<?php echo $id; ?>">
             <i class="fas fa-book-open"></i>
             <span>Requirement Validation</span></a>
         </li>

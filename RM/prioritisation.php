@@ -268,19 +268,24 @@
               </a>
             </li>
             <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="/SRET/sret/Requirement%20Negotation/winwinTree.php?id=<?php echo $id;?>" role="button">
+                <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">View Progress</span>
+              </a>
+            </li>
+            <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="../Elicitation/createReq.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Create New Requirement</span>
               </a>
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" role="button">
+              <a class="nav-link dropdown-toggle" href="../Requirement Negotation/homeNego.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Negotiate Requirement</span>
               </a>
             </li>
 
             <li class="nav-item dropdown no-arrow">
-              <a class="nav-link dropdown-toggle" href="#" role="button">
+              <a class="nav-link dropdown-toggle" href="../RV/rvpoption.php?id=<?php echo $id; ?>" role="button">
                 <span class="mr-2 d-none d-lg-inline small" style="color: lightgoldenrodyellow;">Validate Requirement</span>
               </a>
             </li>
