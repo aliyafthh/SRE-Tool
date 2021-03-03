@@ -146,7 +146,7 @@
       <ul class="navbar-nav sidenavi sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
-        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
+        <a class="sidebar-brand d-flex align-items-center justify-content-center" href="">
           <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laptop-code"></i>
           </div>
@@ -168,7 +168,7 @@
         <li class='nav-item'>
         <a class='nav-link' href="../Requirement Negotation/winwinTree.php?id=<?php echo $student_id; ?>">
             <i class="fas fa-book-open"></i>
-            <span>WinWin Tree</span></a>
+            <span>View Progress</span></a>
         </li>
         <hr class="sidebar-divider my-0">
 
@@ -277,7 +277,7 @@
                     }
            ?>
           <!-- Page Heading -->
-          <?php $result="SELECT * FROM elicitation WHERE approved=1";
+          <?php $result="SELECT * FROM elicitation WHERE m1=1";
                     $output=$mysqli->query($result) or die($mysqli->error);
                     if($output->num_rows){?>
           <h1 class="h3 mb-4 text-gray-800">Requirement Negotiation</h1>
@@ -306,7 +306,7 @@
                                   </thead>
                                   <tbody>
                                       <?php
-                                          $result=$mysqli->query("SELECT * FROM elicitation WHERE approved=1") or die($mysqli->error);
+                                          $result=$mysqli->query("SELECT * FROM elicitation WHERE m1=1") or die($mysqli->error);
                                           
                                       ?>
                                       <?php while($row=$result->fetch_assoc()):?>

@@ -32,7 +32,7 @@ if(isset($_POST['delete_issue'])){
     $mysqli->query("DELETE FROM rn_vote WHERE req_id=$req_id") 
         or die($mysqli->error);
 
-    header("location:issueNego.php?req_id=$req_id&id=$student");
+    header("location:issueNego.php?req_id=$req_id&id=$student_id");
     $_SESSION['message']= "Record has been deleted";
     $_SESSION['msg_type']= "danger";
 }
